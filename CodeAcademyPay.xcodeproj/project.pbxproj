@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */; };
+		52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146102B0BCC77007D9C4E /* SceneDelegate.swift */; };
+		52B146132B0BCC77007D9C4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146122B0BCC77007D9C4E /* ViewController.swift */; };
+		52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B146142B0BCC77007D9C4E /* Main.storyboard */; };
+		52B146192B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52B146172B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld */; };
+		52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */; };
+		52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B1461C2B0BCC7A007D9C4E /* LaunchScreen.storyboard */; };
+		52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146282B0BCC7A007D9C4E /* CodeAcademyPayTests.swift */; };
+		52B146332B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146322B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift */; };
+		52B146352B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146342B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52B146252B0BCC7A007D9C4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52B146032B0BCC77007D9C4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B1460A2B0BCC77007D9C4E;
+			remoteInfo = CodeAcademyPay;
+		};
+		52B1462F2B0BCC7A007D9C4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52B146032B0BCC77007D9C4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B1460A2B0BCC77007D9C4E;
+			remoteInfo = CodeAcademyPay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52B1460B2B0BCC77007D9C4E /* CodeAcademyPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAcademyPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		52B146102B0BCC77007D9C4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		52B146122B0BCC77007D9C4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		52B146152B0BCC77007D9C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		52B146182B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CodeAcademyPay.xcdatamodel; sourceTree = "<group>"; };
+		52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52B1461D2B0BCC7A007D9C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		52B1461F2B0BCC7A007D9C4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52B146242B0BCC7A007D9C4E /* CodeAcademyPayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeAcademyPayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B146282B0BCC7A007D9C4E /* CodeAcademyPayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAcademyPayTests.swift; sourceTree = "<group>"; };
+		52B1462E2B0BCC7A007D9C4E /* CodeAcademyPayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeAcademyPayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B146322B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAcademyPayUITests.swift; sourceTree = "<group>"; };
+		52B146342B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAcademyPayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52B146082B0BCC77007D9C4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B146212B0BCC7A007D9C4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B1462B2B0BCC7A007D9C4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52B146022B0BCC77007D9C4E = {
+			isa = PBXGroup;
+			children = (
+				52B1460D2B0BCC77007D9C4E /* CodeAcademyPay */,
+				52B146272B0BCC7A007D9C4E /* CodeAcademyPayTests */,
+				52B146312B0BCC7A007D9C4E /* CodeAcademyPayUITests */,
+				52B1460C2B0BCC77007D9C4E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52B1460C2B0BCC77007D9C4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52B1460B2B0BCC77007D9C4E /* CodeAcademyPay.app */,
+				52B146242B0BCC7A007D9C4E /* CodeAcademyPayTests.xctest */,
+				52B1462E2B0BCC7A007D9C4E /* CodeAcademyPayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52B1460D2B0BCC77007D9C4E /* CodeAcademyPay */ = {
+			isa = PBXGroup;
+			children = (
+				52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */,
+				52B146102B0BCC77007D9C4E /* SceneDelegate.swift */,
+				52B146122B0BCC77007D9C4E /* ViewController.swift */,
+				52B146142B0BCC77007D9C4E /* Main.storyboard */,
+				52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */,
+				52B1461C2B0BCC7A007D9C4E /* LaunchScreen.storyboard */,
+				52B1461F2B0BCC7A007D9C4E /* Info.plist */,
+				52B146172B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld */,
+			);
+			path = CodeAcademyPay;
+			sourceTree = "<group>";
+		};
+		52B146272B0BCC7A007D9C4E /* CodeAcademyPayTests */ = {
+			isa = PBXGroup;
+			children = (
+				52B146282B0BCC7A007D9C4E /* CodeAcademyPayTests.swift */,
+			);
+			path = CodeAcademyPayTests;
+			sourceTree = "<group>";
+		};
+		52B146312B0BCC7A007D9C4E /* CodeAcademyPayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				52B146322B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift */,
+				52B146342B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift */,
+			);
+			path = CodeAcademyPayUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52B1460A2B0BCC77007D9C4E /* CodeAcademyPay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B146382B0BCC7A007D9C4E /* Build configuration list for PBXNativeTarget "CodeAcademyPay" */;
+			buildPhases = (
+				52B146072B0BCC77007D9C4E /* Sources */,
+				52B146082B0BCC77007D9C4E /* Frameworks */,
+				52B146092B0BCC77007D9C4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodeAcademyPay;
+			productName = CodeAcademyPay;
+			productReference = 52B1460B2B0BCC77007D9C4E /* CodeAcademyPay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52B146232B0BCC7A007D9C4E /* CodeAcademyPayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B1463B2B0BCC7A007D9C4E /* Build configuration list for PBXNativeTarget "CodeAcademyPayTests" */;
+			buildPhases = (
+				52B146202B0BCC7A007D9C4E /* Sources */,
+				52B146212B0BCC7A007D9C4E /* Frameworks */,
+				52B146222B0BCC7A007D9C4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52B146262B0BCC7A007D9C4E /* PBXTargetDependency */,
+			);
+			name = CodeAcademyPayTests;
+			productName = CodeAcademyPayTests;
+			productReference = 52B146242B0BCC7A007D9C4E /* CodeAcademyPayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		52B1462D2B0BCC7A007D9C4E /* CodeAcademyPayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B1463E2B0BCC7A007D9C4E /* Build configuration list for PBXNativeTarget "CodeAcademyPayUITests" */;
+			buildPhases = (
+				52B1462A2B0BCC7A007D9C4E /* Sources */,
+				52B1462B2B0BCC7A007D9C4E /* Frameworks */,
+				52B1462C2B0BCC7A007D9C4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52B146302B0BCC7A007D9C4E /* PBXTargetDependency */,
+			);
+			name = CodeAcademyPayUITests;
+			productName = CodeAcademyPayUITests;
+			productReference = 52B1462E2B0BCC7A007D9C4E /* CodeAcademyPayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52B146032B0BCC77007D9C4E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					52B1460A2B0BCC77007D9C4E = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					52B146232B0BCC7A007D9C4E = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 52B1460A2B0BCC77007D9C4E;
+					};
+					52B1462D2B0BCC7A007D9C4E = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 52B1460A2B0BCC77007D9C4E;
+					};
+				};
+			};
+			buildConfigurationList = 52B146062B0BCC77007D9C4E /* Build configuration list for PBXProject "CodeAcademyPay" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52B146022B0BCC77007D9C4E;
+			productRefGroup = 52B1460C2B0BCC77007D9C4E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52B1460A2B0BCC77007D9C4E /* CodeAcademyPay */,
+				52B146232B0BCC7A007D9C4E /* CodeAcademyPayTests */,
+				52B1462D2B0BCC7A007D9C4E /* CodeAcademyPayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52B146092B0BCC77007D9C4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */,
+				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
+				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B146222B0BCC7A007D9C4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B1462C2B0BCC7A007D9C4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52B146072B0BCC77007D9C4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B146192B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld in Sources */,
+				52B146132B0BCC77007D9C4E /* ViewController.swift in Sources */,
+				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
+				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B146202B0BCC7A007D9C4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B1462A2B0BCC7A007D9C4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B146332B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift in Sources */,
+				52B146352B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52B146262B0BCC7A007D9C4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B1460A2B0BCC77007D9C4E /* CodeAcademyPay */;
+			targetProxy = 52B146252B0BCC7A007D9C4E /* PBXContainerItemProxy */;
+		};
+		52B146302B0BCC7A007D9C4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B1460A2B0BCC77007D9C4E /* CodeAcademyPay */;
+			targetProxy = 52B1462F2B0BCC7A007D9C4E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		52B146142B0BCC77007D9C4E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52B146152B0BCC77007D9C4E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		52B1461C2B0BCC7A007D9C4E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52B1461D2B0BCC7A007D9C4E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		52B146362B0BCC7A007D9C4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		52B146372B0BCC7A007D9C4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		52B146392B0BCC7A007D9C4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B928425H46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodeAcademyPay/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NerijusSurkys.CodeAcademyPay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52B1463A2B0BCC7A007D9C4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B928425H46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodeAcademyPay/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NerijusSurkys.CodeAcademyPay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		52B1463C2B0BCC7A007D9C4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B928425H46;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NerijusSurkys.CodeAcademyPayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeAcademyPay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CodeAcademyPay";
+			};
+			name = Debug;
+		};
+		52B1463D2B0BCC7A007D9C4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B928425H46;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NerijusSurkys.CodeAcademyPayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeAcademyPay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CodeAcademyPay";
+			};
+			name = Release;
+		};
+		52B1463F2B0BCC7A007D9C4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B928425H46;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NerijusSurkys.CodeAcademyPayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CodeAcademyPay;
+			};
+			name = Debug;
+		};
+		52B146402B0BCC7A007D9C4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B928425H46;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NerijusSurkys.CodeAcademyPayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CodeAcademyPay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52B146062B0BCC77007D9C4E /* Build configuration list for PBXProject "CodeAcademyPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B146362B0BCC7A007D9C4E /* Debug */,
+				52B146372B0BCC7A007D9C4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B146382B0BCC7A007D9C4E /* Build configuration list for PBXNativeTarget "CodeAcademyPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B146392B0BCC7A007D9C4E /* Debug */,
+				52B1463A2B0BCC7A007D9C4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B1463B2B0BCC7A007D9C4E /* Build configuration list for PBXNativeTarget "CodeAcademyPayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B1463C2B0BCC7A007D9C4E /* Debug */,
+				52B1463D2B0BCC7A007D9C4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B1463E2B0BCC7A007D9C4E /* Build configuration list for PBXNativeTarget "CodeAcademyPayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B1463F2B0BCC7A007D9C4E /* Debug */,
+				52B146402B0BCC7A007D9C4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		52B146172B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				52B146182B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodel */,
+			);
+			currentVersion = 52B146182B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodel */;
+			path = CodeAcademyPay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 52B146032B0BCC77007D9C4E /* Project object */;
+}
