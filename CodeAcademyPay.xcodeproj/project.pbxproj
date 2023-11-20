@@ -17,6 +17,10 @@
 		52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146282B0BCC7A007D9C4E /* CodeAcademyPayTests.swift */; };
 		52B146332B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146322B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift */; };
 		52B146352B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146342B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift */; };
+		52B146442B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146422B0BDCF1007D9C4E /* AuthenticationViewController.swift */; };
+		52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146422B0BDCF1007D9C4E /* AuthenticationViewController.swift */; };
+		52B146462B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */; };
+		52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,8 @@
 		52B1462E2B0BCC7A007D9C4E /* CodeAcademyPayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeAcademyPayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B146322B0BCC7A007D9C4E /* CodeAcademyPayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAcademyPayUITests.swift; sourceTree = "<group>"; };
 		52B146342B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAcademyPayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52B146422B0BDCF1007D9C4E /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				52B146412B0BCD44007D9C4E /* Delegates */,
+				52B146482B0BDD16007D9C4E /* Authentication */,
 				52B146122B0BCC77007D9C4E /* ViewController.swift */,
 				52B146142B0BCC77007D9C4E /* Main.storyboard */,
 				52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */,
@@ -136,6 +143,15 @@
 				52B146102B0BCC77007D9C4E /* SceneDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		52B146482B0BDD16007D9C4E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				52B146422B0BDCF1007D9C4E /* AuthenticationViewController.swift */,
+				52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B146462B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
 				52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */,
 				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
 				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
@@ -252,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +289,7 @@
 			files = (
 				52B146192B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld in Sources */,
 				52B146132B0BCC77007D9C4E /* ViewController.swift in Sources */,
+				52B146442B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
 			);
@@ -280,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
