@@ -45,6 +45,9 @@
                                 <rect key="frame" x="118" y="579" width="157" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="submitTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LeU-CC-wnC"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CodeAcademyPay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-4k-Wrg">
                                 <rect key="frame" x="20" y="99" width="353" height="45.666666666666657"/>
@@ -67,6 +70,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nmn-4k-Wrg" secondAttribute="trailing" constant="20" id="xd3-9C-Vty"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="ZOF-TP-Anv" id="U6s-kQ-fYi"/>
+                        <outlet property="currencyTextField" destination="1hk-hV-CEA" id="tbe-1h-OVV"/>
+                        <outlet property="passwordTextField" destination="kun-5m-d7A" id="9h3-7A-tei"/>
+                        <outlet property="phoneNumberTextField" destination="kys-Ld-1uN" id="iW2-eJ-tWZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
