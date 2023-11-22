@@ -7,23 +7,93 @@
 
 import UIKit
 
-class AuthenticationViewController: UIViewController {
+enum AuthenticationType {
+    case login
+    case registration
+}
 
+class AuthenticationViewController: UIViewController {
+    
+    let authenticationType: AuthenticationType
+    let viewModel = UserManagementViewModel()
+    var usersList: [User] = []
+
+    init(authenticationType: AuthenticationType) {
+        self.authenticationType = authenticationType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureUI()
+        getRegisteredUsers()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
+        nameTextField.isHidden = !showNameTextField
+        confirmPasswordTextField.isHidden = !showConfirmPasswordTextField
+        currencyTextField.isHidden = !showCurrencyTextField
+        submitButton.setTitle(buttonTitle, for: .normal)
     }
-    */
-
+    
+    private func configureUI() {
+        switch authenticationType {
+        case .login:
+            setupUI(showNameTextField: false, showConfirmPasswordTextField: false, showCurrencyTextField: false, buttonTitle: "Login")
+        case .registration:
+            setupUI(showNameTextField: true, showConfirmPasswordTextField: true, showCurrencyTextField: true, buttonTitle: "Register")
+        }
+    }
+    
+    private func getRegisteredUsers() {
+        viewModel.getAllUsers { [weak self] result in
+            switch result {
+            case .success(let users):
+                self?.usersList = users
+                for user in users {
+                    print(user)
+                }
+            case .failure(let error):
+                print("Failed to retrieve users: \(error)")
+            }
+        }
+    }
+    
+    private func performUserRegistration() {
+        guard let name = nameTextField.text,
+              let password = passwordTextField.text,
+              let currency = currencyTextField.text,
+              let phoneNumber = phoneNumberTextField.text,
+              !name.isEmpty, !password.isEmpty, !currency.isEmpty, !phoneNumber.isEmpty else {
+            print("One or more text fields are empty")
+            return
+        }
+        
+        let userData = UserRegistration(name: name, password: password, currency: currency, phoneNumber: phoneNumber)
+        
+        viewModel.registerUser(userData: userData) { result in
+            switch result {
+            case .success(let response):
+                print("User created successfully: \(response)")
+            case .failure(let error):
+                print("Failed to create user: \(error)")
+            }
+        }
+    }
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        performUserRegistration()
+    }
+    
 }

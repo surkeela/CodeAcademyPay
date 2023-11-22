@@ -8,18 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var currencyTextField: UITextField!
+//    let authenticationManager = AuthenticationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    @IBAction func submitTapped(_ sender: Any) {
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        let authenticationViewController = AuthenticationViewController(authenticationType: .login)
+        navigationController?.pushViewController(authenticationViewController, animated: true)
+    }
+    
+    @IBAction func registerButtonTaped(_ sender: Any) {
+        let authenticationViewController = AuthenticationViewController(authenticationType: .registration)
+        navigationController?.pushViewController(authenticationViewController, animated: true)
     }
     
 }
