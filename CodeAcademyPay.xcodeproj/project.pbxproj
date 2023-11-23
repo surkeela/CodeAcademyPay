@@ -21,8 +21,8 @@
 		52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146422B0BDCF1007D9C4E /* AuthenticationViewController.swift */; };
 		52B146462B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */; };
 		52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */; };
-		52B1464A2B0BE625007D9C4E /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146492B0BE625007D9C4E /* UserRegistration.swift */; };
-		52B1464B2B0BE625007D9C4E /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146492B0BE625007D9C4E /* UserRegistration.swift */; };
+		52B1464A2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146492B0BE625007D9C4E /* UserRegistrationData.swift */; };
+		52B1464B2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146492B0BE625007D9C4E /* UserRegistrationData.swift */; };
 		52B1464E2B0BE7D8007D9C4E /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1464D2B0BE7D8007D9C4E /* Networking.swift */; };
 		52B1464F2B0BE7D8007D9C4E /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1464D2B0BE7D8007D9C4E /* Networking.swift */; };
 		52B146512B0BEFB0007D9C4E /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146502B0BEFB0007D9C4E /* Endpoints.swift */; };
@@ -33,6 +33,8 @@
 		52B1465F2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */; };
 		52B146612B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146602B0E8FE0007D9C4E /* AuthenticationManager.swift */; };
 		52B146622B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146602B0E8FE0007D9C4E /* AuthenticationManager.swift */; };
+		52B146642B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */; };
+		52B146652B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,12 +71,13 @@
 		52B146342B0BCC7A007D9C4E /* CodeAcademyPayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAcademyPayUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		52B146422B0BDCF1007D9C4E /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		52B146432B0BDCF1007D9C4E /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
-		52B146492B0BE625007D9C4E /* UserRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
+		52B146492B0BE625007D9C4E /* UserRegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationData.swift; sourceTree = "<group>"; };
 		52B1464D2B0BE7D8007D9C4E /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		52B146502B0BEFB0007D9C4E /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		52B1465A2B0E803C007D9C4E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
 		52B146602B0E8FE0007D9C4E /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,9 +190,10 @@
 		52B146532B0D1121007D9C4E /* User */ = {
 			isa = PBXGroup;
 			children = (
-				52B146492B0BE625007D9C4E /* UserRegistration.swift */,
+				52B146492B0BE625007D9C4E /* UserRegistrationData.swift */,
 				52B1465A2B0E803C007D9C4E /* User.swift */,
 				52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */,
+				52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -330,7 +334,8 @@
 				52B146192B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld in Sources */,
 				52B146132B0BCC77007D9C4E /* ViewController.swift in Sources */,
 				52B146612B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */,
-				52B1464A2B0BE625007D9C4E /* UserRegistration.swift in Sources */,
+				52B1464A2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,
+				52B146642B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */,
 				52B146442B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
@@ -348,7 +353,8 @@
 				52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B146622B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */,
 				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,
-				52B1464B2B0BE625007D9C4E /* UserRegistration.swift in Sources */,
+				52B1464B2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,
+				52B146652B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */,
 				52B1465C2B0E803C007D9C4E /* User.swift in Sources */,
 				52B1465F2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
 				52B1464F2B0BE7D8007D9C4E /* Networking.swift in Sources */,

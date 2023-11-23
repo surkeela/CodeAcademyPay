@@ -16,7 +16,8 @@ class AuthenticationViewController: UIViewController {
     
     let authenticationType: AuthenticationType
     let viewModel = UserManagementViewModel()
-    var usersList: [User] = []
+    let authenticationManager = AuthenticationManager()
+    var registeredUsers: [User] = []
 
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -37,7 +38,7 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        getRegisteredUsers()
+//        getRegisteredUsers()
     }
     
     func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
@@ -56,19 +57,19 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
-    private func getRegisteredUsers() {
-        viewModel.getAllUsers { [weak self] result in
-            switch result {
-            case .success(let users):
-                self?.usersList = users
-                for user in users {
-                    print(user)
-                }
-            case .failure(let error):
-                print("Failed to retrieve users: \(error)")
-            }
-        }
-    }
+//    private func getRegisteredUsers() {
+//        viewModel.getAllUsers { [weak self] result in
+//            switch result {
+//            case .success(let users):
+//                self?.registeredUsers = users
+//                for user in users { 
+//                    print(user)
+//                }
+//            case .failure(let error):
+//                print("Failed to retrieve users: \(error)")
+//            }
+//        }
+//    }
     
     private func performUserRegistration() {
         guard let name = nameTextField.text,
@@ -80,12 +81,20 @@ class AuthenticationViewController: UIViewController {
             return
         }
         
-        let userData = UserRegistration(name: name, password: password, currency: currency, phoneNumber: phoneNumber)
+        let userData = UserRegistrationData(name: name, password: password, currency: currency, phoneNumber: phoneNumber)
         
-        viewModel.registerUser(userData: userData) { result in
+        viewModel.registerUser(userData: userData) { [weak self] result in
             switch result {
-            case .success(let response):
-                print("User created successfully: \(response)")
+            case .success(let user):
+                print("User created successfully: \(user)")
+                self?.viewModel.fetchAuthenticatedUser(userID: user.id, authToken: "h0WEhyyHGLKbjrKcZ4v73g==") { result in
+                    switch result {
+                    case .success(let authenticatedUser):
+                        print("Authenticated user details: \(authenticatedUser)")
+                    case .failure(let error):
+                        print("Failed to fetch authenticated user: \(error)")
+                    }
+                }
             case .failure(let error):
                 print("Failed to create user: \(error)")
             }

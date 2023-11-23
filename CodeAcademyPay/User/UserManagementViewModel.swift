@@ -8,21 +8,14 @@
 import Foundation
 
 class UserManagementViewModel {
-    
     private let networking = Networking()
     
-    func registerUser(userData: UserRegistration, completion: @escaping (Result<String, Error>) -> Void) {
+    func registerUser(userData: UserRegistrationData, completion: @escaping (Result<User, Error>) -> Void) {
         let urlString = Endpoints.register()
         
-        let jsonData: [String: Any] = [
-            "name": userData.name,
-            "password": userData.password,
-            "currency": userData.currency,
-            "phoneNumber": userData.phoneNumber
-        ]
-        
         do {
-            let requestBody = try JSONSerialization.data(withJSONObject: jsonData)
+            let encoder = JSONEncoder()
+            let requestBody = try encoder.encode(userData)
             
             guard let request = networking.createRequest(urlString: urlString, method: "POST", headers: ["Content-Type": "application/json"], body: requestBody) else {
                 completion(.failure(NetworkError.invalidURL))
@@ -32,10 +25,12 @@ class UserManagementViewModel {
             networking.performRequest(with: request) { result in
                 switch result {
                 case .success(let data):
-                    if let responseString = String(data: data, encoding: .utf8) {
-                        completion(.success(responseString))
-                    } else {
-                        completion(.failure(NetworkError.noData))
+                    do {
+                        let decoder = JSONDecoder()
+                        let user = try decoder.decode(User.self, from: data)
+                        completion(.success(user))
+                    } catch {
+                        completion(.failure(NetworkError.serializationError(error)))
                     }
                 case .failure(let error):
                     completion(.failure(error))
@@ -64,6 +59,30 @@ class UserManagementViewModel {
                     completion(.success(users))
                 } catch {
                     completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func fetchAuthenticatedUser(userID: String, authToken: String, completion: @escaping (Result<AuthenticatedUser, NetworkError>) -> Void) {
+        let urlString = Endpoints.base + userID
+        guard let request = networking.createRequest(urlString: urlString, method: "GET", headers: ["Authorization": "Bearer \(authToken)"], body: nil) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        networking.performRequest(with: request) { result in
+            switch result {
+            case .success(let data):
+                print(String(data: data, encoding: .utf8))
+                do {
+                    let decoder = JSONDecoder()
+                    let user = try decoder.decode(AuthenticatedUser.self, from: data)
+                    completion(.success(user))
+                } catch {
+                    completion(.failure(.serializationError(error)))
                 }
             case .failure(let error):
                 completion(.failure(error))

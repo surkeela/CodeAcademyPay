@@ -9,21 +9,14 @@ import Foundation
 
 class AuthenticationManager {
     
-//    func isUserInputsValid(username: String, password: String) -> Bool {
-//        username.count >= 8 && password.count >= 8
-//    }
-//    
-//    func checkTextFields(textFieldValues: [String?]) -> (Bool, String) {
-//        var isEmpty = false
-//        var missingFields = ""
-//
-//        for (index, value) in textFieldValues.enumerated() {
-//            if value?.isEmpty ?? true {
-//                isEmpty = true
-//                missingFields += "Field \(index + 1) is empty\n"
-//            }
-//        }
-//
-//        return (isEmpty, missingFields)
-//    }
+    func validatePhoneNumber(phoneNumber: String) -> Bool {
+        guard !phoneNumber.isEmpty else {
+            return false
+        }
+        
+        let numericExpression = "[0-9]{9,}"
+        let numericPredicate = NSPredicate(format: "SELF MATCHES %@", numericExpression)
+        return numericPredicate.evaluate(with: phoneNumber)
+    }
+    
 }

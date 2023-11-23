@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserRegistration: Codable {
+struct UserRegistrationData: Codable {
     let name: String
     let password: String
     let currency: String
