@@ -39,6 +39,15 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
 //        getRegisteredUsers()
+        
+        viewModel.fetchAuthenticatedUser(userID: "2D21D8BE-4718-4842-80E3-43B4F1079B4D") { result in
+            switch result {
+            case .success(let authenticatedUser):
+                print("Authenticated user details: \(authenticatedUser)")
+            case .failure(let error):
+                print("Failed to fetch authenticated user: \(error)")
+            }
+        }
     }
     
     func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
@@ -76,10 +85,7 @@ class AuthenticationViewController: UIViewController {
               let password = passwordTextField.text,
               let currency = currencyTextField.text,
               let phoneNumber = phoneNumberTextField.text,
-              !name.isEmpty, !password.isEmpty, !currency.isEmpty, !phoneNumber.isEmpty else {
-            print("One or more text fields are empty")
-            return
-        }
+              !name.isEmpty, !password.isEmpty, !currency.isEmpty, !phoneNumber.isEmpty else { return }
         
         let userData = UserRegistrationData(name: name, password: password, currency: currency, phoneNumber: phoneNumber)
         
@@ -87,7 +93,7 @@ class AuthenticationViewController: UIViewController {
             switch result {
             case .success(let user):
                 print("User created successfully: \(user)")
-                self?.viewModel.fetchAuthenticatedUser(userID: user.id, authToken: "h0WEhyyHGLKbjrKcZ4v73g==") { result in
+                self?.viewModel.fetchAuthenticatedUser(userID: user.id) { result in
                     switch result {
                     case .success(let authenticatedUser):
                         print("Authenticated user details: \(authenticatedUser)")

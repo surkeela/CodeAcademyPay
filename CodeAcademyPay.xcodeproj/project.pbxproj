@@ -35,6 +35,8 @@
 		52B146622B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146602B0E8FE0007D9C4E /* AuthenticationManager.swift */; };
 		52B146642B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */; };
 		52B146652B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */; };
+		52B146672B111372007D9C4E /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146662B111372007D9C4E /* UserLoginData.swift */; };
+		52B146682B111372007D9C4E /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146662B111372007D9C4E /* UserLoginData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,7 @@
 		52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
 		52B146602B0E8FE0007D9C4E /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
+		52B146662B111372007D9C4E /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,10 +193,11 @@
 		52B146532B0D1121007D9C4E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */,
 				52B146492B0BE625007D9C4E /* UserRegistrationData.swift */,
 				52B1465A2B0E803C007D9C4E /* User.swift */,
-				52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */,
 				52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */,
+				52B146662B111372007D9C4E /* UserLoginData.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -343,6 +347,7 @@
 				52B146512B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1464E2B0BE7D8007D9C4E /* Networking.swift in Sources */,
 				52B1465B2B0E803C007D9C4E /* User.swift in Sources */,
+				52B146672B111372007D9C4E /* UserLoginData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B146682B111372007D9C4E /* UserLoginData.swift in Sources */,
 				52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B146622B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */,
 				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,

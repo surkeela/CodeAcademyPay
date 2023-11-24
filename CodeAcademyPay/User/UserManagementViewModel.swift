@@ -66,9 +66,9 @@ class UserManagementViewModel {
         }
     }
     
-    func fetchAuthenticatedUser(userID: String, authToken: String, completion: @escaping (Result<AuthenticatedUser, NetworkError>) -> Void) {
+    func fetchAuthenticatedUser(userID: String, completion: @escaping (Result<AuthenticatedUser, NetworkError>) -> Void) {
         let urlString = Endpoints.base + userID
-        guard let request = networking.createRequest(urlString: urlString, method: "GET", headers: ["Authorization": "Bearer \(authToken)"], body: nil) else {
+        guard let request = networking.createRequest(urlString: urlString, method: "GET", headers: ["Authorization": "Bearer h0WEhyyHGLKbjrKcZ4v73g=="], body: nil) else {
             completion(.failure(.invalidURL))
             return
         }
@@ -79,8 +79,8 @@ class UserManagementViewModel {
                 print(String(data: data, encoding: .utf8))
                 do {
                     let decoder = JSONDecoder()
-                    let user = try decoder.decode(AuthenticatedUser.self, from: data)
-                    completion(.success(user))
+                    let authenticatedUser = try decoder.decode(AuthenticatedUser.self, from: data)
+                    completion(.success(authenticatedUser))
                 } catch {
                     completion(.failure(.serializationError(error)))
                 }

@@ -7,148 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7B9E454C-F314-4701-96EF-5DA8ABC84BA7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CodeAcademyPay/User/UserManagementViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "fetchAuthenticatedUser(userID:authToken:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7B9E454C-F314-4701-96EF-5DA8ABC84BA7 - 48a923e3b0fd557b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, CodeAcademyPay.NetworkError&gt;) -&gt; () in CodeAcademyPay.UserManagementViewModel.fetchAuthenticatedUser(userID: Swift.String, authToken: Swift.String, completion: (Swift.Result&lt;CodeAcademyPay.AuthenticatedUser, CodeAcademyPay.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CodeAcademyPay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/User/UserManagementViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "387">
-               </Location>
-               <Location
-                  uuid = "7B9E454C-F314-4701-96EF-5DA8ABC84BA7 - 48a923e3b0fd551a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, CodeAcademyPay.NetworkError&gt;) -&gt; () in CodeAcademyPay.UserManagementViewModel.fetchAuthenticatedUser(userID: Swift.String, authToken: Swift.String, completion: (Swift.Result&lt;CodeAcademyPay.AuthenticatedUser, CodeAcademyPay.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CodeAcademyPay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/User/UserManagementViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "503">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F7E2BE07-9ED5-4B44-9EC2-46DA1A079623"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CodeAcademyPay/User/UserManagementViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "fetchAuthenticatedUser(userID:authToken:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F7E2BE07-9ED5-4B44-9EC2-46DA1A079623 - 48a923e3b0fd5535"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, CodeAcademyPay.NetworkError&gt;) -&gt; () in CodeAcademyPay.UserManagementViewModel.fetchAuthenticatedUser(userID: Swift.String, authToken: Swift.String, completion: (Swift.Result&lt;CodeAcademyPay.AuthenticatedUser, CodeAcademyPay.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CodeAcademyPay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/User/UserManagementViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "277">
-               </Location>
-               <Location
-                  uuid = "F7E2BE07-9ED5-4B44-9EC2-46DA1A079623 - 48a923e3b0fd5535"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, CodeAcademyPay.NetworkError&gt;) -&gt; () in CodeAcademyPay.UserManagementViewModel.fetchAuthenticatedUser(userID: Swift.String, authToken: Swift.String, completion: (Swift.Result&lt;CodeAcademyPay.AuthenticatedUser, CodeAcademyPay.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CodeAcademyPay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/User/UserManagementViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "333">
-               </Location>
-               <Location
-                  uuid = "F7E2BE07-9ED5-4B44-9EC2-46DA1A079623 - 48a923e3b0fd5535"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, CodeAcademyPay.NetworkError&gt;) -&gt; () in CodeAcademyPay.UserManagementViewModel.fetchAuthenticatedUser(userID: Swift.String, authToken: Swift.String, completion: (Swift.Result&lt;CodeAcademyPay.AuthenticatedUser, CodeAcademyPay.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CodeAcademyPay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/User/UserManagementViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "345">
-               </Location>
-               <Location
-                  uuid = "F7E2BE07-9ED5-4B44-9EC2-46DA1A079623 - 48a923e3b0fd5535"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, CodeAcademyPay.NetworkError&gt;) -&gt; () in CodeAcademyPay.UserManagementViewModel.fetchAuthenticatedUser(userID: Swift.String, authToken: Swift.String, completion: (Swift.Result&lt;CodeAcademyPay.AuthenticatedUser, CodeAcademyPay.NetworkError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "CodeAcademyPay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/User/UserManagementViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "401">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3D9DF5C2-60A9-4D37-8D44-B1B9AEB84C8F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CodeAcademyPay/User/UserManagementViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "fetchAuthenticatedUser(userID:authToken:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -156,13 +14,13 @@
             filePath = "CodeAcademyPay/Authentication/AuthenticationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "performUserRegistration()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60 - 47c006431ef75b64"
+                  uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60 - 47c006431ef7585e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -172,12 +30,12 @@
                   urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/Authentication/AuthenticationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
                   offsetFromSymbolStart = "71">
                </Location>
                <Location
-                  uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60 - 47c006431ef75b64"
+                  uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60 - 47c006431ef7585e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -187,12 +45,12 @@
                   urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/Authentication/AuthenticationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
                   offsetFromSymbolStart = "93">
                </Location>
                <Location
-                  uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60 - 47c006431ef75b64"
+                  uuid = "1EF3569F-B325-4E9F-B34A-166898AA0C60 - 47c006431ef7585e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -202,8 +60,8 @@
                   urlString = "file:///Users/nerijussurkys/Desktop/CA/CodeAcademyPay/CodeAcademyPay/Authentication/AuthenticationViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
                   offsetFromSymbolStart = "607">
                </Location>
             </Locations>
