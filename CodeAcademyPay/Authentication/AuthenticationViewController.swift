@@ -16,8 +16,6 @@ class AuthenticationViewController: UIViewController {
     
     let authenticationType: AuthenticationType
     let viewModel = UserManagementViewModel()
-    let authenticationManager = AuthenticationManager()
-    var registeredUsers: [User] = []
 
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -38,16 +36,6 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-//        getRegisteredUsers()
-        
-        viewModel.fetchAuthenticatedUser(userID: "2D21D8BE-4718-4842-80E3-43B4F1079B4D") { result in
-            switch result {
-            case .success(let authenticatedUser):
-                print("Authenticated user details: \(authenticatedUser)")
-            case .failure(let error):
-                print("Failed to fetch authenticated user: \(error)")
-            }
-        }
     }
     
     func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
@@ -66,20 +54,6 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
-//    private func getRegisteredUsers() {
-//        viewModel.getAllUsers { [weak self] result in
-//            switch result {
-//            case .success(let users):
-//                self?.registeredUsers = users
-//                for user in users { 
-//                    print(user)
-//                }
-//            case .failure(let error):
-//                print("Failed to retrieve users: \(error)")
-//            }
-//        }
-//    }
-    
     private func performUserRegistration() {
         guard let name = nameTextField.text,
               let password = passwordTextField.text,
@@ -93,16 +67,31 @@ class AuthenticationViewController: UIViewController {
             switch result {
             case .success(let user):
                 print("User created successfully: \(user)")
-                self?.viewModel.fetchAuthenticatedUser(userID: user.id) { result in
+                self?.performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: user.id)
+            case .failure(let error):
+                print("Failed to create user: \(error)")
+            }
+        }
+    }
+    
+    private func performLoginAfterRegistration(phoneNumber: String, password: String, id: String) {
+        viewModel.loginUser(phoneNumber: phoneNumber, password: password, id: id) { [weak self] result in
+            switch result {
+            case .success(let user):
+                print("User logged in successfully: \(user)")
+                self?.viewModel.fetchDataWithBearerToken(userID: user.user.id, bearerToken: user.value) { result in
                     switch result {
-                    case .success(let authenticatedUser):
-                        print("Authenticated user details: \(authenticatedUser)")
+                    case .success(let fetchedData):
+                        print("Fetched data: \(fetchedData)")
+                        // Handle the fetched data here
                     case .failure(let error):
-                        print("Failed to fetch authenticated user: \(error)")
+                        print("Failed to fetch data: \(error)")
+                        // Handle the failure case here
                     }
                 }
             case .failure(let error):
-                print("Failed to create user: \(error)")
+                print("Failed to log in user: \(error)")
+                // Handle login failure, maybe show an error to the user
             }
         }
     }

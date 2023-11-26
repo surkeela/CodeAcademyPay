@@ -15,7 +15,16 @@ struct Endpoints {
     }
     
     static func register() -> String {
-        Endpoints.base + "users" + "/register"
+        Endpoints.base + "users/register"
+    }
+    
+    static func login() -> String {
+        Endpoints.base + "users/login"
+    }
+    
+    static func user(withID userID: String) -> String {
+        return base + "users/\(userID)"
     }
     
 }
+//let urlString = "https://codeacademypay.fly.dev/api/users/\(userID)"
