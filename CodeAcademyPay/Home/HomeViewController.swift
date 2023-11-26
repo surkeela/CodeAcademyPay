@@ -9,8 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var balanceLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
     }
 
 }

@@ -45,6 +45,7 @@ class AuthenticationViewController: UIViewController {
         confirmPasswordTextField.isHidden = !showConfirmPasswordTextField
         currencyTextField.isHidden = !showCurrencyTextField
         submitButton.setTitle(buttonTitle, for: .normal)
+        navigationController?.navigationBar.tintColor = UIColor.black
     }
     
     private func configureUI() {
@@ -107,6 +108,10 @@ class AuthenticationViewController: UIViewController {
                     switch result {
                     case .success(let authenticatedUser):
                         print("Fetched data: \(authenticatedUser)")
+                        DispatchQueue.main.async {
+                            let homeViewController = HomeViewController()
+                            self?.navigationController?.pushViewController(homeViewController, animated: true)
+                        }
                     case .failure(let error):
                         print("Failed to fetch data: \(error)")
                         // Handle the failure case here

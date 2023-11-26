@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CodeAcademyPay" customModuleProvider="target">
             <connections>
+                <outlet property="balanceLabel" destination="1F4-c5-3jz" id="wnx-5l-gIi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
