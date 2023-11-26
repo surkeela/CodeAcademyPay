@@ -9,8 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    let authenticationManager = AuthenticationManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

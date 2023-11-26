@@ -39,6 +39,10 @@
 		52B146682B111372007D9C4E /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146662B111372007D9C4E /* UserLoginData.swift */; };
 		52B1466A2B11166E007D9C4E /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146692B11166E007D9C4E /* UserLoginResponse.swift */; };
 		52B1466B2B11166E007D9C4E /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146692B11166E007D9C4E /* UserLoginResponse.swift */; };
+		52B1466E2B13D806007D9C4E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1466C2B13D806007D9C4E /* HomeViewController.swift */; };
+		52B1466F2B13D806007D9C4E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1466C2B13D806007D9C4E /* HomeViewController.swift */; };
+		52B146702B13D806007D9C4E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1466D2B13D806007D9C4E /* HomeViewController.xib */; };
+		52B146712B13D806007D9C4E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1466D2B13D806007D9C4E /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,8 @@
 		52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedUser.swift; sourceTree = "<group>"; };
 		52B146662B111372007D9C4E /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		52B146692B11166E007D9C4E /* UserLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
+		52B1466C2B13D806007D9C4E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		52B1466D2B13D806007D9C4E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,7 @@
 				52B1464C2B0BE79E007D9C4E /* Networking */,
 				52B146482B0BDD16007D9C4E /* Authentication */,
 				52B146532B0D1121007D9C4E /* User */,
+				52B146722B13D823007D9C4E /* Home */,
 				52B146122B0BCC77007D9C4E /* ViewController.swift */,
 				52B146142B0BCC77007D9C4E /* Main.storyboard */,
 				52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */,
@@ -204,6 +211,15 @@
 				52B146692B11166E007D9C4E /* UserLoginResponse.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		52B146722B13D823007D9C4E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52B1466C2B13D806007D9C4E /* HomeViewController.swift */,
+				52B1466D2B13D806007D9C4E /* HomeViewController.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +328,7 @@
 			files = (
 				52B146462B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
 				52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */,
+				52B146702B13D806007D9C4E /* HomeViewController.xib in Resources */,
 				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
 				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
 			);
@@ -322,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
+				52B146712B13D806007D9C4E /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +362,7 @@
 				52B146612B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */,
 				52B1464A2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,
 				52B146642B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */,
+				52B1466E2B13D806007D9C4E /* HomeViewController.swift in Sources */,
 				52B146442B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
@@ -371,6 +390,7 @@
 				52B1464F2B0BE7D8007D9C4E /* NetworkManager.swift in Sources */,
 				52B146522B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1466B2B11166E007D9C4E /* UserLoginResponse.swift in Sources */,
+				52B1466F2B13D806007D9C4E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
