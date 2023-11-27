@@ -9,14 +9,15 @@ import UIKit
 
 class SendMoneyViewController: UIViewController {
 
-    let transactionViewModel = TransactionViewModel()
-    let userViewModel = UserManagementViewModel()
+    private let transactionViewModel = TransactionViewModel()
+    private let userViewModel = UserManagementViewModel()
     var users: [User] = []
+//    private let token: String = ""
     
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var sumTextField: UITextField!
-    @IBOutlet weak var noteTextField: UITextField!
+    @IBOutlet weak private var currencyLabel: UILabel!
+    @IBOutlet weak private var phoneNumberTextField: UITextField!
+    @IBOutlet weak private var sumTextField: UITextField!
+    @IBOutlet weak private var noteTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,29 +37,38 @@ class SendMoneyViewController: UIViewController {
         }
     }
     
-    func sendMoney() {
-        let sendMoneyViewController = SendMoneyViewController()
-        navigationController?.pushViewController(sendMoneyViewController, animated: true)
+    private func sendMoney() {
+        guard let token = UserDefaults.standard.string(forKey: "UserToken") else {
+            print("Token not found in UserDefaults")
+            return
+        }
         
-         let receiver = "863333333"
-         let amount = "1"
-         let currency = "EUR"
-         let description = "Sending money to user 863333333"
-
-        transactionViewModel.createTransaction(receiver: receiver, amount: amount, currency: currency, description: description, bearerToken: token) { result in
-             switch result {
-             case .success(let transactionResponse):
-                 // Handle successful transaction creation
-                 print("Transaction created: \(transactionResponse)")
-                 // Update UI or perform actions based on the successful transaction creation
-                 
-             case .failure(let error):
-                 // Handle transaction creation failure
-                 print("Transaction creation failed: \(error)")
-                 // Show an alert or update UI to inform the user about the failure
-             }
-         }
-     }
+        guard let receiver = phoneNumberTextField.text, //"863333333"
+              let amount = sumTextField.text,
+              !receiver.isEmpty, !amount.isEmpty else { return }
+        
+        let currency = "EUR"
+        let description = noteTextField.text ?? "" //"Sending money to user 863333333"
+        
+        transactionViewModel.createTransaction(receiver: receiver, amount: amount, currency: currency, description: description, bearerToken: token) { [weak self] result in
+            switch result {
+            case .success(let transactionResponse):
+                // Handle successful transaction creation
+                print("Transaction created: \(transactionResponse)")
+                DispatchQueue.main.async {
+                    self?.phoneNumberTextField.text = ""
+                    self?.sumTextField.text = ""
+                    self?.noteTextField.text = ""
+                    
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            case .failure(let error):
+                // Handle transaction creation failure
+                print("Transaction creation failed: \(error)")
+                // Show an alert or update UI to inform the user about the failure
+            }
+        }
+    }
 
     @IBAction func sendTapped(_ sender: Any) {
         sendMoney()

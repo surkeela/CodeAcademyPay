@@ -34,7 +34,6 @@ class UserManagementViewModel {
     func getAllUsers(completion: @escaping (Result<[User], Error>) -> Void) {
         let urlString = Endpoints.allUsers()
         
-//        let networkManager = NetworkManager()
         do {
             let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: nil, body: nil)
             

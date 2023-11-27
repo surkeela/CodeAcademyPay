@@ -14,10 +14,10 @@ enum AuthenticationType {
 
 class AuthenticationViewController: UIViewController {
     
-    let authenticationType: AuthenticationType
-    let viewModel = UserManagementViewModel()
-    var registeredUsers: [User] = []
-    var token = ""
+    private let authenticationType: AuthenticationType
+    private let viewModel = UserManagementViewModel()
+    private var registeredUsers: [User] = []
+    private var token = ""
 
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -28,29 +28,29 @@ class AuthenticationViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var currencyTextField: UITextField!
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak private var nameTextField: UITextField!
+    @IBOutlet weak private var phoneNumberTextField: UITextField!
+    @IBOutlet weak private var passwordTextField: UITextField!
+    @IBOutlet weak private var confirmPasswordTextField: UITextField!
+    @IBOutlet weak private var currencyTextField: UITextField!
+    @IBOutlet weak private var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchAllUsers()
         
-        switch authenticationType {
-        case .login:
-            phoneNumberTextField.text = "862454341"
-            passwordTextField.text = "nnn"
+        switch authenticationType {   //////////////////////////////////////////
+        case .login:   //////////////////////////////////////////
+            phoneNumberTextField.text = "862454341"   //////////////////////////////////////////
+            passwordTextField.text = "nnn"   //////////////////////////////////////////
         case .registration:
-            currencyTextField.text = "EUR"
+            currencyTextField.text = "EUR"   //////////////////////////////////////////
         }
 
     }
     
-    func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
+   private func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
         nameTextField.isHidden = !showNameTextField
         confirmPasswordTextField.isHidden = !showConfirmPasswordTextField
         currencyTextField.isHidden = !showCurrencyTextField
@@ -86,8 +86,6 @@ class AuthenticationViewController: UIViewController {
               let currency = currencyTextField.text,
               let phoneNumber = phoneNumberTextField.text,
               !name.isEmpty, !password.isEmpty, !currency.isEmpty, !phoneNumber.isEmpty else {
-            // Handle empty text fields or any other validation failure
-            // Show an alert or update UI to inform the user about the missing fields
             return
         }
         
@@ -115,12 +113,13 @@ class AuthenticationViewController: UIViewController {
             case .success(let loginResponse):
                 self?.token = loginResponse.value
                 print("User logged in successfully: \(loginResponse)")
-                self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value) { result in
+                UserDefaults.standard.set(loginResponse.value, forKey: "UserToken")
+                self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value) { [weak self] result in
                     switch result {
                     case .success(let authenticatedUser):
                         print("Fetched data: \(authenticatedUser)")
                         DispatchQueue.main.async {
-                            let homeViewController = HomeViewController(token: self?.token ?? "???")
+                            let homeViewController = HomeViewController(currentUser: authenticatedUser)
                             self?.navigationController?.pushViewController(homeViewController, animated: true)
                         }
                     case .failure(let error):
@@ -139,8 +138,7 @@ class AuthenticationViewController: UIViewController {
         guard let phoneNumber = phoneNumberTextField.text,
               let password = passwordTextField.text,
               !phoneNumber.isEmpty, !password.isEmpty else {
-            // Handle empty text fields or any other validation failure
-            // Show an alert or update UI to inform the user about missing fields
+            showAlert(title: "Error", message: "Please fill in all fields.")
             return
         }
 
@@ -155,13 +153,67 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+    private func validateRegistrationFields() -> Bool {
+        guard let name = nameTextField.text,
+              let password = passwordTextField.text,
+              let confirmPassword = confirmPasswordTextField.text,
+              let currency = currencyTextField.text,
+              let phoneNumber = phoneNumberTextField.text else {
+            return false
+        }
+        
+        // Regular expressions for validation
+        let phoneNumberRegex = #"^\d{9,}$"#
+        let currencyRegex = #"^[A-Z]{3}$"#
+        
+        // Validation checks
+        let phoneNumberIsValid = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex).evaluate(with: phoneNumber)
+        let currencyIsValid = NSPredicate(format: "SELF MATCHES %@", currencyRegex).evaluate(with: currency)
+        let nameIsValid = !name.isEmpty
+        let passwordIsValid = password.count >= 3 && password == confirmPassword
+        
+        if !phoneNumberIsValid {
+            showAlert(title: "Invalid Phone Number", message: "Phone number should be at least 9 digits long and consist of digits only.")
+            return false
+        }
+        
+        if !currencyIsValid {
+            showAlert(title: "Invalid Currency", message: "Currency should consist of 3 uppercase letters.")
+            return false
+        }
+        
+        if !nameIsValid {
+            showAlert(title: "Invalid Name", message: "Name field cannot be empty.")
+            return false
+        }
+        
+        if !passwordIsValid {
+            showAlert(title: "Invalid Password", message: "Password should be at least 3 characters long and match the confirmation.")
+            return false
+        }
+        
+        return true
+    }
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
         switch authenticationType {
         case .login:
             performLogin()
         case .registration:
+            if !validateRegistrationFields() {
+                // Handle invalid fields (show alerts, update UI, etc.)
+                return
+            }
             performUserRegistration()
         }
     }
+    
+//    func handleError(_ error: Error) {
+//       if let apiError = error as? APIError, apiError.error {
+//           showAlert(title: "Error", message: apiError.reason)
+//       } else {
+//           showAlert(title: "Error", message: "An unknown error occurred.")
+//       }
+//   }
     
 }

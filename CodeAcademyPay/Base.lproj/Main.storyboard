@@ -26,13 +26,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hro-kJ-Q6g">
-                                <rect key="frame" x="118" y="497.33333333333331" width="157" height="112.66666666666669"/>
+                                <rect key="frame" x="118" y="494.33333333333331" width="157" height="118.66666666666669"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81t-8P-9mZ">
                                         <rect key="frame" x="0.0" y="0.0" width="157" height="34.333333333333336"/>
                                         <color key="tintColor" systemColor="systemMintColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Login">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tVg-C7-iex"/>
                                         </connections>
@@ -44,15 +46,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y5-Mg-PRd">
-                                        <rect key="frame" x="0.0" y="74.666666666666686" width="157" height="38"/>
+                                        <rect key="frame" x="0.0" y="74.666666666666686" width="157" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="tintColor" systemColor="quaternarySystemFillColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Register">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
                                         <buttonConfiguration key="configuration" style="filled" title="Register">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                             <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -104,9 +106,6 @@
     </scenes>
     <resources>
         <image name="g78823" width="570" height="1178.3333740234375"/>
-        <systemColor name="quaternarySystemFillColor">
-            <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

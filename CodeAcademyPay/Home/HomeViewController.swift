@@ -11,11 +11,11 @@ class HomeViewController: UIViewController {
     
 //    let viewModel = TransactionViewModel()
 //    let userViewModel = UserManagementViewModel()
-    let token: String
     var users: [User] = []
+    var currentUser: AuthenticatedUser
     
-    init(token: String) {
-        self.token = token
+    init(currentUser: AuthenticatedUser) {
+        self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,39 +23,27 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var transactionTableView: UITableView!
+    @IBOutlet weak private var balanceLabel: UILabel!
+    @IBOutlet weak private var transactionTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchAllUsers()
         setupUI()
     }
     
     private func setupUI() {
         navigationItem.hidesBackButton = true
         transactionTableView.layer.cornerRadius = 20
-        print("Token:\(token)")
+        balanceLabel.text = String(currentUser.balance)
     }
-    
-//    private func fetchAllUsers() {
-//        userViewModel.getAllUsers { [weak self] result in
-//            switch result {
-//            case .success(let users):
-//                self?.users = users
-//            case .failure(let error):
-//                // Handle the failure to fetch users
-//                print("Failed to fetch users: \(error)")
-//                // Show an alert or update UI to inform the user about the error
-//            }
-//        }
-//    }
 
     @IBAction func addMoneyTapped(_ sender: Any) {
     }
     
     @IBAction func sendMoneyTapped(_ sender: Any) {
-//        sendMoney()
+        let sendMoneyViewController = SendMoneyViewController()
+        present(sendMoneyViewController, animated: true, completion: nil)
+//        navigationController?.pushViewController(sendMoneyViewController, animated: true)
     }
     
     @IBAction func settingsTapped(_ sender: Any) {

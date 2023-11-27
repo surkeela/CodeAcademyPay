@@ -31,6 +31,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Recipient phone number" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-eB-ddB" customClass="UnderlinedTextField" customModule="CodeAcademyPay" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="333" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="esL-af-cHo"/>
                             </constraints>
@@ -41,6 +42,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter sum" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B8P-fp-Aul" customClass="UnderlinedTextField" customModule="CodeAcademyPay" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="65" width="333" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ooi-GD-BEe"/>
                             </constraints>
@@ -51,6 +53,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add note" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixz-L1-XZm" customClass="UnderlinedTextField" customModule="CodeAcademyPay" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="130" width="333" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="IHi-Oz-DNu"/>
                             </constraints>
@@ -64,6 +67,7 @@
                     <rect key="frame" x="127.66666666666667" y="498.33333333333331" width="137.66666666666663" height="34.333333333333314"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Send">
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="baseBackgroundColor" systemColor="systemMintColor"/>
                     </buttonConfiguration>
                     <connections>
