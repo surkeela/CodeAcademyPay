@@ -17,6 +17,7 @@ class AuthenticationViewController: UIViewController {
     let authenticationType: AuthenticationType
     let viewModel = UserManagementViewModel()
     var registeredUsers: [User] = []
+    var token = ""
 
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -38,6 +39,15 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         fetchAllUsers()
+        
+        switch authenticationType {
+        case .login:
+            phoneNumberTextField.text = "862454341"
+            passwordTextField.text = "nnn"
+        case .registration:
+            currencyTextField.text = "EUR"
+        }
+
     }
     
     func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
@@ -45,7 +55,7 @@ class AuthenticationViewController: UIViewController {
         confirmPasswordTextField.isHidden = !showConfirmPasswordTextField
         currencyTextField.isHidden = !showCurrencyTextField
         submitButton.setTitle(buttonTitle, for: .normal)
-        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     private func configureUI() {
@@ -102,14 +112,15 @@ class AuthenticationViewController: UIViewController {
     private func performLoginAfterRegistration(phoneNumber: String, password: String, id: String) {
         viewModel.loginUser(phoneNumber: phoneNumber, password: password, id: id) { [weak self] result in
             switch result {
-            case .success(let user):
-                print("User logged in successfully: \(user)")
-                self?.viewModel.fetchDataWithBearerToken(userID: user.user.id, bearerToken: user.value) { result in
+            case .success(let loginResponse):
+                self?.token = loginResponse.value
+                print("User logged in successfully: \(loginResponse)")
+                self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value) { result in
                     switch result {
                     case .success(let authenticatedUser):
                         print("Fetched data: \(authenticatedUser)")
                         DispatchQueue.main.async {
-                            let homeViewController = HomeViewController()
+                            let homeViewController = HomeViewController(token: self?.token ?? "???")
                             self?.navigationController?.pushViewController(homeViewController, animated: true)
                         }
                     case .failure(let error):

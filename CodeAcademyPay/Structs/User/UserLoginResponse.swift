@@ -16,11 +16,4 @@ struct UserLoginResponse: Codable {
     struct UserInfo: Codable {
         let id: String
     }
-    
-//    enum CodingKeys: String, CodingKey {
-//        case value
-//        case id
-//        case user
-//        case expDate
-//    }
 }

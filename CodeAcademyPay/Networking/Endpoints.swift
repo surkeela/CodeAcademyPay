@@ -26,5 +26,8 @@ struct Endpoints {
         return base + "users/\(userID)"
     }
     
+    static func createTransaction () -> String {
+        Endpoints.base + "transactions/create"
+    }
+    
 }
-//let urlString = "https://codeacademypay.fly.dev/api/users/\(userID)"

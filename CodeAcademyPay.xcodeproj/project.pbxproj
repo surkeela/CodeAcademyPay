@@ -43,6 +43,22 @@
 		52B1466F2B13D806007D9C4E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1466C2B13D806007D9C4E /* HomeViewController.swift */; };
 		52B146702B13D806007D9C4E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1466D2B13D806007D9C4E /* HomeViewController.xib */; };
 		52B146712B13D806007D9C4E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1466D2B13D806007D9C4E /* HomeViewController.xib */; };
+		52B146782B14852A007D9C4E /* TransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146772B14852A007D9C4E /* TransactionResponse.swift */; };
+		52B146792B14852A007D9C4E /* TransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146772B14852A007D9C4E /* TransactionResponse.swift */; };
+		52B1467B2B148631007D9C4E /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467A2B148631007D9C4E /* TransactionRequest.swift */; };
+		52B1467C2B148631007D9C4E /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467A2B148631007D9C4E /* TransactionRequest.swift */; };
+		52B146802B14886D007D9C4E /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */; };
+		52B146812B14886D007D9C4E /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */; };
+		52B146862B14B25D007D9C4E /* Pavizdys.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146832B14B25D007D9C4E /* Pavizdys.xib */; };
+		52B146872B14B25D007D9C4E /* Pavizdys.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146832B14B25D007D9C4E /* Pavizdys.xib */; };
+		52B1468A2B14E743007D9C4E /* pavizdys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146892B14E743007D9C4E /* pavizdys.swift */; };
+		52B1468B2B14E743007D9C4E /* pavizdys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146892B14E743007D9C4E /* pavizdys.swift */; };
+		52B1468E2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */; };
+		52B1468F2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */; };
+		52B146902B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */; };
+		52B146912B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */; };
+		52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146932B150545007D9C4E /* UnderlinedTextField.swift */; };
+		52B146952B150545007D9C4E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146932B150545007D9C4E /* UnderlinedTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +106,14 @@
 		52B146692B11166E007D9C4E /* UserLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
 		52B1466C2B13D806007D9C4E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		52B1466D2B13D806007D9C4E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		52B146772B14852A007D9C4E /* TransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionResponse.swift; sourceTree = "<group>"; };
+		52B1467A2B148631007D9C4E /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
+		52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
+		52B146832B14B25D007D9C4E /* Pavizdys.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Pavizdys.xib; sourceTree = "<group>"; };
+		52B146892B14E743007D9C4E /* pavizdys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pavizdys.swift; sourceTree = "<group>"; };
+		52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
+		52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMoneyViewController.xib; sourceTree = "<group>"; };
+		52B146932B150545007D9C4E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,16 +165,21 @@
 			isa = PBXGroup;
 			children = (
 				52B146412B0BCD44007D9C4E /* Delegates */,
+				52B146922B15051A007D9C4E /* Helpers */,
 				52B1464C2B0BE79E007D9C4E /* Networking */,
 				52B146482B0BDD16007D9C4E /* Authentication */,
-				52B146532B0D1121007D9C4E /* User */,
+				52B146532B0D1121007D9C4E /* ViewModels */,
+				52B146732B1484FA007D9C4E /* Structs */,
 				52B146722B13D823007D9C4E /* Home */,
+				52B146882B14B277007D9C4E /* SendMoney */,
 				52B146122B0BCC77007D9C4E /* ViewController.swift */,
 				52B146142B0BCC77007D9C4E /* Main.storyboard */,
 				52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */,
 				52B1461C2B0BCC7A007D9C4E /* LaunchScreen.storyboard */,
 				52B1461F2B0BCC7A007D9C4E /* Info.plist */,
 				52B146172B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld */,
+				52B146892B14E743007D9C4E /* pavizdys.swift */,
+				52B146832B14B25D007D9C4E /* Pavizdys.xib */,
 			);
 			path = CodeAcademyPay;
 			sourceTree = "<group>";
@@ -200,17 +229,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		52B146532B0D1121007D9C4E /* User */ = {
+		52B146532B0D1121007D9C4E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */,
-				52B146492B0BE625007D9C4E /* UserRegistrationData.swift */,
-				52B1465A2B0E803C007D9C4E /* User.swift */,
-				52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */,
-				52B146662B111372007D9C4E /* UserLoginData.swift */,
-				52B146692B11166E007D9C4E /* UserLoginResponse.swift */,
+				52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */,
 			);
-			path = User;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		52B146722B13D823007D9C4E /* Home */ = {
@@ -220,6 +245,53 @@
 				52B1466D2B13D806007D9C4E /* HomeViewController.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		52B146732B1484FA007D9C4E /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				52B1467E2B148673007D9C4E /* User */,
+				52B1467D2B14865A007D9C4E /* Transaction */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		52B1467D2B14865A007D9C4E /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				52B146772B14852A007D9C4E /* TransactionResponse.swift */,
+				52B1467A2B148631007D9C4E /* TransactionRequest.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		52B1467E2B148673007D9C4E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				52B146492B0BE625007D9C4E /* UserRegistrationData.swift */,
+				52B1465A2B0E803C007D9C4E /* User.swift */,
+				52B146632B0FE4B7007D9C4E /* AuthenticatedUser.swift */,
+				52B146662B111372007D9C4E /* UserLoginData.swift */,
+				52B146692B11166E007D9C4E /* UserLoginResponse.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		52B146882B14B277007D9C4E /* SendMoney */ = {
+			isa = PBXGroup;
+			children = (
+				52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */,
+				52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */,
+			);
+			path = SendMoney;
+			sourceTree = "<group>";
+		};
+		52B146922B15051A007D9C4E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				52B146932B150545007D9C4E /* UnderlinedTextField.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,8 +401,10 @@
 				52B146462B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
 				52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */,
 				52B146702B13D806007D9C4E /* HomeViewController.xib in Resources */,
+				52B146862B14B25D007D9C4E /* Pavizdys.xib in Resources */,
 				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
 				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
+				52B146902B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +412,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B146872B14B25D007D9C4E /* Pavizdys.xib in Resources */,
+				52B146912B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */,
 				52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
 				52B146712B13D806007D9C4E /* HomeViewController.xib in Resources */,
 			);
@@ -366,12 +442,18 @@
 				52B146442B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
+				52B146782B14852A007D9C4E /* TransactionResponse.swift in Sources */,
+				52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */,
 				52B1465E2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
+				52B1468A2B14E743007D9C4E /* pavizdys.swift in Sources */,
+				52B146802B14886D007D9C4E /* TransactionViewModel.swift in Sources */,
+				52B1468E2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
 				52B1466A2B11166E007D9C4E /* UserLoginResponse.swift in Sources */,
 				52B146512B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1464E2B0BE7D8007D9C4E /* NetworkManager.swift in Sources */,
 				52B1465B2B0E803C007D9C4E /* User.swift in Sources */,
 				52B146672B111372007D9C4E /* UserLoginData.swift in Sources */,
+				52B1467B2B148631007D9C4E /* TransactionRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,16 +463,22 @@
 			files = (
 				52B146682B111372007D9C4E /* UserLoginData.swift in Sources */,
 				52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
+				52B1468F2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
 				52B146622B0E8FE0007D9C4E /* AuthenticationManager.swift in Sources */,
 				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,
+				52B1467C2B148631007D9C4E /* TransactionRequest.swift in Sources */,
 				52B1464B2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,
+				52B146792B14852A007D9C4E /* TransactionResponse.swift in Sources */,
 				52B146652B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */,
 				52B1465C2B0E803C007D9C4E /* User.swift in Sources */,
+				52B1468B2B14E743007D9C4E /* pavizdys.swift in Sources */,
 				52B1465F2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
 				52B1464F2B0BE7D8007D9C4E /* NetworkManager.swift in Sources */,
+				52B146952B150545007D9C4E /* UnderlinedTextField.swift in Sources */,
 				52B146522B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1466B2B11166E007D9C4E /* UserLoginResponse.swift in Sources */,
 				52B1466F2B13D806007D9C4E /* HomeViewController.swift in Sources */,
+				52B146812B14886D007D9C4E /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +660,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -603,6 +692,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
