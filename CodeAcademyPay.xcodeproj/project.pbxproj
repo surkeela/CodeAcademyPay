@@ -57,8 +57,9 @@
 		52B146912B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */; };
 		52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146932B150545007D9C4E /* UnderlinedTextField.swift */; };
 		52B146952B150545007D9C4E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146932B150545007D9C4E /* UnderlinedTextField.swift */; };
-		52B146972B152B34007D9C4E /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146962B152B34007D9C4E /* ShowAlert.swift */; };
+		52B146972B152B34007D9C4E /* UIViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146962B152B34007D9C4E /* UIViewControllerHelper.swift */; };
 		52B1469B2B15E68C007D9C4E /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */; };
+		52B1469D2B160262007D9C4E /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469C2B160262007D9C4E /* ValidationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,8 +114,9 @@
 		52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
 		52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMoneyViewController.xib; sourceTree = "<group>"; };
 		52B146932B150545007D9C4E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
-		52B146962B152B34007D9C4E /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
+		52B146962B152B34007D9C4E /* UIViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerHelper.swift; sourceTree = "<group>"; };
 		52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		52B1469C2B160262007D9C4E /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,7 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				52B146932B150545007D9C4E /* UnderlinedTextField.swift */,
-				52B146962B152B34007D9C4E /* ShowAlert.swift */,
+				52B146962B152B34007D9C4E /* UIViewControllerHelper.swift */,
+				52B1469C2B160262007D9C4E /* ValidationHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -440,10 +443,11 @@
 				52B1464A2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,
 				52B146642B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */,
 				52B1466E2B13D806007D9C4E /* HomeViewController.swift in Sources */,
+				52B1469D2B160262007D9C4E /* ValidationHelper.swift in Sources */,
 				52B146442B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
-				52B146972B152B34007D9C4E /* ShowAlert.swift in Sources */,
+				52B146972B152B34007D9C4E /* UIViewControllerHelper.swift in Sources */,
 				52B146782B14852A007D9C4E /* TransactionResponse.swift in Sources */,
 				52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */,
 				52B1465E2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,

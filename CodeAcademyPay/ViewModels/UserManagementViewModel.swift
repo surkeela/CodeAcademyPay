@@ -34,7 +34,6 @@ class UserManagementViewModel {
             }, errorHandler: errorHandler)
         } catch {
             completion(.failure(error))
-            print("🟥🟥 catch \(error.localizedDescription)")
         }
     }
 
@@ -60,36 +59,14 @@ class UserManagementViewModel {
             }, errorHandler: errorHandler)
         } catch {
             completion(.failure(error))
-            print("🟥🟥 catch \(error.localizedDescription)")
         }
-    }
-
-    func createLoginRequest(phoneNumber: String, password: String, urlString: String) throws -> URLRequest {
-        guard let url = URL(string: urlString) else {
-            throw NetworkError.invalidURL
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-
-        // Add Basic Authentication Header
-        let loginString = "\(phoneNumber):\(password)"
-        guard let loginData = loginString.data(using: .utf8) else {
-            throw NetworkError.authenticationError
-        }
-        
-        let base64LoginString = loginData.base64EncodedString()
-        let authString = "Basic \(base64LoginString)"
-        request.setValue(authString, forHTTPHeaderField: "Authorization")
-
-        return request
     }
 
     func loginUser(phoneNumber: String, password: String, id: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<UserLoginResponse, Error>) -> Void) {
         let urlString = Endpoints.login()
 
         do {
-            let request = try createLoginRequest(phoneNumber: phoneNumber, password: password, urlString: urlString)
+            let request = try networkManager.createBasicAuthRequest(phoneNumber: phoneNumber, password: password, urlString: urlString)
 
             networkManager.performRequest(with: request, completion: { (result: Result<UserLoginResponse, NetworkError>) in
                 switch result {
@@ -107,7 +84,6 @@ class UserManagementViewModel {
             }, errorHandler: errorHandler)
         } catch {
             completion(.failure(error))
-            print("🟥🟥 catch \(error.localizedDescription)")
         }
     }
 
@@ -134,7 +110,6 @@ class UserManagementViewModel {
             }, errorHandler: errorHandler)
         } catch {
             completion(.failure(error))
-            print("🟥🟥 catch \(error.localizedDescription)")
         }
     }
     

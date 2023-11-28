@@ -63,4 +63,25 @@ class NetworkManager {
         return request
     }
     
+    func createBasicAuthRequest(phoneNumber: String, password: String, urlString: String) throws -> URLRequest {
+        guard let url = URL(string: urlString) else {
+            throw NetworkError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        // Add Basic Authentication Header
+        let loginString = "\(phoneNumber):\(password)"
+        guard let loginData = loginString.data(using: .utf8) else {
+            throw NetworkError.authenticationError
+        }
+        
+        let base64LoginString = loginData.base64EncodedString()
+        let authString = "Basic \(base64LoginString)"
+        request.setValue(authString, forHTTPHeaderField: "Authorization")
+
+        return request
+    }
+    
 }

@@ -68,7 +68,7 @@ class AuthenticationViewController: UIViewController {
     private func fetchAllUsers() {
         viewModel.getAllUsers(errorHandler: { errorMessage in
             DispatchQueue.main.async {
-                self.showAlert(title: "Error", message: errorMessage)
+                self.showErrorAlert(message: errorMessage)
             }
         }) { [weak self] result in
             switch result {
@@ -93,7 +93,7 @@ class AuthenticationViewController: UIViewController {
         
         viewModel.registerUser(userData: userData, errorHandler: { errorMessage in
             DispatchQueue.main.async {
-                self.showAlert(title: "Error", message: errorMessage)
+                self.showErrorAlert(message: errorMessage)
             }
         }) { [weak self] result in
             switch result {
@@ -111,7 +111,7 @@ class AuthenticationViewController: UIViewController {
     private func performLoginAfterRegistration(phoneNumber: String, password: String, id: String) {
         viewModel.loginUser(phoneNumber: phoneNumber, password: password, id: id, errorHandler: { errorMessage in
             DispatchQueue.main.async {
-                self.showAlert(title: "Error", message: errorMessage)
+                self.showErrorAlert(message: errorMessage)
             }
         }) { [weak self] result in
             switch result {
@@ -121,7 +121,7 @@ class AuthenticationViewController: UIViewController {
                 UserDefaults.standard.set(loginResponse.value, forKey: "UserToken")
                 self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value, errorHandler: { errorMessage in
                     DispatchQueue.main.async {
-                        self?.showAlert(title: "Error", message: errorMessage)
+                        self?.showErrorAlert(message: errorMessage)
                     }
                 }) { [weak self] result in
                     switch result {
@@ -145,14 +145,14 @@ class AuthenticationViewController: UIViewController {
         guard let phoneNumber = phoneNumberTextField.text,
               let password = passwordTextField.text,
               !phoneNumber.isEmpty, !password.isEmpty else {
-            showAlert(title: "Error", message: "Please fill in all fields.")
+            showErrorAlert(message: "Please fill in all fields.")
             return
         }
         
         if let registeredUser = registeredUsers.first(where: { $0.phoneNumber == phoneNumber }) {
             performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)
         } else {
-            showAlert(title: "Error", message: "No authenticated user found with the entered phone number.")
+            showErrorAlert(message: "No authenticated user found with the entered phone number.")
         }
     }
     
@@ -165,32 +165,22 @@ class AuthenticationViewController: UIViewController {
             return false
         }
         
-        // Regular expressions for validation
-        let phoneNumberRegex = #"^\d{9,}$"#
-        let currencyRegex = #"^[A-Z]{3}$"#
-        
-        // Validation checks
-        let phoneNumberIsValid = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex).evaluate(with: phoneNumber)
-        let currencyIsValid = NSPredicate(format: "SELF MATCHES %@", currencyRegex).evaluate(with: currency)
-        let nameIsValid = !name.isEmpty
-        let passwordIsValid = password.count >= 3 && password == confirmPassword
-        
-        if !phoneNumberIsValid {
+        if !ValidationHelper.isValidPhoneNumber(phoneNumber) {
             showAlert(title: "Invalid Phone Number", message: "Phone number should be at least 9 digits long and consist of digits only.")
             return false
         }
         
-        if !currencyIsValid {
+        if !ValidationHelper.isValidCurrency(currency) {
             showAlert(title: "Invalid Currency", message: "Currency should consist of 3 uppercase letters.")
             return false
         }
         
-        if !nameIsValid {
+        if name.isEmpty {
             showAlert(title: "Invalid Name", message: "Name field cannot be empty.")
             return false
         }
         
-        if !passwordIsValid {
+        if password.count < 3 || password != confirmPassword {
             showAlert(title: "Invalid Password", message: "Password should be at least 3 characters long and match the confirmation.")
             return false
         }
