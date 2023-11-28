@@ -58,7 +58,7 @@
 		52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146932B150545007D9C4E /* UnderlinedTextField.swift */; };
 		52B146952B150545007D9C4E /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146932B150545007D9C4E /* UnderlinedTextField.swift */; };
 		52B146972B152B34007D9C4E /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146962B152B34007D9C4E /* ShowAlert.swift */; };
-		52B146992B153638007D9C4E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146982B153638007D9C4E /* APIError.swift */; };
+		52B1469B2B15E68C007D9C4E /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +114,7 @@
 		52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMoneyViewController.xib; sourceTree = "<group>"; };
 		52B146932B150545007D9C4E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		52B146962B152B34007D9C4E /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
-		52B146982B153638007D9C4E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +250,7 @@
 		52B146732B1484FA007D9C4E /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				52B146982B153638007D9C4E /* APIError.swift */,
+				52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */,
 				52B1467E2B148673007D9C4E /* User */,
 				52B1467D2B14865A007D9C4E /* Transaction */,
 			);
@@ -445,13 +445,13 @@
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
 				52B146972B152B34007D9C4E /* ShowAlert.swift in Sources */,
 				52B146782B14852A007D9C4E /* TransactionResponse.swift in Sources */,
-				52B146992B153638007D9C4E /* APIError.swift in Sources */,
 				52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */,
 				52B1465E2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
 				52B1468A2B14E743007D9C4E /* pavizdys.swift in Sources */,
 				52B146802B14886D007D9C4E /* TransactionViewModel.swift in Sources */,
 				52B1468E2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
 				52B1466A2B11166E007D9C4E /* UserLoginResponse.swift in Sources */,
+				52B1469B2B15E68C007D9C4E /* ErrorResponse.swift in Sources */,
 				52B146512B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1464E2B0BE7D8007D9C4E /* NetworkManager.swift in Sources */,
 				52B1465B2B0E803C007D9C4E /* User.swift in Sources */,

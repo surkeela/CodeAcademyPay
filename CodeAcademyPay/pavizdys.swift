@@ -44,10 +44,23 @@ class Pavizdys: UIViewController {
     }
     
     private func fetchAllUsers() {
-        userViewModel.getAllUsers { [weak self] result in
+        userViewModel.getAllUsers(errorHandler: { errorMessage in
+            // Show an alert or update UI to inform the user about the error
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }) { [weak self] result in
             switch result {
             case .success(let users):
                 self?.users = users
+                // Update UI with fetched users
+                DispatchQueue.main.async {
+                    // Update UI elements or trigger UI refresh
+                    // For example:
+                   // self?.tableView.reloadData()
+                }
             case .failure(let error):
                 // Handle the failure to fetch users
                 print("Failed to fetch users: \(error)")

@@ -10,16 +10,19 @@ import Foundation
 enum NetworkError: Error {
     case invalidURL
     case noData
-    case networkError(Error)
+    case apiError(String)
     case decodingError(Error)
     case authenticationError
 }
 
 class NetworkManager {
-    func performRequest<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    typealias CompletionHandler<T: Decodable> = (Result<T, NetworkError>) -> Void
+    typealias ErrorHandler = (String) -> Void
+    
+    func performRequest<T: Decodable>(with request: URLRequest, completion: @escaping CompletionHandler<T>, errorHandler: @escaping ErrorHandler) {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(.networkError(error)))
+                completion(.failure(.decodingError(error)))
                 return
             }
             
@@ -32,7 +35,13 @@ class NetworkManager {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedData))
             } catch {
-                completion(.failure(.decodingError(error)))
+                // Attempt to decode error response
+                if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data), errorResponse.error {
+                    errorHandler(errorResponse.reason)
+                    completion(.failure(.apiError(errorResponse.reason)))
+                } else {
+                    completion(.failure(.decodingError(error)))
+                }
             }
         }.resume()
     }
@@ -44,7 +53,7 @@ class NetworkManager {
         request.httpMethod = method
         
         if let headers = headers {
-            for (key, value) in headers {
+            headers.forEach { key, value in
                 request.setValue(value, forHTTPHeaderField: key)
             }
         }
@@ -55,5 +64,3 @@ class NetworkManager {
     }
     
 }
-
-

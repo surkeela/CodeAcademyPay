@@ -13,12 +13,11 @@ enum AuthenticationType {
 }
 
 class AuthenticationViewController: UIViewController {
-    
     private let authenticationType: AuthenticationType
     private let viewModel = UserManagementViewModel()
     private var registeredUsers: [User] = []
     private var token = ""
-
+    
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
         super.init(nibName: nil, bundle: nil)
@@ -40,17 +39,16 @@ class AuthenticationViewController: UIViewController {
         configureUI()
         fetchAllUsers()
         
-        switch authenticationType {   //////////////////////////////////////////
-        case .login:   //////////////////////////////////////////
-            phoneNumberTextField.text = "862454341"   //////////////////////////////////////////
-            passwordTextField.text = "nnn"   //////////////////////////////////////////
-        case .registration:
-            currencyTextField.text = "EUR"   //////////////////////////////////////////
+        switch authenticationType {                 //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+        case .login:                                //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+            phoneNumberTextField.text = "862454341" //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+            passwordTextField.text = "nnn"          //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+        case .registration:                         //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+            currencyTextField.text = "EUR"          //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
         }
-
     }
     
-   private func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
+    private func setupUI(showNameTextField: Bool, showConfirmPasswordTextField: Bool, showCurrencyTextField: Bool, buttonTitle: String) {
         nameTextField.isHidden = !showNameTextField
         confirmPasswordTextField.isHidden = !showConfirmPasswordTextField
         currencyTextField.isHidden = !showCurrencyTextField
@@ -68,14 +66,16 @@ class AuthenticationViewController: UIViewController {
     }
     
     private func fetchAllUsers() {
-        viewModel.getAllUsers { [weak self] result in
+        viewModel.getAllUsers(errorHandler: { errorMessage in
+            DispatchQueue.main.async {
+                self.showAlert(title: "Error", message: errorMessage)
+            }
+        }) { [weak self] result in
             switch result {
             case .success(let users):
                 self?.registeredUsers = users
             case .failure(let error):
-                // Handle the failure to fetch users
                 print("Failed to fetch users: \(error)")
-                // Show an alert or update UI to inform the user about the error
             }
         }
     }
@@ -91,45 +91,52 @@ class AuthenticationViewController: UIViewController {
         
         let userData = UserRegistrationData(name: name, password: password, currency: currency, phoneNumber: phoneNumber)
         
-        viewModel.registerUser(userData: userData) { [weak self] result in
+        viewModel.registerUser(userData: userData, errorHandler: { errorMessage in
+            DispatchQueue.main.async {
+                self.showAlert(title: "Error", message: errorMessage)
+            }
+        }) { [weak self] result in
             switch result {
             case .success(let registeredUser):
-                print("User created successfully: \(registeredUser)")
+                print("User created successfully: \(registeredUser)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 self?.performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)
                 // Optionally, you might inform the user about successful registration
                 // Show an alert or update UI indicating successful registration
             case .failure(let error):
                 print("Failed to create user: \(error)")
-                // Inform the user about registration failure
-                // Show an alert or update UI indicating registration failure
             }
         }
     }
-
     
     private func performLoginAfterRegistration(phoneNumber: String, password: String, id: String) {
-        viewModel.loginUser(phoneNumber: phoneNumber, password: password, id: id) { [weak self] result in
+        viewModel.loginUser(phoneNumber: phoneNumber, password: password, id: id, errorHandler: { errorMessage in
+            DispatchQueue.main.async {
+                self.showAlert(title: "Error", message: errorMessage)
+            }
+        }) { [weak self] result in
             switch result {
             case .success(let loginResponse):
                 self?.token = loginResponse.value
-                print("User logged in successfully: \(loginResponse)")
+                print("User logged in successfully: \(loginResponse)") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 UserDefaults.standard.set(loginResponse.value, forKey: "UserToken")
-                self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value) { [weak self] result in
+                self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value, errorHandler: { errorMessage in
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Error", message: errorMessage)
+                    }
+                }) { [weak self] result in
                     switch result {
                     case .success(let authenticatedUser):
-                        print("Fetched data: \(authenticatedUser)")
+                        print("Fetched data: \(authenticatedUser)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                         DispatchQueue.main.async {
                             let homeViewController = HomeViewController(currentUser: authenticatedUser)
                             self?.navigationController?.pushViewController(homeViewController, animated: true)
                         }
                     case .failure(let error):
                         print("Failed to fetch data: \(error)")
-                        // Handle the failure case here
                     }
                 }
             case .failure(let error):
                 print("Failed to log in user: \(error)")
-                // Handle login failure, maybe show an error to the user
             }
         }
     }
@@ -141,15 +148,11 @@ class AuthenticationViewController: UIViewController {
             showAlert(title: "Error", message: "Please fill in all fields.")
             return
         }
-
-        // Check if there's an authenticated user with the entered phone number
+        
         if let registeredUser = registeredUsers.first(where: { $0.phoneNumber == phoneNumber }) {
-            print(registeredUser.id)
             performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)
         } else {
-            // Handle scenario when no matching authenticated user is found
-            // Show an alert or update UI to inform the user about the absence of an authenticated user
-            print("No authenticated user found with the entered phone number.")
+            showAlert(title: "Error", message: "No authenticated user found with the entered phone number.")
         }
     }
     
@@ -200,20 +203,9 @@ class AuthenticationViewController: UIViewController {
         case .login:
             performLogin()
         case .registration:
-            if !validateRegistrationFields() {
-                // Handle invalid fields (show alerts, update UI, etc.)
-                return
-            }
+            if !validateRegistrationFields() { return }
             performUserRegistration()
         }
     }
-    
-//    func handleError(_ error: Error) {
-//       if let apiError = error as? APIError, apiError.error {
-//           showAlert(title: "Error", message: apiError.reason)
-//       } else {
-//           showAlert(title: "Error", message: "An unknown error occurred.")
-//       }
-//   }
     
 }

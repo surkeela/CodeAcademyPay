@@ -25,7 +25,14 @@ class SendMoneyViewController: UIViewController {
     }
     
     private func fetchAllUsers() {
-        userViewModel.getAllUsers { [weak self] result in
+        userViewModel.getAllUsers(errorHandler: { errorMessage in
+            // Show an alert or update UI to inform the user about the error
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }) { [weak self] result in
             switch result {
             case .success(let users):
                 self?.users = users
@@ -36,6 +43,7 @@ class SendMoneyViewController: UIViewController {
             }
         }
     }
+
     
     private func sendMoney() {
         guard let token = UserDefaults.standard.string(forKey: "UserToken") else {
@@ -43,14 +51,21 @@ class SendMoneyViewController: UIViewController {
             return
         }
         
-        guard let receiver = phoneNumberTextField.text, //"863333333"
+        guard let receiver = phoneNumberTextField.text,
               let amount = sumTextField.text,
               !receiver.isEmpty, !amount.isEmpty else { return }
         
         let currency = "EUR"
-        let description = noteTextField.text ?? "" //"Sending money to user 863333333"
+        let description = noteTextField.text ?? ""
         
-        transactionViewModel.createTransaction(receiver: receiver, amount: amount, currency: currency, description: description, bearerToken: token) { [weak self] result in
+        transactionViewModel.createTransaction(receiver: receiver, amount: amount, currency: currency, description: description, bearerToken: token, errorHandler: { errorMessage in
+            // Show an alert or update UI to inform the user about the error
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }) { [weak self] result in
             switch result {
             case .success(let transactionResponse):
                 // Handle successful transaction creation
@@ -59,7 +74,6 @@ class SendMoneyViewController: UIViewController {
                     self?.phoneNumberTextField.text = ""
                     self?.sumTextField.text = ""
                     self?.noteTextField.text = ""
-                    
                     self?.dismiss(animated: true, completion: nil)
                 }
             case .failure(let error):
