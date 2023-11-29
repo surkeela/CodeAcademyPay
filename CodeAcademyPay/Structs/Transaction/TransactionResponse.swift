@@ -15,6 +15,7 @@ struct TransactionResponse: Codable {
     let sender: String
     let currency: String
     let user: UserResponse
+    let createdAt: String?
 }
 
 struct UserResponse: Codable {

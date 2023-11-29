@@ -38,4 +38,30 @@ class TransactionViewModel {
         }
     }
     
+    func fetchAllTransactions(bearerToken: String, userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<[TransactionResponse], Error>) -> Void) {
+        let urlString = Endpoints.getTransactions(withID: userID)
+        let headers = ["Authorization": "Bearer \(bearerToken)"]
+        
+        do {
+            let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
+            
+            networkManager.performRequest(with: request, completion: { (result: Result<[TransactionResponse], NetworkError>) in
+                switch result {
+                case .success(let transaction):
+                    completion(.success(transaction))
+                case .failure(let error):
+                    switch error {
+                    case .apiError(let reason):
+                        errorHandler(reason)
+                    default:
+                        errorHandler("An error occurred")
+                    }
+                    completion(.failure(error))
+                }
+            }, errorHandler: errorHandler)
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
 }

@@ -60,6 +60,12 @@
 		52B146972B152B34007D9C4E /* UIViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146962B152B34007D9C4E /* UIViewControllerHelper.swift */; };
 		52B1469B2B15E68C007D9C4E /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */; };
 		52B1469D2B160262007D9C4E /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469C2B160262007D9C4E /* ValidationHelper.swift */; };
+		52B146A02B17554E007D9C4E /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469E2B17554E007D9C4E /* TransactionTableViewCell.swift */; };
+		52B146A12B17554E007D9C4E /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1469E2B17554E007D9C4E /* TransactionTableViewCell.swift */; };
+		52B146A22B17554E007D9C4E /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1469F2B17554E007D9C4E /* TransactionTableViewCell.xib */; };
+		52B146A32B17554E007D9C4E /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1469F2B17554E007D9C4E /* TransactionTableViewCell.xib */; };
+		52B146A62B178C43007D9C4E /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146A52B178C43007D9C4E /* HomeTableView.swift */; };
+		52B146A72B178C43007D9C4E /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146A52B178C43007D9C4E /* HomeTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +123,9 @@
 		52B146962B152B34007D9C4E /* UIViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerHelper.swift; sourceTree = "<group>"; };
 		52B1469A2B15E68C007D9C4E /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		52B1469C2B160262007D9C4E /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
+		52B1469E2B17554E007D9C4E /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		52B1469F2B17554E007D9C4E /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
+		52B146A52B178C43007D9C4E /* HomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +254,8 @@
 			children = (
 				52B1466C2B13D806007D9C4E /* HomeViewController.swift */,
 				52B1466D2B13D806007D9C4E /* HomeViewController.xib */,
+				52B146A52B178C43007D9C4E /* HomeTableView.swift */,
+				52B146A42B1755A3007D9C4E /* TransactionTableViewCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -297,6 +308,15 @@
 				52B1469C2B160262007D9C4E /* ValidationHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		52B146A42B1755A3007D9C4E /* TransactionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				52B1469E2B17554E007D9C4E /* TransactionTableViewCell.swift */,
+				52B1469F2B17554E007D9C4E /* TransactionTableViewCell.xib */,
+			);
+			path = TransactionTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +429,7 @@
 				52B146862B14B25D007D9C4E /* Pavizdys.xib in Resources */,
 				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
 				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
+				52B146A22B17554E007D9C4E /* TransactionTableViewCell.xib in Resources */,
 				52B146902B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B146A32B17554E007D9C4E /* TransactionTableViewCell.xib in Resources */,
 				52B146872B14B25D007D9C4E /* Pavizdys.xib in Resources */,
 				52B146912B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */,
 				52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
@@ -448,11 +470,13 @@
 				52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */,
 				52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */,
 				52B146972B152B34007D9C4E /* UIViewControllerHelper.swift in Sources */,
+				52B146A02B17554E007D9C4E /* TransactionTableViewCell.swift in Sources */,
 				52B146782B14852A007D9C4E /* TransactionResponse.swift in Sources */,
 				52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */,
 				52B1465E2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
 				52B1468A2B14E743007D9C4E /* pavizdys.swift in Sources */,
 				52B146802B14886D007D9C4E /* TransactionViewModel.swift in Sources */,
+				52B146A62B178C43007D9C4E /* HomeTableView.swift in Sources */,
 				52B1468E2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
 				52B1466A2B11166E007D9C4E /* UserLoginResponse.swift in Sources */,
 				52B1469B2B15E68C007D9C4E /* ErrorResponse.swift in Sources */,
@@ -472,6 +496,7 @@
 				52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1468F2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
 				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,
+				52B146A72B178C43007D9C4E /* HomeTableView.swift in Sources */,
 				52B1467C2B148631007D9C4E /* TransactionRequest.swift in Sources */,
 				52B1464B2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,
 				52B146792B14852A007D9C4E /* TransactionResponse.swift in Sources */,
@@ -484,6 +509,7 @@
 				52B146522B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1466B2B11166E007D9C4E /* UserLoginResponse.swift in Sources */,
 				52B1466F2B13D806007D9C4E /* HomeViewController.swift in Sources */,
+				52B146A12B17554E007D9C4E /* TransactionTableViewCell.swift in Sources */,
 				52B146812B14886D007D9C4E /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

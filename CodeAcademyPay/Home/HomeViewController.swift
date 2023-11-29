@@ -8,7 +8,9 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    var currentUser: AuthenticatedUser
+    private let transactionViewModel = TransactionViewModel()
+    private var currentUser: AuthenticatedUser
+    private var allTransactions: [TransactionResponse] = []
     
     init(currentUser: AuthenticatedUser) {
         self.currentUser = currentUser
@@ -27,10 +29,44 @@ class HomeViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchTransactions()
+    }
+    
     private func setupUI() {
         navigationItem.hidesBackButton = true
-        transactionTableView.layer.cornerRadius = 20
+        transactionTableView.layer.cornerRadius = 25
         balanceLabel.text = String(currentUser.balance)
+        transactionTableView.dataSource = self
+        transactionTableView.delegate = self
+        let nib = UINib(nibName: "TransactionTableViewCell", bundle: nil)
+        transactionTableView.register(nib, forCellReuseIdentifier: "TransactionTableViewCell")
+    }
+    
+    func fetchTransactions() {
+        guard let token = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        let userID = currentUser.id
+
+        transactionViewModel.fetchAllTransactions(bearerToken: token, userID: userID, errorHandler: { errorMessage in
+            DispatchQueue.main.async {
+                self.showErrorAlert(message: errorMessage)
+            }
+            print(errorMessage)  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+        }, completion: { result in
+            switch result {
+            case .success(let transactionResponse):
+                DispatchQueue.main.async {
+                    self.allTransactions = transactionResponse
+                }
+                for transaction in transactionResponse {
+                    print("🟢Received transactions: \(transaction)🟢") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+                    print("🦄\(transaction.receiver)🦄")
+                }
+            case .failure(let error):
+                print("Failed to fetch transactions: \(error)")
+            }
+        })
     }
 
     @IBAction func addMoneyTapped(_ sender: Any) {
@@ -48,4 +84,18 @@ class HomeViewController: UIViewController {
     
     @IBAction func settingsTapped(_ sender: Any) {
     }
+    
 }
+
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
+        
+        return cell
+    }
+}
+
