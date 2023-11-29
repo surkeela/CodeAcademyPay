@@ -55,6 +55,37 @@ class SendMoneyViewController: UIViewController {
         return users.first { $0.phoneNumber == phoneNumber }
     }
     
+    private func initiateTransaction(receiverPhoneNumber: String, amount: String, currency: String, description: String, token: String) {
+        transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, bearerToken: token, errorHandler: { errorMessage in
+            DispatchQueue.main.async {
+                self.showErrorAlert(message: errorMessage)
+            }
+        }) { [weak self] result in
+            switch result {
+            case .success(let transactionResponse):
+                self?.handleTransactionSuccess(transactionResponse: transactionResponse)
+            case .failure(let error):
+                print("Transaction creation failed: \(error)")
+            }
+        }
+    }
+    
+    private func handleTransactionSuccess(transactionResponse: TransactionResponse) {
+        guard let transactionAmount = Double(transactionResponse.amount),
+              let currentBalance = self.currentUser?.balance else {
+            return
+        }
+        let updatedBalance = currentBalance - transactionAmount
+        print("Transaction created: \(transactionResponse)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+        DispatchQueue.main.async {
+            self.transactionHandler?(updatedBalance)
+            self.phoneNumberTextField.text = ""
+            self.sumTextField.text = ""
+            self.noteTextField.text = ""
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     private func sendMoney() {
         guard let token = UserDefaults.standard.string(forKey: "UserToken") else {
             print("Token not found in UserDefaults")
@@ -78,34 +109,12 @@ class SendMoneyViewController: UIViewController {
             }
         } else {
             showErrorAlert(message: "Recipient not found with the entered phone number.")
+            return
         }
         
         let description = noteTextField.text ?? ""
         
-        transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, bearerToken: token, errorHandler: { errorMessage in
-            DispatchQueue.main.async {
-                self.showErrorAlert(message: errorMessage)
-            }
-        }) { [weak self] result in
-            switch result {
-            case .success(let transactionResponse):
-                guard let transactionAmount = Double(transactionResponse.amount),
-                      let currentBalance = self?.currentUser?.balance else {
-                    return
-                }
-                let updatedBalance = currentBalance - transactionAmount
-                print("Transaction created: \(transactionResponse)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-                DispatchQueue.main.async {
-                    self?.transactionHandler?(updatedBalance)
-                    self?.phoneNumberTextField.text = ""
-                    self?.sumTextField.text = ""
-                    self?.noteTextField.text = ""
-                    self?.dismiss(animated: true, completion: nil)
-                }
-            case .failure(let error):
-                print("Transaction creation failed: \(error)")
-            }
-        }
+        initiateTransaction(receiverPhoneNumber: receiverPhoneNumber, amount: amount, currency: currency, description: description, token: token)
     }
     
     @IBAction func sendTapped(_ sender: Any) {
