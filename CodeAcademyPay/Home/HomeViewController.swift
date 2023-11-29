@@ -8,10 +8,6 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-//    let viewModel = TransactionViewModel()
-//    let userViewModel = UserManagementViewModel()
-    var users: [User] = []
     var currentUser: AuthenticatedUser
     
     init(currentUser: AuthenticatedUser) {
@@ -42,8 +38,12 @@ class HomeViewController: UIViewController {
     
     @IBAction func sendMoneyTapped(_ sender: Any) {
         let sendMoneyViewController = SendMoneyViewController()
+        sendMoneyViewController.currentUser = currentUser
+        sendMoneyViewController.transactionHandler = { updatedBalance in
+            self.balanceLabel.text = "\(updatedBalance)"
+            self.currentUser.balance = updatedBalance
+        }
         present(sendMoneyViewController, animated: true, completion: nil)
-//        navigationController?.pushViewController(sendMoneyViewController, animated: true)
     }
     
     @IBAction func settingsTapped(_ sender: Any) {

@@ -41,8 +41,8 @@ class AuthenticationViewController: UIViewController {
         
         switch authenticationType {                 //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
         case .login:                                //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-            phoneNumberTextField.text = "862454341" //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-            passwordTextField.text = "nnn"          //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+            phoneNumberTextField.text = "862454343" //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+            passwordTextField.text = "123"          //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
         case .registration:                         //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
             currencyTextField.text = "EUR"          //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
         }
@@ -152,7 +152,7 @@ class AuthenticationViewController: UIViewController {
         if let registeredUser = registeredUsers.first(where: { $0.phoneNumber == phoneNumber }) {
             performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)
         } else {
-            showErrorAlert(message: "No authenticated user found with the entered phone number.")
+            showErrorAlert(message: "No user found with the entered phone number.")
         }
     }
     
