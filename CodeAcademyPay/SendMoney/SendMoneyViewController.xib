@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendMoneyViewController" customModule="CodeAcademyPay" customModuleProvider="target">
             <connections>
+                <outlet property="balanceLabel" destination="xb2-Ak-QqQ" id="ld8-tS-eON"/>
                 <outlet property="currencyLabel" destination="yTg-BC-vHV" id="G7f-By-Kbx"/>
                 <outlet property="noteTextField" destination="ixz-L1-XZm" id="Hhj-4R-xeV"/>
                 <outlet property="phoneNumberTextField" destination="lHb-eB-ddB" id="OQp-sq-j2Z"/>
@@ -26,10 +27,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Hrz-VJ-Wtp">
-                    <rect key="frame" x="30" y="298.33333333333331" width="333" height="170"/>
+                    <rect key="frame" x="40" y="277" width="313" height="170"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Recipient phone number" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-eB-ddB" customClass="UnderlinedTextField" customModule="CodeAcademyPay" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="333" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="313" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -40,7 +41,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter sum" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B8P-fp-Aul" customClass="UnderlinedTextField" customModule="CodeAcademyPay" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="65" width="333" height="40"/>
+                            <rect key="frame" x="0.0" y="65" width="313" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -48,10 +49,10 @@
                             </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add note" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixz-L1-XZm" customClass="UnderlinedTextField" customModule="CodeAcademyPay" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="130" width="333" height="40"/>
+                            <rect key="frame" x="0.0" y="130" width="313" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -64,7 +65,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KM-Wg-32P">
-                    <rect key="frame" x="127.66666666666667" y="498.33333333333331" width="137.66666666666663" height="34.333333333333314"/>
+                    <rect key="frame" x="127.66666666666667" y="477" width="137.66666666666663" height="34.333333333333314"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Send">
                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,7 +76,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTg-BC-vHV">
-                    <rect key="frame" x="30" y="158.33333333333334" width="333" height="40"/>
+                    <rect key="frame" x="30" y="157" width="333" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Zct-Kh-exf"/>
                     </constraints>
@@ -83,24 +84,42 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-Ak-QqQ">
+                    <rect key="frame" x="30" y="117" width="333" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnB-wt-POV">
+                    <rect key="frame" x="30" y="94" width="333" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="top" secondItem="yTg-BC-vHV" secondAttribute="bottom" constant="100" id="1sF-x2-BWd"/>
+                <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="top" secondItem="yTg-BC-vHV" secondAttribute="bottom" constant="80" id="1sF-x2-BWd"/>
                 <constraint firstItem="yTg-BC-vHV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8wv-9W-6uu"/>
                 <constraint firstItem="U9f-19-yVg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9e3-aC-pqo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yTg-BC-vHV" secondAttribute="trailing" constant="30" id="Cwk-52-A2y"/>
                 <constraint firstItem="U9f-19-yVg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FDa-Yp-hi6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xb2-Ak-QqQ" secondAttribute="trailing" constant="30" id="RTe-gy-HKW"/>
+                <constraint firstItem="xb2-Ak-QqQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="TeM-pl-j7D"/>
+                <constraint firstItem="yTg-BC-vHV" firstAttribute="top" secondItem="xb2-Ak-QqQ" secondAttribute="bottom" constant="10" id="VDo-OK-Q5m"/>
                 <constraint firstAttribute="bottom" secondItem="U9f-19-yVg" secondAttribute="bottom" id="YTR-zk-UKL"/>
-                <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="d6I-Vz-lCy"/>
+                <constraint firstItem="YnB-wt-POV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="aUy-bO-I0I"/>
+                <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="d6I-Vz-lCy"/>
                 <constraint firstItem="yTg-BC-vHV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="kIz-pd-JBO"/>
-                <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.9" id="lFH-gC-ust"/>
+                <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.85" id="lFH-gC-ust"/>
                 <constraint firstItem="0KM-Wg-32P" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="m0o-xa-CCI"/>
                 <constraint firstAttribute="trailing" secondItem="U9f-19-yVg" secondAttribute="trailing" id="rKJ-I4-kuq"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hrz-VJ-Wtp" secondAttribute="trailing" constant="30" id="t8c-pM-xp9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hrz-VJ-Wtp" secondAttribute="trailing" constant="40" id="t8c-pM-xp9"/>
                 <constraint firstItem="0KM-Wg-32P" firstAttribute="top" secondItem="Hrz-VJ-Wtp" secondAttribute="bottom" constant="30" id="uNU-yb-bFK"/>
                 <constraint firstItem="0KM-Wg-32P" firstAttribute="width" secondItem="U9f-19-yVg" secondAttribute="width" multiplier="0.35" id="wyQ-rM-1YM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YnB-wt-POV" secondAttribute="trailing" constant="30" id="yuH-Sb-l9p"/>
+                <constraint firstItem="xb2-Ak-QqQ" firstAttribute="top" secondItem="YnB-wt-POV" secondAttribute="bottom" constant="5" id="zso-AY-sm4"/>
             </constraints>
             <point key="canvasLocation" x="117" y="-11"/>
         </view>

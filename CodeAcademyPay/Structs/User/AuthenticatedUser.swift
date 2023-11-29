@@ -9,7 +9,7 @@ import Foundation
 
 struct AuthenticatedUser: Codable {
     let currency: String
-    let balance: Int
+    var balance: Double
     let name: String
     let phoneNumber: String
     let id: String

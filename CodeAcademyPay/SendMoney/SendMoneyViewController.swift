@@ -8,12 +8,14 @@
 import UIKit
 
 class SendMoneyViewController: UIViewController {
-
+    
     private let transactionViewModel = TransactionViewModel()
     private let userViewModel = UserManagementViewModel()
     var users: [User] = []
-//    private let token: String = ""
+    var currentUser: AuthenticatedUser?
+    var transactionHandler: ((Double) -> Void)?
     
+    @IBOutlet weak private var balanceLabel: UILabel!
     @IBOutlet weak private var currencyLabel: UILabel!
     @IBOutlet weak private var phoneNumberTextField: UITextField!
     @IBOutlet weak private var sumTextField: UITextField!
@@ -22,28 +24,36 @@ class SendMoneyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchAllUsers()
+        configureUI()
+        print("🟢Current User:\(currentUser.debugDescription)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+    }
+    
+    private func configureUI() {
+        guard let userBalance = currentUser?.balance else { return }
+        balanceLabel.text = String(describing: userBalance)
+        currencyLabel.text = currentUser?.currency
+        sumTextField.delegate = self
+        noteTextField.delegate = self
     }
     
     private func fetchAllUsers() {
         userViewModel.getAllUsers(errorHandler: { errorMessage in
-            // Show an alert or update UI to inform the user about the error
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.showErrorAlert(message: errorMessage)
             }
         }) { [weak self] result in
             switch result {
             case .success(let users):
                 self?.users = users
             case .failure(let error):
-                // Handle the failure to fetch users
                 print("Failed to fetch users: \(error)")
-                // Show an alert or update UI to inform the user about the error
             }
         }
     }
-
+    
+    private func findRecipient(by phoneNumber: String) -> User? {
+        return users.first { $0.phoneNumber == phoneNumber }
+    }
     
     private func sendMoney() {
         guard let token = UserDefaults.standard.string(forKey: "UserToken") else {
@@ -51,41 +61,63 @@ class SendMoneyViewController: UIViewController {
             return
         }
         
-        guard let receiver = phoneNumberTextField.text,
+        guard let receiverPhoneNumber = phoneNumberTextField.text,
               let amount = sumTextField.text,
-              !receiver.isEmpty, !amount.isEmpty else { return }
+              let currency = currentUser?.currency,
+              let transactionAmount = Double(amount),
+              !receiverPhoneNumber.isEmpty, transactionAmount > 0 else {
+            showErrorAlert(message: "Please enter valid details for sending money.")
+            return
+        }
         
-        let currency = "EUR"
+        if let recipientUser = findRecipient(by: receiverPhoneNumber) {
+            guard currentUser?.currency == recipientUser.currency else {
+                print("Currencies do not match")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+                showErrorAlert(message: "The sending currency does not match the recipient's currency")
+                return
+            }
+        } else {
+            showErrorAlert(message: "Recipient not found with the entered phone number.")
+        }
+        
         let description = noteTextField.text ?? ""
         
-        transactionViewModel.createTransaction(receiver: receiver, amount: amount, currency: currency, description: description, bearerToken: token, errorHandler: { errorMessage in
-            // Show an alert or update UI to inform the user about the error
+        transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, bearerToken: token, errorHandler: { errorMessage in
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.showErrorAlert(message: errorMessage)
             }
         }) { [weak self] result in
             switch result {
             case .success(let transactionResponse):
-                // Handle successful transaction creation
-                print("Transaction created: \(transactionResponse)")
+                guard let transactionAmount = Double(transactionResponse.amount),
+                      let currentBalance = self?.currentUser?.balance else {
+                    return
+                }
+                let updatedBalance = currentBalance - transactionAmount
+                print("Transaction created: \(transactionResponse)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 DispatchQueue.main.async {
+                    self?.transactionHandler?(updatedBalance)
                     self?.phoneNumberTextField.text = ""
                     self?.sumTextField.text = ""
                     self?.noteTextField.text = ""
                     self?.dismiss(animated: true, completion: nil)
                 }
             case .failure(let error):
-                // Handle transaction creation failure
                 print("Transaction creation failed: \(error)")
-                // Show an alert or update UI to inform the user about the failure
             }
         }
     }
-
+    
     @IBAction func sendTapped(_ sender: Any) {
         sendMoney()
     }
     
+}
+
+extension SendMoneyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        sendMoney()
+        return true
+    }
 }
