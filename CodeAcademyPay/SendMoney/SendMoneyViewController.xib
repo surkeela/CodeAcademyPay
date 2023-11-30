@@ -80,18 +80,18 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Zct-Kh-exf"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-Ak-QqQ">
-                    <rect key="frame" x="30" y="117" width="333" height="30"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-------" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-Ak-QqQ">
+                    <rect key="frame" x="30" y="116" width="333" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnB-wt-POV">
-                    <rect key="frame" x="30" y="94" width="333" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnB-wt-POV">
+                    <rect key="frame" x="30" y="93" width="333" height="18"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                 <constraint firstItem="U9f-19-yVg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FDa-Yp-hi6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xb2-Ak-QqQ" secondAttribute="trailing" constant="30" id="RTe-gy-HKW"/>
                 <constraint firstItem="xb2-Ak-QqQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="TeM-pl-j7D"/>
-                <constraint firstItem="yTg-BC-vHV" firstAttribute="top" secondItem="xb2-Ak-QqQ" secondAttribute="bottom" constant="10" id="VDo-OK-Q5m"/>
+                <constraint firstItem="yTg-BC-vHV" firstAttribute="top" secondItem="xb2-Ak-QqQ" secondAttribute="bottom" constant="5" id="VDo-OK-Q5m"/>
                 <constraint firstAttribute="bottom" secondItem="U9f-19-yVg" secondAttribute="bottom" id="YTR-zk-UKL"/>
                 <constraint firstItem="YnB-wt-POV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="aUy-bO-I0I"/>
                 <constraint firstItem="Hrz-VJ-Wtp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="d6I-Vz-lCy"/>
@@ -130,7 +130,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

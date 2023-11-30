@@ -101,6 +101,11 @@ class SendMoneyViewController: UIViewController {
             return
         }
         
+        guard receiverPhoneNumber != currentUser?.phoneNumber else {
+            showErrorAlert(message: "You cannot send money to yourself.")
+            return
+        }
+        
         if let recipientUser = findRecipient(by: receiverPhoneNumber) {
             guard currentUser?.currency == recipientUser.currency else {
                 print("Currencies do not match")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//

@@ -32,11 +32,6 @@ class HomeViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        fetchTransactions()
-    }
-    
     private func setupUI() {
         navigationItem.hidesBackButton = true
         transactionTableView.layer.cornerRadius = 25
@@ -47,10 +42,10 @@ class HomeViewController: UIViewController {
         transactionTableView.register(nib, forCellReuseIdentifier: "TransactionTableViewCell")
     }
     
-    func fetchTransactions() {
+   private func fetchTransactions() {
         guard let token = UserDefaults.standard.string(forKey: "UserToken") else { return }
         let userID = currentUser.id
-
+        
         transactionViewModel.fetchAllTransactions(bearerToken: token, userID: userID, errorHandler: { errorMessage in
             DispatchQueue.main.async {
                 self.showErrorAlert(message: errorMessage)
@@ -60,7 +55,7 @@ class HomeViewController: UIViewController {
             case .success(let transactions):
                 DispatchQueue.main.async {
                     self.saveTransactionsToCoreData(transactionResponses: transactions, currentUserID: self.currentUser.id)
-//                    self.transactionTableView.reloadData()
+                    //                    self.transactionTableView.reloadData()
                 }
             case .failure(let error):
                 print("Failed to fetch transactions: \(error)")
@@ -68,30 +63,26 @@ class HomeViewController: UIViewController {
         })
     }
     
-    func saveTransactionsToCoreData(transactionResponses: [TransactionResponse], currentUserID: String) {
+   private func saveTransactionsToCoreData(transactionResponses: [TransactionResponse], currentUserID: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+        
         for transactionResponse in transactionResponses {
             let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id)
-
+            
             do {
                 if let existingTransaction = try context.fetch(fetchRequest).first {
-                    // Update existing transaction
                     existingTransaction.update(with: transactionResponse)
                 } else {
-                    // Create new transaction
                     let newTransaction = Transaction(context: context)
                     newTransaction.update(with: transactionResponse)
-                    
-                    // Set the userResponseId for the transaction
                     newTransaction.userResponseId = transactionResponse.user.id
                 }
             } catch {
                 print("Error during fetch or update in Core Data")
             }
         }
-
+        
         do {
             try context.save()
             print("Successfully saved to Core Data")
@@ -100,7 +91,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func fetchTransactionsForUser(userID: String) {
+   private func fetchTransactionsForUser(userID: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
@@ -110,17 +101,8 @@ class HomeViewController: UIViewController {
             let transactions = try context.fetch(fetchRequest)
             allTransactions = transactions
             transactionTableView.reloadData()
-            for transaction in transactions {
-                print("🟢id: \(String(describing: transaction.id))")
-                print("⚠️userResponseId: \(String(describing: transaction.userResponseId))")
-                print("🤡amount: \(String(describing: transaction.amount))")
-                print("🦄description: \(String(describing: transaction.transactionDescription))")
-            }
-            print(transactions.count)  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-//            return transactions
         } catch {
             print("Error fetching transactions for user \(userID): \(error)")
-//            return nil
         }
     }
 
@@ -144,18 +126,31 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTransactions.count
+//        let receivedTransactions = allTransactions.filter { $0.receiver == currentUser.phoneNumber }
+        let count = min(allTransactions.count, 5)
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
-        cell.phoneNumberLabel.text = allTransactions[indexPath.row].receiver
-        cell.amountLabel.text = allTransactions[indexPath.row].amount
-        cell.currencyLabel.text = allTransactions[indexPath.row].currency
-        cell.dateLabel.text = allTransactions[indexPath.row].createdAt
-        cell.noteLabel.text = allTransactions[indexPath.row].transactionDescription
+        
+        let reversedTransactions = Array(allTransactions.reversed())
+        
+        cell.amountLabel.text = reversedTransactions[indexPath.row].amount
+        cell.currencyLabel.text = reversedTransactions[indexPath.row].currency
+        cell.dateLabel.text = reversedTransactions[indexPath.row].createdAt
+        cell.noteLabel.text = reversedTransactions[indexPath.row].transactionDescription
+        
+        if reversedTransactions[indexPath.row].receiver == currentUser.phoneNumber {
+            cell.phoneNumberLabel.text = reversedTransactions[indexPath.row].sender
+            cell.transactionTypeLabel.text = "+"
+            cell.transactionTypeLabel.textColor = UIColor.green
+        } else {
+            cell.phoneNumberLabel.text = reversedTransactions[indexPath.row].receiver
+            cell.transactionTypeLabel.text = "-"
+            cell.transactionTypeLabel.textColor = UIColor.red
+        }
         
         return cell
     }
 }
-
