@@ -8,7 +8,6 @@
 import UIKit
 
 class SendMoneyViewController: UIViewController {
-    
     private let transactionViewModel = TransactionViewModel()
     private let userViewModel = UserManagementViewModel()
     var users: [User] = []
@@ -32,6 +31,7 @@ class SendMoneyViewController: UIViewController {
         guard let userBalance = currentUser?.balance else { return }
         balanceLabel.text = String(describing: userBalance)
         currencyLabel.text = currentUser?.currency
+        phoneNumberTextField.delegate = self
         sumTextField.delegate = self
         noteTextField.delegate = self
     }
@@ -95,9 +95,8 @@ class SendMoneyViewController: UIViewController {
         guard let receiverPhoneNumber = phoneNumberTextField.text,
               let amount = sumTextField.text,
               let currency = currentUser?.currency,
-              let transactionAmount = Double(amount),
-              !receiverPhoneNumber.isEmpty, transactionAmount > 0 else {
-            showErrorAlert(message: "Please enter valid details for sending money.")
+              !receiverPhoneNumber.isEmpty else {
+            showErrorAlert(message: "Fields cannot be empty")
             return
         }
         
@@ -108,7 +107,6 @@ class SendMoneyViewController: UIViewController {
         
         if let recipientUser = findRecipient(by: receiverPhoneNumber) {
             guard currentUser?.currency == recipientUser.currency else {
-                print("Currencies do not match")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 showErrorAlert(message: "The sending currency does not match the recipient's currency")
                 return
             }
@@ -118,7 +116,6 @@ class SendMoneyViewController: UIViewController {
         }
         
         let description = noteTextField.text ?? ""
-        
         initiateTransaction(receiverPhoneNumber: receiverPhoneNumber, amount: amount, currency: currency, description: description, token: token)
     }
     
@@ -134,4 +131,36 @@ extension SendMoneyViewController: UITextFieldDelegate {
         sendMoney()
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == sumTextField {
+            return validateSumTextFieldChange(textField: textField, range: range, replacementString: string)
+        }
+        return true
+    }
+
+    private func validateSumTextFieldChange(textField: UITextField, range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            return true
+        }
+
+        guard let text = textField.text, let range = Range(range, in: text) else {
+            return true
+        }
+
+        let updatedText = text.replacingCharacters(in: range, with: string)
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true
+
+        if let number = formatter.number(from: updatedText), let decimalSeparator = formatter.decimalSeparator {
+            let decimalPlaces = updatedText.components(separatedBy: decimalSeparator)
+
+            if decimalPlaces.count == 2, let lastDecimal = decimalPlaces.last, lastDecimal.count > 2 {
+                return false
+            }
+            return number.doubleValue >= 0
+        }
+        return false
+    }
+    
 }
