@@ -21,10 +21,10 @@
                         <rect key="frame" x="20" y="10" width="323" height="95"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YgT-Qy-oFh">
-                                <rect key="frame" x="10" y="10" width="92.333333333333329" height="40"/>
+                                <rect key="frame" x="10" y="10" width="91" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="862454341" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-LC-NFP">
-                                        <rect key="frame" x="0.0" y="0.0" width="92.333333333333329" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-LC-NFP">
+                                        <rect key="frame" x="0.0" y="0.0" width="91" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="tJ4-dW-E5l"/>
                                         </constraints>
@@ -119,6 +119,7 @@
                 <outlet property="cellView" destination="7TT-uN-J57" id="TTZ-dA-zU2"/>
                 <outlet property="currencyLabel" destination="jdd-Tr-eV5" id="vE8-YX-yww"/>
                 <outlet property="dateLabel" destination="pme-bc-87Q" id="7Qt-Mg-nxq"/>
+                <outlet property="noteLabel" destination="U0O-q1-CNf" id="zyy-CP-geY"/>
                 <outlet property="phoneNumberLabel" destination="qz9-LC-NFP" id="4P8-J2-3z9"/>
                 <outlet property="transactionTypeLabel" destination="08v-HQ-XpI" id="c3n-Sc-fkL"/>
             </connections>
@@ -127,7 +128,7 @@
     </objects>
     <resources>
         <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

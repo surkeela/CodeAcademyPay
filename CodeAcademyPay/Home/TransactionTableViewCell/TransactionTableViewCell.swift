@@ -14,6 +14,7 @@ class TransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var transactionTypeLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var noteLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
