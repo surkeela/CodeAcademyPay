@@ -9,7 +9,7 @@ import Foundation
 
 class UserManagementViewModel {
     private let networkManager = NetworkManager()
-
+    
     func registerUser(userData: UserRegistrationData, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
         let urlString = Endpoints.register()
         let headers = ["Content-Type": "application/json"]
@@ -36,7 +36,7 @@ class UserManagementViewModel {
             completion(.failure(error))
         }
     }
-
+    
     func getAllUsers(errorHandler: @escaping (String) -> Void, completion: @escaping (Result<[User], Error>) -> Void) {
         let urlString = Endpoints.allUsers()
         
@@ -61,13 +61,13 @@ class UserManagementViewModel {
             completion(.failure(error))
         }
     }
-
+    
     func loginUser(phoneNumber: String, password: String, id: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<UserLoginResponse, Error>) -> Void) {
         let urlString = Endpoints.login()
-
+        
         do {
             let request = try networkManager.createBasicAuthRequest(phoneNumber: phoneNumber, password: password, urlString: urlString)
-
+            
             networkManager.performRequest(with: request, completion: { (result: Result<UserLoginResponse, NetworkError>) in
                 switch result {
                 case .success(let userLoginResponse):
@@ -110,6 +110,26 @@ class UserManagementViewModel {
             }, errorHandler: errorHandler)
         } catch {
             completion(.failure(error))
+        }
+    }
+    
+    func fetchUserBalance(userID: String, completion: @escaping (Result<Double, Error>) -> Void) {
+        fetchDataWithBearerToken(userID: userID, bearerToken: "YourBearerTokenHere", errorHandler: { errorMessage in
+            completion(.failure(NetworkError.apiError(errorMessage)))
+        }) { result in
+            switch result {
+            case .success(let authenticatedUser):
+                let balance = authenticatedUser.balance
+                
+                if balance >= 0 {
+                    completion(.success(balance))
+                } else {
+                    completion(.failure(NetworkError.apiError("Invalid balance")))
+                }
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
