@@ -34,4 +34,8 @@ struct Endpoints {
         Endpoints.base + "transactions/\(userID)"
     }
     
+    static func addMoney() -> String {
+        Endpoints.base + "transactions/add"
+    }
+    
 }
