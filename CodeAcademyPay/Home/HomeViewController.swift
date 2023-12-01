@@ -97,12 +97,25 @@ class HomeViewController: UIViewController {
         fetchRequest.predicate = NSPredicate(format: "userResponseId == %@", userID)
         
         do {
-            let transactions = try context.fetch(fetchRequest)
+            var transactions = try context.fetch(fetchRequest)
+            transactions.sort { (transaction1, transaction2) -> Bool in
+                guard let date1 = self.date(from: transaction1.createdAt ?? ""),
+                      let date2 = self.date(from: transaction2.createdAt ?? "") else {
+                    return false
+                }
+                return date1 > date2 // Sorting from newest to oldest
+            }
             allTransactions = transactions
             transactionTableView.reloadData()
         } catch {
             print("Error fetching transactions for user \(userID): \(error)")
         }
+    }
+
+   private func date(from string: String) -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withInternetDateTime]
+        return dateFormatter.date(from: string)
     }
 
     @IBAction func addMoneyTapped(_ sender: Any) {
@@ -133,19 +146,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
         
-        let reversedTransactions = Array(allTransactions.reversed())
+        cell.amountLabel.text = allTransactions[indexPath.row].amount
+        cell.currencyLabel.text = allTransactions[indexPath.row].currency
+        cell.dateLabel.text = allTransactions[indexPath.row].createdAt
+        cell.noteLabel.text = allTransactions[indexPath.row].transactionDescription
         
-        cell.amountLabel.text = reversedTransactions[indexPath.row].amount
-        cell.currencyLabel.text = reversedTransactions[indexPath.row].currency
-        cell.dateLabel.text = reversedTransactions[indexPath.row].createdAt
-        cell.noteLabel.text = reversedTransactions[indexPath.row].transactionDescription
-        
-        if reversedTransactions[indexPath.row].receiver == currentUser.phoneNumber {
-            cell.phoneNumberLabel.text = reversedTransactions[indexPath.row].sender
+        if allTransactions[indexPath.row].receiver == currentUser.phoneNumber {
+            cell.phoneNumberLabel.text = allTransactions[indexPath.row].sender
             cell.transactionTypeLabel.text = "+"
             cell.transactionTypeLabel.textColor = UIColor.green
         } else {
-            cell.phoneNumberLabel.text = reversedTransactions[indexPath.row].receiver
+            cell.phoneNumberLabel.text = allTransactions[indexPath.row].receiver
             cell.transactionTypeLabel.text = "-"
             cell.transactionTypeLabel.textColor = UIColor.red
         }
