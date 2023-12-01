@@ -5,7 +5,8 @@
 //  Created by Nerijus Surkys on 2023-11-27.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 class TransactionViewModel {
     let networkManager = NetworkManager()
@@ -63,5 +64,33 @@ class TransactionViewModel {
             completion(.failure(error))
         }
     }
+    
+     func saveTransactionsToCoreData(transactionResponses: [TransactionResponse], currentUserID: String) {
+         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+         
+         for transactionResponse in transactionResponses {
+             let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
+             fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id)
+             
+             do {
+                 if let existingTransaction = try context.fetch(fetchRequest).first {
+                     existingTransaction.update(with: transactionResponse)
+                 } else {
+                     let newTransaction = Transaction(context: context)
+                     newTransaction.update(with: transactionResponse)
+                     newTransaction.userResponseId = transactionResponse.user.id
+                 }
+             } catch {
+                 print("Error during fetch or update in Core Data")
+             }
+         }
+         
+         do {
+             try context.save()
+             print("Successfully saved to Core Data")
+         } catch {
+             print("Error during save to Core Data")
+         }
+     }
     
 }
