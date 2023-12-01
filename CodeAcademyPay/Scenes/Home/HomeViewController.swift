@@ -9,6 +9,9 @@ import UIKit
 import CoreData
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak private var balanceLabel: UILabel!
+    @IBOutlet weak private var transactionTableView: UITableView!
+    
     private let transactionViewModel = TransactionViewModel()
     private var currentUser: AuthenticatedUser
     private var allTransactions: [Transaction] = []
@@ -21,9 +24,6 @@ class HomeViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @IBOutlet weak private var balanceLabel: UILabel!
-    @IBOutlet weak private var transactionTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         transactionTableView.register(nib, forCellReuseIdentifier: "TransactionTableViewCell")
     }
     
-   private func fetchTransactions() {
+    private func fetchTransactions() {
         guard let token = UserDefaults.standard.string(forKey: "UserToken") else { return }
         let userID = currentUser.id
         
@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let transactions):
                 DispatchQueue.main.async {
-                    self?.saveTransactionsToCoreData(transactionResponses: transactions, currentUserID: userID)
+                    self?.transactionViewModel.saveTransactionsToCoreData(transactionResponses: transactions, currentUserID: userID)
                     self?.fetchTransactionsFromCoreData(userID: userID)
                 }
             case .failure(let error):
@@ -62,35 +62,7 @@ class HomeViewController: UIViewController {
         })
     }
     
-   private func saveTransactionsToCoreData(transactionResponses: [TransactionResponse], currentUserID: String) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        for transactionResponse in transactionResponses {
-            let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id)
-            
-            do {
-                if let existingTransaction = try context.fetch(fetchRequest).first {
-                    existingTransaction.update(with: transactionResponse)
-                } else {
-                    let newTransaction = Transaction(context: context)
-                    newTransaction.update(with: transactionResponse)
-                    newTransaction.userResponseId = transactionResponse.user.id
-                }
-            } catch {
-                print("Error during fetch or update in Core Data")
-            }
-        }
-        
-        do {
-            try context.save()
-            print("Successfully saved to Core Data")
-        } catch {
-            print("Error during save to Core Data")
-        }
-    }
-    
-   private func fetchTransactionsFromCoreData(userID: String) {
+    private func fetchTransactionsFromCoreData(userID: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
@@ -103,7 +75,7 @@ class HomeViewController: UIViewController {
                       let date2 = self.date(from: transaction2.createdAt ?? "") else {
                     return false
                 }
-                return date1 > date2 // Sorting from newest to oldest
+                return date1 > date2
             }
             allTransactions = transactions
             transactionTableView.reloadData()
@@ -111,13 +83,13 @@ class HomeViewController: UIViewController {
             print("Error fetching transactions for user \(userID): \(error)")
         }
     }
-
-   private func date(from string: String) -> Date? {
+    
+    private func date(from string: String) -> Date? {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime]
         return dateFormatter.date(from: string)
     }
-
+    
     @IBAction func addMoneyTapped(_ sender: Any) {
     }
     

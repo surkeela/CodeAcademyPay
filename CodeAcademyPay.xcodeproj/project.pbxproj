@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5272154B2B17C62200A5876A /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215492B17C62200A5876A /* Transaction+CoreDataClass.swift */; };
 		5272154C2B17C62200A5876A /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5272154A2B17C62200A5876A /* Transaction+CoreDataProperties.swift */; };
-		527215532B18FA9A00A5876A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215522B18FA9A00A5876A /* HomeViewModel.swift */; };
-		527215542B18FA9A00A5876A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215522B18FA9A00A5876A /* HomeViewModel.swift */; };
 		52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */; };
 		52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146102B0BCC77007D9C4E /* SceneDelegate.swift */; };
 		52B146132B0BCC77007D9C4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146122B0BCC77007D9C4E /* ViewController.swift */; };
@@ -90,7 +88,6 @@
 /* Begin PBXFileReference section */
 		527215492B17C62200A5876A /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5272154A2B17C62200A5876A /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		527215522B18FA9A00A5876A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		52B1460B2B0BCC77007D9C4E /* CodeAcademyPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAcademyPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B146102B0BCC77007D9C4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,10 +163,29 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		527215552B19F0BA00A5876A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52B146122B0BCC77007D9C4E /* ViewController.swift */,
+				52B146142B0BCC77007D9C4E /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		527215562B19F19E00A5876A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				52B146482B0BDD16007D9C4E /* Authentication */,
+				52B146722B13D823007D9C4E /* Home */,
+				52B146882B14B277007D9C4E /* SendMoney */,
+				527215552B19F0BA00A5876A /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		52B146022B0BCC77007D9C4E = {
 			isa = PBXGroup;
 			children = (
-				5272154F2B17C9B300A5876A /* CoreData */,
 				52B1460D2B0BCC77007D9C4E /* CodeAcademyPay */,
 				52B146272B0BCC7A007D9C4E /* CodeAcademyPayTests */,
 				52B146312B0BCC7A007D9C4E /* CodeAcademyPayUITests */,
@@ -192,14 +208,11 @@
 			children = (
 				52B146412B0BCD44007D9C4E /* Delegates */,
 				52B146922B15051A007D9C4E /* Helpers */,
+				5272154F2B17C9B300A5876A /* CoreData */,
 				52B1464C2B0BE79E007D9C4E /* Networking */,
-				52B146482B0BDD16007D9C4E /* Authentication */,
-				52B146532B0D1121007D9C4E /* ViewModels */,
 				52B146732B1484FA007D9C4E /* Structs */,
-				52B146722B13D823007D9C4E /* Home */,
-				52B146882B14B277007D9C4E /* SendMoney */,
-				52B146122B0BCC77007D9C4E /* ViewController.swift */,
-				52B146142B0BCC77007D9C4E /* Main.storyboard */,
+				52B146532B0D1121007D9C4E /* ViewModels */,
+				527215562B19F19E00A5876A /* Scenes */,
 				52B1461A2B0BCC7A007D9C4E /* Assets.xcassets */,
 				52B1461C2B0BCC7A007D9C4E /* LaunchScreen.storyboard */,
 				52B1461F2B0BCC7A007D9C4E /* Info.plist */,
@@ -259,7 +272,6 @@
 			children = (
 				52B1465D2B0E899B007D9C4E /* UserManagementViewModel.swift */,
 				52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */,
-				527215522B18FA9A00A5876A /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -496,7 +508,6 @@
 				52B1469B2B15E68C007D9C4E /* ErrorResponse.swift in Sources */,
 				52B146512B0BEFB0007D9C4E /* Endpoints.swift in Sources */,
 				52B1464E2B0BE7D8007D9C4E /* NetworkManager.swift in Sources */,
-				527215532B18FA9A00A5876A /* HomeViewModel.swift in Sources */,
 				5272154B2B17C62200A5876A /* Transaction+CoreDataClass.swift in Sources */,
 				52B1465B2B0E803C007D9C4E /* User.swift in Sources */,
 				52B146672B111372007D9C4E /* UserLoginData.swift in Sources */,
@@ -511,7 +522,6 @@
 				52B146682B111372007D9C4E /* UserLoginData.swift in Sources */,
 				52B146452B0BDCF1007D9C4E /* AuthenticationViewController.swift in Sources */,
 				52B1468F2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
-				527215542B18FA9A00A5876A /* HomeViewModel.swift in Sources */,
 				52B146292B0BCC7A007D9C4E /* CodeAcademyPayTests.swift in Sources */,
 				52B1467C2B148631007D9C4E /* TransactionRequest.swift in Sources */,
 				52B1464B2B0BE625007D9C4E /* UserRegistrationData.swift in Sources */,

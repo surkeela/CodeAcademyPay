@@ -13,6 +13,13 @@ enum AuthenticationType {
 }
 
 class AuthenticationViewController: UIViewController {
+    @IBOutlet weak private var nameTextField: UITextField!
+    @IBOutlet weak private var phoneNumberTextField: UITextField!
+    @IBOutlet weak private var passwordTextField: UITextField!
+    @IBOutlet weak private var confirmPasswordTextField: UITextField!
+    @IBOutlet weak private var currencyTextField: UITextField!
+    @IBOutlet weak private var submitButton: UIButton!
+    
     private let authenticationType: AuthenticationType
     private let viewModel = UserManagementViewModel()
     private var registeredUsers: [User] = []
@@ -25,13 +32,6 @@ class AuthenticationViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @IBOutlet weak private var nameTextField: UITextField!
-    @IBOutlet weak private var phoneNumberTextField: UITextField!
-    @IBOutlet weak private var passwordTextField: UITextField!
-    @IBOutlet weak private var confirmPasswordTextField: UITextField!
-    @IBOutlet weak private var currencyTextField: UITextField!
-    @IBOutlet weak private var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
