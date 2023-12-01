@@ -28,14 +28,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTransactions()
-        fetchTransactionsForUser(userID: currentUser.id)
         setupUI()
     }
     
     private func setupUI() {
         navigationItem.hidesBackButton = true
         transactionTableView.layer.cornerRadius = 25
-        balanceLabel.text = String(currentUser.balance)
+        balanceLabel.text = String(format: "%.2f", currentUser.balance)
         transactionTableView.dataSource = self
         transactionTableView.delegate = self
         let nib = UINib(nibName: "TransactionTableViewCell", bundle: nil)
@@ -50,12 +49,12 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 self.showErrorAlert(message: errorMessage)
             }
-        }, completion: { result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let transactions):
                 DispatchQueue.main.async {
-                    self.saveTransactionsToCoreData(transactionResponses: transactions, currentUserID: self.currentUser.id)
-                    //                    self.transactionTableView.reloadData()
+                    self?.saveTransactionsToCoreData(transactionResponses: transactions, currentUserID: userID)
+                    self?.fetchTransactionsFromCoreData(userID: userID)
                 }
             case .failure(let error):
                 print("Failed to fetch transactions: \(error)")
@@ -91,7 +90,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-   private func fetchTransactionsForUser(userID: String) {
+   private func fetchTransactionsFromCoreData(userID: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
@@ -112,9 +111,10 @@ class HomeViewController: UIViewController {
     @IBAction func sendMoneyTapped(_ sender: Any) {
         let sendMoneyViewController = SendMoneyViewController()
         sendMoneyViewController.currentUser = currentUser
-        sendMoneyViewController.transactionHandler = { updatedBalance in
-            self.balanceLabel.text = "\(updatedBalance)"
-            self.currentUser.balance = updatedBalance
+        sendMoneyViewController.transactionCompletionHandler = { [weak self] updatedBalance in
+            self?.balanceLabel.text = "\(updatedBalance)"
+            self?.currentUser.balance = updatedBalance
+            self?.fetchTransactions()
         }
         present(sendMoneyViewController, animated: true, completion: nil)
     }
@@ -126,7 +126,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let receivedTransactions = allTransactions.filter { $0.receiver == currentUser.phoneNumber }
         let count = min(allTransactions.count, 5)
         return count
     }

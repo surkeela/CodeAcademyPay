@@ -114,7 +114,8 @@ class UserManagementViewModel {
     }
     
     func fetchUserBalance(userID: String, completion: @escaping (Result<Double, Error>) -> Void) {
-        fetchDataWithBearerToken(userID: userID, bearerToken: "YourBearerTokenHere", errorHandler: { errorMessage in
+        guard let token = UserDefaults.standard.string(forKey: "UserToken") else { return }
+        fetchDataWithBearerToken(userID: userID, bearerToken: token, errorHandler: { errorMessage in
             completion(.failure(NetworkError.apiError(errorMessage)))
         }) { result in
             switch result {

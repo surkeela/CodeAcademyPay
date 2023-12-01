@@ -11,7 +11,7 @@ class SendMoneyViewController: UIViewController {
     private let transactionViewModel = TransactionViewModel()
     private let userViewModel = UserManagementViewModel()
     var currentUser: AuthenticatedUser?
-    var transactionHandler: ((Double) -> Void)?
+    var transactionCompletionHandler: ((Double) -> Void)?
     
     @IBOutlet weak private var balanceLabel: UILabel!
     @IBOutlet weak private var currencyLabel: UILabel!
@@ -92,7 +92,7 @@ class SendMoneyViewController: UIViewController {
         
         let updatedBalance = currentBalance - transactionAmount
         DispatchQueue.main.async {
-            self.transactionHandler?(updatedBalance)
+            self.transactionCompletionHandler?(updatedBalance)
             self.clearTextFields()
             self.dismiss(animated: true, completion: nil)
         }

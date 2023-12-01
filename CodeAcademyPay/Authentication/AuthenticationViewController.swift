@@ -16,7 +16,6 @@ class AuthenticationViewController: UIViewController {
     private let authenticationType: AuthenticationType
     private let viewModel = UserManagementViewModel()
     private var registeredUsers: [User] = []
-    private var token = ""
     
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -116,7 +115,6 @@ class AuthenticationViewController: UIViewController {
         }) { [weak self] result in
             switch result {
             case .success(let loginResponse):
-                self?.token = loginResponse.value
                 print("User logged in successfully: \(loginResponse)") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 UserDefaults.standard.set(loginResponse.value, forKey: "UserToken")
                 self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, bearerToken: loginResponse.value, errorHandler: { errorMessage in
