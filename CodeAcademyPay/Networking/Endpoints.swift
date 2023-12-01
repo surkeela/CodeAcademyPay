@@ -10,7 +10,7 @@ import Foundation
 struct Endpoints {
     static let base = "https://codeacademypay.fly.dev/api/"
     
-    static func allUsers() -> String {
+    static func getAllUsers() -> String {
         Endpoints.base + "users"
     }
     
@@ -22,7 +22,7 @@ struct Endpoints {
         Endpoints.base + "users/login"
     }
     
-    static func user(withID userID: String) -> String {
+    static func getUser(withID userID: String) -> String {
         return base + "users/\(userID)"
     }
     

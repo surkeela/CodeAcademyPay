@@ -38,7 +38,7 @@ class UserManagementViewModel {
     }
     
     func getAllUsers(errorHandler: @escaping (String) -> Void, completion: @escaping (Result<[User], Error>) -> Void) {
-        let urlString = Endpoints.allUsers()
+        let urlString = Endpoints.getAllUsers()
         
         do {
             let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: nil, body: nil)
@@ -88,7 +88,7 @@ class UserManagementViewModel {
     }
 
     func fetchDataWithBearerToken(userID: String, bearerToken: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
-        let urlString = Endpoints.user(withID: userID)
+        let urlString = Endpoints.getUser(withID: userID)
         let headers = ["Authorization": "Bearer \(bearerToken)"]
 
         do {
