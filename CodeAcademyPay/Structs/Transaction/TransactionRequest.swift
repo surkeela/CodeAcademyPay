@@ -13,3 +13,8 @@ struct TransactionRequest: Codable {
     let currency: String
     let description: String
 }
+
+struct AddMoneyRequest: Codable {
+    let amount: String
+    let currency: String
+}
