@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7TT-uN-J57">
-                        <rect key="frame" x="20" y="10" width="323" height="95"/>
+                        <rect key="frame" x="20" y="10" width="323" height="108"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YgT-Qy-oFh">
-                                <rect key="frame" x="10" y="10" width="91" height="40"/>
+                                <rect key="frame" x="10" y="10" width="91" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-LC-NFP">
-                                        <rect key="frame" x="0.0" y="0.0" width="91" height="23"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="91" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="tJ4-dW-E5l"/>
                                         </constraints>
@@ -33,7 +33,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="2023.11.29" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pme-bc-87Q">
-                                        <rect key="frame" x="0.0" y="28" width="52.666666666666664" height="12"/>
+                                        <rect key="frame" x="0.0" y="30" width="52.666666666666664" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="xwq-Rj-zts"/>
                                         </constraints>
@@ -47,7 +47,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8kn-hz-tQ0">
-                                <rect key="frame" x="217.33333333333334" y="17.666666666666668" width="95.666666666666657" height="25.000000000000004"/>
+                                <rect key="frame" x="217.33333333333334" y="18.666666666666668" width="95.666666666666657" height="25.000000000000004"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08v-HQ-XpI">
                                         <rect key="frame" x="0.0" y="0.0" width="10.333333333333334" height="25"/>
@@ -82,17 +82,16 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some note" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0O-q1-CNf">
-                                <rect key="frame" x="10" y="60" width="303" height="25"/>
+                                <rect key="frame" x="10" y="62" width="303" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="HUh-V2-o0f"/>
-                                    <constraint firstAttribute="height" constant="25" id="nBD-V9-OzE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemFillColor"/>
                         <constraints>
                             <constraint firstItem="U0O-q1-CNf" firstAttribute="leading" secondItem="7TT-uN-J57" secondAttribute="leading" constant="10" id="GAE-ET-bhd"/>
                             <constraint firstAttribute="bottom" secondItem="U0O-q1-CNf" secondAttribute="bottom" constant="10" id="JnT-Mv-2CE"/>
@@ -127,8 +126,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="secondarySystemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tertiarySystemFillColor">
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

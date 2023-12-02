@@ -54,19 +54,13 @@ class SendMoneyViewController: UIViewController {
         balanceLabel.text = String(format: "%.2f", balance)
     }
     
-    private func initiateTransaction(receiverPhoneNumber: String, amount: String, currency: String, description: String) {
+    private func initiateTransaction(receiverPhoneNumber: String, amount: String, currency: String, description: String?) {
         guard let bearerToken = UserDefaults.standard.string(forKey: "UserToken") else {
             print("Token not found in UserDefaults")
             return
         }
         
-        transactionViewModel.createTransaction(
-            receiver: receiverPhoneNumber,
-            amount: amount,
-            currency: currency,
-            description: description,
-            bearerToken: bearerToken,
-            errorHandler: { [weak self] error in
+        transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, bearerToken: bearerToken, errorHandler: { [weak self] error in
                 DispatchQueue.main.async {
                     self?.showErrorAlert(message: error)
                 }
@@ -99,9 +93,9 @@ class SendMoneyViewController: UIViewController {
     }
 
     private func clearTextFields() {
-        phoneNumberTextField.text = ""
-        sumTextField.text = ""
-        noteTextField.text = ""
+        phoneNumberTextField.text = nil
+        sumTextField.text = nil
+        noteTextField.text = nil
     }
     
     @IBAction func sendTapped(_ sender: Any) {
@@ -117,7 +111,7 @@ class SendMoneyViewController: UIViewController {
             return
         }
 
-        let description = noteTextField.text ?? ""
+        let description = noteTextField.text
         initiateTransaction(receiverPhoneNumber: receiverPhoneNumber, amount: amount, currency: currency, description: description)
     }
     

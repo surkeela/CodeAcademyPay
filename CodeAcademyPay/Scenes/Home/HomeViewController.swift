@@ -91,13 +91,21 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func addMoneyTapped(_ sender: Any) {
+        let adddMoneyViewController = AddMoneyViewController()
+        adddMoneyViewController.currentUser = currentUser
+        adddMoneyViewController.supplementCompletionHandler = { [weak self] updatedBalance in
+            self?.balanceLabel.text = String(format: "%.2f", updatedBalance)
+            self?.currentUser.balance = updatedBalance
+            self?.fetchTransactions()
+        }
+        present(adddMoneyViewController, animated: true, completion: nil)
     }
     
     @IBAction func sendMoneyTapped(_ sender: Any) {
         let sendMoneyViewController = SendMoneyViewController()
         sendMoneyViewController.currentUser = currentUser
         sendMoneyViewController.transactionCompletionHandler = { [weak self] updatedBalance in
-            self?.balanceLabel.text = "\(updatedBalance)"
+            self?.balanceLabel.text = String(format: "%.2f", updatedBalance)
             self?.currentUser.balance = updatedBalance
             self?.fetchTransactions()
         }

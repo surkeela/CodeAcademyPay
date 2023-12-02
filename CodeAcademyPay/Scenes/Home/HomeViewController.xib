@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -123,13 +124,15 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-x2-rwu">
-                    <rect key="frame" x="127.66666666666667" y="778" width="137.66666666666663" height="30"/>
+                    <rect key="frame" x="127.66666666666667" y="788" width="137.66666666666663" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="BI4-X6-1k4"/>
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="gray" title="See all" cornerStyle="capsule"/>
+                    <buttonConfiguration key="configuration" style="gray" title="See all" cornerStyle="capsule">
+                        <color key="baseBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -142,7 +145,7 @@
                 <constraint firstItem="IlZ-5a-92s" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.5" id="J98-pl-Afc"/>
                 <constraint firstAttribute="bottom" secondItem="viD-6v-LGt" secondAttribute="bottom" id="Mk4-7g-dy2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XBi-36-9JP" secondAttribute="trailing" constant="30" id="S9f-dF-aMm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Z6b-x2-rwu" secondAttribute="bottom" constant="10" id="Sy2-ei-5hh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Z6b-x2-rwu" secondAttribute="bottom" id="Sy2-ei-5hh"/>
                 <constraint firstAttribute="trailing" secondItem="viD-6v-LGt" secondAttribute="trailing" id="Tzu-RI-BeJ"/>
                 <constraint firstItem="Z6b-x2-rwu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VyF-v3-j0j"/>
                 <constraint firstItem="OOr-Ft-dsn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.9" id="ccW-09-HII"/>
@@ -162,7 +165,7 @@
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemFillColor">
-            <color red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

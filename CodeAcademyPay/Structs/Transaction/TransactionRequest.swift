@@ -11,7 +11,7 @@ struct TransactionRequest: Codable {
     let receiver: String
     let amount: String
     let currency: String
-    let description: String
+    let description: String?
 }
 
 struct AddMoneyRequest: Codable {

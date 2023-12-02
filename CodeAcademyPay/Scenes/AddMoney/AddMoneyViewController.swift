@@ -8,22 +8,105 @@
 import UIKit
 
 class AddMoneyViewController: UIViewController {
-
+    @IBOutlet weak private var currencyTextField: UnderlinedTextField!
+    @IBOutlet weak private var amountTextField: UnderlinedTextField!
+    
+    private let transactionViewModel = TransactionViewModel()
+    var currentUser: AuthenticatedUser?
+    var supplementCompletionHandler: ((Double) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        currencyTextField.delegate = self
+        amountTextField.delegate = self
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+   private func performAddMoneyTransaction() {
+        guard let amount = amountTextField.text,
+              let currency = currencyTextField.text else {
+            showErrorAlert(message: "Fields cannot be empty")
+            return
+        }
+        
+        guard let token = UserDefaults.standard.string(forKey: "UserToken") else {
+            print("Token not found in UserDefaults")
+            return
+        }
+        
+        guard let currentBalance = self.currentUser?.balance,
+              let sendingAmount = Double(amount) else {
+            return
+        }
+        
+        let updatedBalance = currentBalance + sendingAmount
+        let uppercasedCurrency = currency.uppercased()
+        
+        guard uppercasedCurrency == currentUser?.currency.uppercased() else {
+            showErrorAlert(message: "Transaction in invalid currency")
+            return
+        }
+        
+        transactionViewModel.addMoneyTransaction(amount: amount, currency: uppercasedCurrency, bearerToken: token, errorHandler: { errorMessage in
+            DispatchQueue.main.async {
+                self.showErrorAlert(message: errorMessage)
+                print(errorMessage)
+            }
+        }, completion: { result in
+            switch result {
+            case .success(let response):
+                print(response.self)
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.supplementCompletionHandler?(updatedBalance)
+                    self.dismiss(animated: true, completion: nil)
+                }
+                print("Failed with error: \(error)")
+            }
+        })
     }
-    */
+    
+    @IBAction func addTapped(_ sender: Any) {
+        performAddMoneyTransaction()
+    }
+    
+}
 
+extension AddMoneyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        addTapped(textField)
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == amountTextField {
+            return validateSumTextFieldChange(textField: textField, range: range, replacementString: string)
+        }
+        return true
+    }
+    
+    private func validateSumTextFieldChange(textField: UITextField, range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty {
+            return true
+        }
+        
+        guard let text = textField.text, let range = Range(range, in: text) else {
+            return true
+        }
+        
+        let updatedText = text.replacingCharacters(in: range, with: string)
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true
+        
+        if let number = formatter.number(from: updatedText), let decimalSeparator = formatter.decimalSeparator {
+            let decimalPlaces = updatedText.components(separatedBy: decimalSeparator)
+            
+            if decimalPlaces.count == 2, let lastDecimal = decimalPlaces.last, lastDecimal.count > 2 {
+                return false
+            }
+            return number.doubleValue >= 0
+        }
+        return false
+    }
+    
 }
