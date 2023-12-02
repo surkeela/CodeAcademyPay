@@ -133,6 +133,9 @@
                     <buttonConfiguration key="configuration" style="gray" title="See all" cornerStyle="capsule">
                         <color key="baseBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="seeAllTapped:" destination="-1" eventType="touchUpInside" id="w4d-jK-K7z"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

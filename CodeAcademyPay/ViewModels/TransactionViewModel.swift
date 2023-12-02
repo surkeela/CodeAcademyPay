@@ -10,13 +10,13 @@ import CoreData
 
 class TransactionViewModel {
     private let networkManager = NetworkManager()
-    private let loadedToken = KeychainService.loadToken()
+    private let userManagementViewModel = UserManagementViewModel()
     
     func createTransaction(receiver: String, amount: String, currency: String, description: String?, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<TransactionResponse, Error>) -> Void) {
-        guard let token = loadedToken else { return }
+        let retrievedToken = userManagementViewModel.retrieveToken()
         let urlString = Endpoints.createTransaction()
         let jsonData = TransactionRequest(receiver: receiver, amount: amount, currency: currency, description: description)
-        let headers = ["Authorization": "Bearer \(token)", "Content-Type": "application/json"]
+        let headers = ["Authorization": "Bearer \(retrievedToken)", "Content-Type": "application/json"]
         
         do {
             let requestBody = try JSONEncoder().encode(jsonData)
@@ -42,9 +42,9 @@ class TransactionViewModel {
     }
     
     func fetchAllTransactions(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<[TransactionResponse], Error>) -> Void) {
-        guard let token = loadedToken else { return }
+        let retrievedToken = userManagementViewModel.retrieveToken()
         let urlString = Endpoints.getTransactions(withID: userID)
-        let headers = ["Authorization": "Bearer \(token)"]
+        let headers = ["Authorization": "Bearer \(retrievedToken)"]
         
         do {
             let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
@@ -68,39 +68,39 @@ class TransactionViewModel {
         }
     }
     
-     func saveTransactionsToCoreData(transactionResponses: [TransactionResponse], currentUserID: String) {
-         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-         
-         for transactionResponse in transactionResponses {
-             let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
-             fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id )
-             
-             do {
-                 if let existingTransaction = try context.fetch(fetchRequest).first {
-                     existingTransaction.update(with: transactionResponse)
-                 } else {
-                     let newTransaction = Transaction(context: context)
-                     newTransaction.update(with: transactionResponse)
-                     newTransaction.userResponseId = transactionResponse.user.id
-                 }
-             } catch {
-                 print("Error during fetch or update in Core Data")
-             }
-         }
-         
-         do {
-             try context.save()
-             print("Successfully saved to Core Data")
-         } catch {
-             print("Error during save to Core Data")
-         }
-     }
+    func saveTransactionsToCoreData(transactionResponses: [TransactionResponse], currentUserID: String) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        for transactionResponse in transactionResponses {
+            let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id )
+            
+            do {
+                if let existingTransaction = try context.fetch(fetchRequest).first {
+                    existingTransaction.update(with: transactionResponse)
+                } else {
+                    let newTransaction = Transaction(context: context)
+                    newTransaction.update(with: transactionResponse)
+                    newTransaction.userResponseId = transactionResponse.user.id
+                }
+            } catch {
+                print("Error during fetch or update in Core Data")
+            }
+        }
+        
+        do {
+            try context.save()
+            print("Successfully saved to Core Data")
+        } catch {
+            print("Error during save to Core Data")
+        }
+    }
     
     func addMoneyTransaction(amount: String, currency: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<Bool, Error>) -> Void) {
-        guard let token = loadedToken else { return }
+        let retrievedToken = userManagementViewModel.retrieveToken()
         let urlString = Endpoints.addMoney()
         let jsonData = AddMoneyRequest(amount: amount, currency: currency)
-        let headers = ["Authorization": "Bearer \(token)", "Content-Type": "application/json"]
+        let headers = ["Authorization": "Bearer \(retrievedToken)", "Content-Type": "application/json"]
         
         do {
             let requestBody = try JSONEncoder().encode(jsonData)

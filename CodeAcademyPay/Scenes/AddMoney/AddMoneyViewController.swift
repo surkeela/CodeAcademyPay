@@ -21,7 +21,7 @@ class AddMoneyViewController: UIViewController {
         amountTextField.delegate = self
     }
     
-   private func performAddMoneyTransaction() {
+    private func performAddMoneyTransaction() {
         guard let amount = amountTextField.text,
               let currency = currencyTextField.text else {
             showErrorAlert(message: "Fields cannot be empty")

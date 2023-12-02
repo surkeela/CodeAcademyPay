@@ -9,7 +9,16 @@ import Foundation
 
 class UserManagementViewModel {
     private let networkManager = NetworkManager()
-    private let loadedToken = KeychainService.loadToken()
+    
+    func retrieveToken() -> String? {
+        if let token = KeychainHelper.getTokenFromKeychain(forKey: "access_token") {
+            print("Retrieved token:", token)
+            return token
+        } else {
+            print("Token not found in keychain")
+        }
+        return nil
+    }
     
     func registerUser(userData: UserRegistrationData, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
         let urlString = Endpoints.register()
@@ -73,33 +82,7 @@ class UserManagementViewModel {
                 switch result {
                 case .success(let userLoginResponse):
                     completion(.success(userLoginResponse))
-                case .failure(let error):
-                    switch error {
-                    case .apiError(let reason):
-                        errorHandler(reason)
-                    default:
-                        errorHandler("An error occurred")
-                    }
-                    completion(.failure(error))
-                }
-            }, errorHandler: errorHandler)
-        } catch {
-            completion(.failure(error))
-        }
-    }
-
-    func fetchDataWithBearerToken(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
-        guard let token = loadedToken else { return }
-        let urlString = Endpoints.getUser(withID: userID)
-        let headers = ["Authorization": "Bearer \(token)"]
-
-        do {
-            let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
-
-            networkManager.performRequest(with: request, completion: { (result: Result<AuthenticatedUser, NetworkError>) in
-                switch result {
-                case .success(let authenticatedUser):
-                    completion(.success(authenticatedUser))
+                    
                 case .failure(let error):
                     switch error {
                     case .apiError(let reason):
@@ -115,8 +98,39 @@ class UserManagementViewModel {
         }
     }
     
+    func fetchDataWithBearerToken(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
+        let retrievedToken = retrieveToken()
+        let urlString = Endpoints.getUser(withID: userID)
+        let headers = ["Authorization": "Bearer \(retrievedToken)"]
+        
+        do {
+            let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
+            
+            networkManager.performRequest(with: request, completion: { (result: Result<AuthenticatedUser, NetworkError>) in
+                switch result {
+                case .success(let authenticatedUser):
+                    completion(.success(authenticatedUser))
+                case .failure(let error):
+                    switch error {
+                    case .apiError(let reason):
+                        errorHandler(reason)
+                    default:
+                        errorHandler("An error occurred")
+                    }
+                    completion(.failure(error))
+                }
+            }, errorHandler: errorHandler)
+            
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func getTokenFromKeychain(forKey key: String) -> String? {
+        return KeychainHelper.getTokenFromKeychain(forKey: key)
+    }
+    
     func fetchUserBalance(userID: String, completion: @escaping (Result<Double, Error>) -> Void) {
-        guard let token = loadedToken else { return }
         fetchDataWithBearerToken(userID: userID, errorHandler: { errorMessage in
             completion(.failure(NetworkError.apiError(errorMessage)))
         }) { result in

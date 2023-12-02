@@ -116,11 +116,7 @@ class AuthenticationViewController: UIViewController {
             switch result {
             case .success(let loginResponse):
                 print("User logged in successfully: \(loginResponse)") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-                let tokenToSave = loginResponse.value
-                KeychainService.saveToken(token: tokenToSave)
-                
-                if let loadedToken = KeychainService.loadToken() {
-                    print("Token loaded from keychain: \(loadedToken)")
+                KeychainHelper.saveTokenToKeychain(token: loginResponse.value, forKey: "access_token")
                 self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, errorHandler: { errorMessage in
                     DispatchQueue.main.async {
                         self?.showErrorAlert(message: errorMessage)
@@ -136,7 +132,6 @@ class AuthenticationViewController: UIViewController {
                     case .failure(let error):
                         print("Failed to fetch data: \(error)")
                     }
-                }
                 }
             case .failure(let error):
                 print("Failed to log in user: \(error)")

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsListViewController" customModule="CodeAcademyPay" customModuleProvider="target">
+            <connections>
+                <outlet property="transactionTableView" destination="tu4-Q2-hYg" id="eCG-cP-Zue"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8b-WA-cSx">
+                    <rect key="frame" x="10" y="69" width="373" height="56"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="laP-Nd-eZE"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tu4-Q2-hYg">
+                    <rect key="frame" x="0.0" y="125" width="393" height="693"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tu4-Q2-hYg" secondAttribute="bottom" id="Dbl-SP-wlU"/>
+                <constraint firstItem="t8b-WA-cSx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="Twn-9y-Ze3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tu4-Q2-hYg" secondAttribute="trailing" id="YHj-zv-MwG"/>
+                <constraint firstItem="t8b-WA-cSx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ZrF-g1-Jay"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t8b-WA-cSx" secondAttribute="trailing" constant="10" id="gdx-hy-Ls8"/>
+                <constraint firstItem="tu4-Q2-hYg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mFI-bH-8xf"/>
+                <constraint firstItem="tu4-Q2-hYg" firstAttribute="top" secondItem="t8b-WA-cSx" secondAttribute="bottom" id="tV3-s8-yaX"/>
+            </constraints>
+            <point key="canvasLocation" x="220.61068702290075" y="-18.30985915492958"/>
+        </view>
+    </objects>
+</document>

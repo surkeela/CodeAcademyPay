@@ -66,10 +66,10 @@
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KM-Wg-32P">
                     <rect key="frame" x="127.66666666666667" y="477" width="137.66666666666663" height="34.333333333333314"/>
+                    <color key="tintColor" systemColor="systemMintColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Send">
                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="baseBackgroundColor" systemColor="systemMintColor"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="sendTapped:" destination="-1" eventType="touchUpInside" id="roz-G1-Icw"/>

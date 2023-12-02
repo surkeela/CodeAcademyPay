@@ -27,8 +27,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTransactionsFromCoreData(userID: currentUser.id)
         fetchTransactions()
+        //        fetchTransactionsFromCoreData(userID: currentUser.id)
         setupUI()
     }
     
@@ -115,6 +115,12 @@ class HomeViewController: UIViewController {
     @IBAction func settingsTapped(_ sender: Any) {
     }
     
+    @IBAction func seeAllTapped(_ sender: Any) {
+        let transactionsListViewController = TransactionsListViewController()
+        transactionsListViewController.currentUser = currentUser
+        transactionsListViewController.allTransactions = allTransactions
+        present(transactionsListViewController, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {

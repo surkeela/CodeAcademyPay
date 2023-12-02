@@ -34,7 +34,7 @@ class SendMoneyViewController: UIViewController {
         sumTextField.delegate = self
         noteTextField.delegate = self
     }
-  
+    
     private func fetchCurrentUserBalance() {
         guard let userId = currentUser?.id else { return }
         
@@ -49,30 +49,30 @@ class SendMoneyViewController: UIViewController {
             }
         }
     }
-
+    
     private func updateBalanceLabel(_ balance: Double) {
         balanceLabel.text = String(format: "%.2f", balance)
     }
     
     private func initiateTransaction(receiverPhoneNumber: String, amount: String, currency: String, description: String?) {
         transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, errorHandler: { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(message: error)
+            }
+        },
+                                               completion: { [weak self] result in
+            switch result {
+            case .success(let transactionResponse):
+                self?.handleTransactionSuccess(transactionResponse)
+            case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.showErrorAlert(message: error)
-                }
-            },
-            completion: { [weak self] result in
-                switch result {
-                case .success(let transactionResponse):
-                    self?.handleTransactionSuccess(transactionResponse)
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.showErrorAlert(message: error.localizedDescription)
-                    }
+                    self?.showErrorAlert(message: error.localizedDescription)
                 }
             }
+        }
         )
     }
-
+    
     private func handleTransactionSuccess(_ transactionResponse: TransactionResponse) {
         guard let transactionAmount = Double(transactionResponse.amount),
               let currentBalance = self.currentUser?.balance else {
@@ -86,7 +86,7 @@ class SendMoneyViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-
+    
     private func clearTextFields() {
         phoneNumberTextField.text = nil
         sumTextField.text = nil
@@ -105,7 +105,7 @@ class SendMoneyViewController: UIViewController {
             showErrorAlert(message: "You cannot send money to yourself.")
             return
         }
-
+        
         let description = noteTextField.text
         initiateTransaction(receiverPhoneNumber: receiverPhoneNumber, amount: amount, currency: currency, description: description)
     }
@@ -125,23 +125,23 @@ extension SendMoneyViewController: UITextFieldDelegate {
         }
         return true
     }
-
+    
     private func validateSumTextFieldChange(textField: UITextField, range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty {
             return true
         }
-
+        
         guard let text = textField.text, let range = Range(range, in: text) else {
             return true
         }
-
+        
         let updatedText = text.replacingCharacters(in: range, with: string)
         let formatter = NumberFormatter()
         formatter.allowsFloats = true
-
+        
         if let number = formatter.number(from: updatedText), let decimalSeparator = formatter.decimalSeparator {
             let decimalPlaces = updatedText.components(separatedBy: decimalSeparator)
-
+            
             if decimalPlaces.count == 2, let lastDecimal = decimalPlaces.last, lastDecimal.count > 2 {
                 return false
             }
