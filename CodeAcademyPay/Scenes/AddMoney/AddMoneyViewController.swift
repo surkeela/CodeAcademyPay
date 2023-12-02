@@ -28,11 +28,6 @@ class AddMoneyViewController: UIViewController {
             return
         }
         
-        guard let token = UserDefaults.standard.string(forKey: "UserToken") else {
-            print("Token not found in UserDefaults")
-            return
-        }
-        
         guard let currentBalance = self.currentUser?.balance,
               let sendingAmount = Double(amount) else {
             return
@@ -46,7 +41,7 @@ class AddMoneyViewController: UIViewController {
             return
         }
         
-        transactionViewModel.addMoneyTransaction(amount: amount, currency: uppercasedCurrency, bearerToken: token, errorHandler: { errorMessage in
+        transactionViewModel.addMoneyTransaction(amount: amount, currency: uppercasedCurrency, errorHandler: { errorMessage in
             DispatchQueue.main.async {
                 self.showErrorAlert(message: errorMessage)
                 print(errorMessage)

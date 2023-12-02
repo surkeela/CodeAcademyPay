@@ -9,6 +9,7 @@ import Foundation
 
 class UserManagementViewModel {
     private let networkManager = NetworkManager()
+    private let loadedToken = KeychainService.loadToken()
     
     func registerUser(userData: UserRegistrationData, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
         let urlString = Endpoints.register()
@@ -87,9 +88,10 @@ class UserManagementViewModel {
         }
     }
 
-    func fetchDataWithBearerToken(userID: String, bearerToken: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
+    func fetchDataWithBearerToken(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
+        guard let token = loadedToken else { return }
         let urlString = Endpoints.getUser(withID: userID)
-        let headers = ["Authorization": "Bearer \(bearerToken)"]
+        let headers = ["Authorization": "Bearer \(token)"]
 
         do {
             let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
@@ -114,8 +116,8 @@ class UserManagementViewModel {
     }
     
     func fetchUserBalance(userID: String, completion: @escaping (Result<Double, Error>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "UserToken") else { return }
-        fetchDataWithBearerToken(userID: userID, bearerToken: token, errorHandler: { errorMessage in
+        guard let token = loadedToken else { return }
+        fetchDataWithBearerToken(userID: userID, errorHandler: { errorMessage in
             completion(.failure(NetworkError.apiError(errorMessage)))
         }) { result in
             switch result {

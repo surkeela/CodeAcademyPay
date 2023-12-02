@@ -19,5 +19,5 @@ struct TransactionResponse: Codable {
 }
 
 struct UserResponse: Codable {
-    let id: String
+    let id: String?
 }

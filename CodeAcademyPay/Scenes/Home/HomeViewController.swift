@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTransactionsFromCoreData(userID: currentUser.id)
         fetchTransactions()
         setupUI()
     }
@@ -42,10 +43,9 @@ class HomeViewController: UIViewController {
     }
     
     private func fetchTransactions() {
-        guard let token = UserDefaults.standard.string(forKey: "UserToken") else { return }
         let userID = currentUser.id
         
-        transactionViewModel.fetchAllTransactions(bearerToken: token, userID: userID, errorHandler: { errorMessage in
+        transactionViewModel.fetchAllTransactions(userID: userID, errorHandler: { errorMessage in
             DispatchQueue.main.async {
                 self.showErrorAlert(message: errorMessage)
             }

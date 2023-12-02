@@ -10,11 +10,13 @@ import CoreData
 
 class TransactionViewModel {
     private let networkManager = NetworkManager()
+    private let loadedToken = KeychainService.loadToken()
     
-    func createTransaction(receiver: String, amount: String, currency: String, description: String?, bearerToken: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<TransactionResponse, Error>) -> Void) {
+    func createTransaction(receiver: String, amount: String, currency: String, description: String?, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<TransactionResponse, Error>) -> Void) {
+        guard let token = loadedToken else { return }
         let urlString = Endpoints.createTransaction()
         let jsonData = TransactionRequest(receiver: receiver, amount: amount, currency: currency, description: description)
-        let headers = ["Authorization": "Bearer \(bearerToken)", "Content-Type": "application/json"]
+        let headers = ["Authorization": "Bearer \(token)", "Content-Type": "application/json"]
         
         do {
             let requestBody = try JSONEncoder().encode(jsonData)
@@ -39,9 +41,10 @@ class TransactionViewModel {
         }
     }
     
-    func fetchAllTransactions(bearerToken: String, userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<[TransactionResponse], Error>) -> Void) {
+    func fetchAllTransactions(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<[TransactionResponse], Error>) -> Void) {
+        guard let token = loadedToken else { return }
         let urlString = Endpoints.getTransactions(withID: userID)
-        let headers = ["Authorization": "Bearer \(bearerToken)"]
+        let headers = ["Authorization": "Bearer \(token)"]
         
         do {
             let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
@@ -70,7 +73,7 @@ class TransactionViewModel {
          
          for transactionResponse in transactionResponses {
              let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
-             fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id ?? "")
+             fetchRequest.predicate = NSPredicate(format: "id == %@", transactionResponse.id )
              
              do {
                  if let existingTransaction = try context.fetch(fetchRequest).first {
@@ -93,10 +96,11 @@ class TransactionViewModel {
          }
      }
     
-    func addMoneyTransaction(amount: String, currency: String, bearerToken: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func addMoneyTransaction(amount: String, currency: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<Bool, Error>) -> Void) {
+        guard let token = loadedToken else { return }
         let urlString = Endpoints.addMoney()
         let jsonData = AddMoneyRequest(amount: amount, currency: currency)
-        let headers = ["Authorization": "Bearer \(bearerToken)", "Content-Type": "application/json"]
+        let headers = ["Authorization": "Bearer \(token)", "Content-Type": "application/json"]
         
         do {
             let requestBody = try JSONEncoder().encode(jsonData)

@@ -55,12 +55,7 @@ class SendMoneyViewController: UIViewController {
     }
     
     private func initiateTransaction(receiverPhoneNumber: String, amount: String, currency: String, description: String?) {
-        guard let bearerToken = UserDefaults.standard.string(forKey: "UserToken") else {
-            print("Token not found in UserDefaults")
-            return
-        }
-        
-        transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, bearerToken: bearerToken, errorHandler: { [weak self] error in
+        transactionViewModel.createTransaction(receiver: receiverPhoneNumber, amount: amount, currency: currency, description: description, errorHandler: { [weak self] error in
                 DispatchQueue.main.async {
                     self?.showErrorAlert(message: error)
                 }
