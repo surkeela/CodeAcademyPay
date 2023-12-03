@@ -29,19 +29,26 @@ extension TransactionsListViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
         
-        cell.amountLabel.text = allTransactions[indexPath.row].amount
-        cell.currencyLabel.text = allTransactions[indexPath.row].currency
-        cell.dateLabel.text = allTransactions[indexPath.row].createdAt
-        cell.noteLabel.text = allTransactions[indexPath.row].transactionDescription
-        
-        if allTransactions[indexPath.row].receiver == currentUser?.phoneNumber {
-            cell.phoneNumberLabel.text = allTransactions[indexPath.row].sender
-            cell.transactionTypeLabel.text = "+"
-            cell.transactionTypeLabel.textColor = UIColor.green
+        if let amountString = allTransactions[indexPath.row].amount,
+           let amount = Double(amountString) {
+            let formattedAmount = String(format: "%.2f", amount)
+            
+            cell.amountLabel.text = formattedAmount
+            cell.currencyLabel.text = allTransactions[indexPath.row].currency
+            cell.dateLabel.text = allTransactions[indexPath.row].createdAt
+            cell.noteLabel.text = allTransactions[indexPath.row].transactionDescription
+            
+            if allTransactions[indexPath.row].receiver == currentUser?.phoneNumber {
+                cell.phoneNumberLabel.text = allTransactions[indexPath.row].sender
+                cell.transactionTypeLabel.text = "+"
+                cell.transactionTypeLabel.textColor = UIColor.green
+            } else {
+                cell.phoneNumberLabel.text = allTransactions[indexPath.row].receiver
+                cell.transactionTypeLabel.text = "-"
+                cell.transactionTypeLabel.textColor = UIColor.red
+            }
         } else {
-            cell.phoneNumberLabel.text = allTransactions[indexPath.row].receiver
-            cell.transactionTypeLabel.text = "-"
-            cell.transactionTypeLabel.textColor = UIColor.red
+            cell.amountLabel.text = allTransactions[indexPath.row].currency
         }
         
         return cell

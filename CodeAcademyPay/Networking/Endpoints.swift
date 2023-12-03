@@ -26,6 +26,10 @@ struct Endpoints {
         return base + "users/\(userID)"
     }
     
+    static func updateAuth() -> String{
+        return base + "users/update"
+    }
+    
     static func createTransaction() -> String {
         Endpoints.base + "transactions/create"
     }

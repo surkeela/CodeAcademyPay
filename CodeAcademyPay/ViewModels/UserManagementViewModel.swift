@@ -10,16 +10,6 @@ import Foundation
 class UserManagementViewModel {
     private let networkManager = NetworkManager()
     
-    //    func retrieveToken(tokenKey: String) -> String? {
-    //        if let token = KeychainHelper.getTokenFromKeychain(forKey: "Bearer_token") {
-    //            print("Retrieved token:", token)
-    //            return token
-    //        } else {
-    //            print("Token not found in keychain")
-    //        }
-    //        return nil
-    //    }
-    
     func registerUser(userData: UserRegistrationData, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
         let urlString = Endpoints.register()
         let headers = ["Content-Type": "application/json"]
@@ -99,7 +89,7 @@ class UserManagementViewModel {
     }
     
     func fetchDataWithBearerToken(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
-        if let retrievedToken = KeychainHelper.getTokenFromKeychain(forKey: "Bearer_token") {
+        if let retrievedToken = KeychainHelper.getStringFromKeychain(forKey: "Bearer_token") {
             print("Retrieved token:", retrievedToken)
             let urlString = Endpoints.getUser(withID: userID)
             let headers = ["Authorization": "Bearer \(retrievedToken)"]
@@ -147,6 +137,40 @@ class UserManagementViewModel {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func updateUserAuth(name: String, password: String, currency: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
+        if let retrievedToken = KeychainHelper.getStringFromKeychain(forKey: "Bearer_token") {
+            print("Retrieved token:", retrievedToken)
+            let urlString = Endpoints.updateAuth()
+            let jsonData = UserRegistrationData(name: name, password: password, currency: currency, phoneNumber: nil)
+            let headers = ["Authorization": "Bearer \(retrievedToken)", "Content-Type": "application/json"]
+            
+            do {
+                let requestBody = try JSONEncoder().encode(jsonData)
+                let request = try networkManager.createRequest(urlString: urlString, method: "PUT", headers: headers, body: requestBody)
+                
+                networkManager.performRequest(with: request, completion: { (result: Result<User, NetworkError>) in
+                    switch result {
+                    case .success(let updatedUser):
+                        completion(.success(updatedUser))
+                    case .failure(let error):
+                        switch error {
+                        case .apiError(let reason):
+                            errorHandler(reason)
+                        default:
+                            errorHandler("An error occurred")
+                        }
+                        completion(.failure(error))
+                    }
+                }, errorHandler: errorHandler)
+                
+            } catch {
+                completion(.failure(error))
+            }
+        } else {
+            print("Token not found in keychain")
         }
     }
     

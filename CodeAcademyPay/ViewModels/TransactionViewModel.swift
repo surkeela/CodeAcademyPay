@@ -13,7 +13,7 @@ class TransactionViewModel {
     private let userManagementViewModel = UserManagementViewModel()
     
    private func retrieveToken() -> String? {
-        KeychainHelper.getTokenFromKeychain(forKey: "Bearer_token")
+        KeychainHelper.getStringFromKeychain(forKey: "Bearer_token")
     }
     
     func createTransaction(receiver: String, amount: String, currency: String, description: String?, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<TransactionResponse, Error>) -> Void) {
@@ -106,7 +106,7 @@ class TransactionViewModel {
         }
     }
     
-    func addMoneyTransaction(amount: String, currency: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func addMoneyTransaction(amount: String, currency: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<TransactionResponse, Error>) -> Void) {
         if let retrievedToken = retrieveToken() {
             let urlString = Endpoints.addMoney()
             let jsonData = AddMoneyRequest(amount: amount, currency: currency)
@@ -116,7 +116,7 @@ class TransactionViewModel {
                 let requestBody = try JSONEncoder().encode(jsonData)
                 let request = try networkManager.createRequest(urlString: urlString, method: "POST", headers: headers, body: requestBody)
                 
-                networkManager.performRequest(with: request, completion: { (result: Result<Bool, NetworkError>) in
+                networkManager.performRequest(with: request, completion: { (result: Result<TransactionResponse, NetworkError>) in
                     switch result {
                     case .success(let transaction):
                         completion(.success(transaction))

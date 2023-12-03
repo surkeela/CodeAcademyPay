@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CodeAcademyPay" customModuleProvider="target">
             <connections>
                 <outlet property="balanceLabel" destination="1F4-c5-3jz" id="wnx-5l-gIi"/>
+                <outlet property="currencyLabel" destination="o9j-49-N5K" id="ayx-Hv-hTF"/>
                 <outlet property="transactionTableView" destination="E1V-ln-MUw" id="wX3-hA-OKl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

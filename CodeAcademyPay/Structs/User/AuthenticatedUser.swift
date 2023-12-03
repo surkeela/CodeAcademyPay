@@ -8,7 +8,7 @@
 import Foundation
 
 struct AuthenticatedUser: Codable {
-    let currency: String
+    var currency: String
     var balance: Double
     let name: String
     let phoneNumber: String

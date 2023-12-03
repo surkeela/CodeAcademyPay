@@ -10,10 +10,11 @@ import CoreData
 
 class HomeViewController: UIViewController {
     @IBOutlet weak private var balanceLabel: UILabel!
+    @IBOutlet weak private var currencyLabel: UILabel!
     @IBOutlet weak private var transactionTableView: UITableView!
     
     private let transactionViewModel = TransactionViewModel()
-    private var currentUser: AuthenticatedUser
+    var currentUser: AuthenticatedUser
     private var allTransactions: [Transaction] = []
     
     init(currentUser: AuthenticatedUser) {
@@ -25,15 +26,27 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTransactionsFromCoreData(userID: currentUser.id)
         fetchTransactions()
-        //        fetchTransactionsFromCoreData(userID: currentUser.id)
         setupUI()
     }
     
     private func setupUI() {
-        navigationItem.hidesBackButton = true
+        switch currentUser.currency {
+        case "EUR":
+            currencyLabel.text = "€"
+        case "USD":
+            currencyLabel.text = "$"
+        default:
+            currencyLabel.text = currentUser.currency
+        }
         transactionTableView.layer.cornerRadius = 25
         balanceLabel.text = String(format: "%.2f", currentUser.balance)
         transactionTableView.dataSource = self
@@ -113,6 +126,13 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func settingsTapped(_ sender: Any) {
+        let settingsViewController = SettingsViewController()
+        settingsViewController.currentUser = currentUser
+        settingsViewController.onCurrencyUpdate = { [weak self] updatedCurrency in
+            self?.currencyLabel.text = updatedCurrency
+            self?.currentUser.currency = updatedCurrency
+        }
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     @IBAction func seeAllTapped(_ sender: Any) {
@@ -132,21 +152,29 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
         
-        cell.amountLabel.text = allTransactions[indexPath.row].amount
-        cell.currencyLabel.text = allTransactions[indexPath.row].currency
-        cell.dateLabel.text = allTransactions[indexPath.row].createdAt
-        cell.noteLabel.text = allTransactions[indexPath.row].transactionDescription
-        
-        if allTransactions[indexPath.row].receiver == currentUser.phoneNumber {
-            cell.phoneNumberLabel.text = allTransactions[indexPath.row].sender
-            cell.transactionTypeLabel.text = "+"
-            cell.transactionTypeLabel.textColor = UIColor.green
+        if let amountString = allTransactions[indexPath.row].amount {
+            let formattedAmount = ValidationHelper.formatAmountString(amountString)
+            
+            cell.amountLabel.text = formattedAmount
+            cell.currencyLabel.text = allTransactions[indexPath.row].currency
+            cell.dateLabel.text = allTransactions[indexPath.row].createdAt
+            cell.noteLabel.text = allTransactions[indexPath.row].transactionDescription
+            
+            if allTransactions[indexPath.row].receiver == currentUser.phoneNumber {
+                cell.phoneNumberLabel.text = allTransactions[indexPath.row].sender
+                cell.transactionTypeLabel.text = "+"
+                cell.transactionTypeLabel.textColor = UIColor.green
+            } else {
+                cell.phoneNumberLabel.text = allTransactions[indexPath.row].receiver
+                cell.transactionTypeLabel.text = "-"
+                cell.transactionTypeLabel.textColor = UIColor.red
+            }
         } else {
-            cell.phoneNumberLabel.text = allTransactions[indexPath.row].receiver
-            cell.transactionTypeLabel.text = "-"
-            cell.transactionTypeLabel.textColor = UIColor.red
+            cell.amountLabel.text = allTransactions[indexPath.row].currency
+            // Handle other labels if necessary
         }
         
         return cell
     }
+    
 }

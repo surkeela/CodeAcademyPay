@@ -19,4 +19,12 @@ class ValidationHelper {
         return NSPredicate(format: "SELF MATCHES %@", currencyRegex).evaluate(with: currency)
     }
     
+    static func formatAmountString(_ amountString: String) -> String {
+        if let amount = Double(amountString), amountString.contains(".") {
+            return String(format: "%.2f", amount)
+        } else {
+            return amountString
+        }
+    }
+    
 }

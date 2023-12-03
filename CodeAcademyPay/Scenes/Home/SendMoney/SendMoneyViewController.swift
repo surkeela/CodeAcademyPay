@@ -59,8 +59,7 @@ class SendMoneyViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.showErrorAlert(message: error)
             }
-        },
-                                               completion: { [weak self] result in
+        }, completion: { [weak self] result in
             switch result {
             case .success(let transactionResponse):
                 self?.handleTransactionSuccess(transactionResponse)

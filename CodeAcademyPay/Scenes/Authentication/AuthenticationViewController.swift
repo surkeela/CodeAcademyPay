@@ -23,7 +23,6 @@ class AuthenticationViewController: UIViewController {
     private let authenticationType: AuthenticationType
     private let viewModel = UserManagementViewModel()
     private var registeredUsers: [User] = []
-//    static var key = ""
     
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -89,6 +88,7 @@ class AuthenticationViewController: UIViewController {
             return
         }
         
+        KeychainHelper.saveOrUpdateString(value: password, forKey: "Password")
         let userData = UserRegistrationData(name: name, password: password, currency: currency, phoneNumber: phoneNumber)
         
         viewModel.registerUser(userData: userData, errorHandler: { errorMessage in
@@ -100,8 +100,6 @@ class AuthenticationViewController: UIViewController {
             case .success(let registeredUser):
                 print("User created successfully: \(registeredUser)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 self?.performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)
-                // Optionally, you might inform the user about successful registration
-                // Show an alert or update UI indicating successful registration
             case .failure(let error):
                 print("Failed to create user: \(error)")
             }
@@ -117,7 +115,7 @@ class AuthenticationViewController: UIViewController {
             switch result {
             case .success(let loginResponse):
                 print("User logged in successfully: \(loginResponse)") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-                KeychainHelper.saveOrUpdateToken(token: loginResponse.value, forKey: "Bearer_token")
+                KeychainHelper.saveOrUpdateString(value: loginResponse.value, forKey: "Bearer_token")
                 self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, errorHandler: { errorMessage in
                     DispatchQueue.main.async {
                         self?.showErrorAlert(message: errorMessage)
@@ -147,6 +145,8 @@ class AuthenticationViewController: UIViewController {
             showErrorAlert(message: "Please fill in all fields.")
             return
         }
+        
+        KeychainHelper.saveOrUpdateString(value: password, forKey: "Password")
         
         if let registeredUser = registeredUsers.first(where: { $0.phoneNumber == phoneNumber }) {
             performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)

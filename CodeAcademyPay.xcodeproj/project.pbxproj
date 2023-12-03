@@ -20,6 +20,8 @@
 		5272156A2B1B996600A5876A /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215692B1B996600A5876A /* UIApplication+TopViewController.swift */; };
 		5272156D2B1BAE0300A5876A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5272156C2B1BAE0300A5876A /* Security.framework */; };
 		5272156F2B1BAE6200A5876A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5272156E2B1BAE6200A5876A /* KeychainHelper.swift */; };
+		527215742B1C919D00A5876A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215722B1C919D00A5876A /* SettingsViewController.swift */; };
+		527215752B1C919D00A5876A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527215732B1C919D00A5876A /* SettingsViewController.xib */; };
 		52B1460F2B0BCC77007D9C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */; };
 		52B146112B0BCC77007D9C4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146102B0BCC77007D9C4E /* SceneDelegate.swift */; };
 		52B146132B0BCC77007D9C4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146122B0BCC77007D9C4E /* ViewController.swift */; };
@@ -106,6 +108,8 @@
 		527215692B1B996600A5876A /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		5272156C2B1BAE0300A5876A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5272156E2B1BAE6200A5876A /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		527215722B1C919D00A5876A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		527215732B1C919D00A5876A /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		52B1460B2B0BCC77007D9C4E /* CodeAcademyPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAcademyPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B1460E2B0BCC77007D9C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B146102B0BCC77007D9C4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,9 +200,6 @@
 			children = (
 				52B146482B0BDD16007D9C4E /* Authentication */,
 				52B146722B13D823007D9C4E /* Home */,
-				52B146882B14B277007D9C4E /* SendMoney */,
-				5272155D2B1A31B100A5876A /* AddMoney */,
-				527215682B1B78FA00A5876A /* TransactionsListViewController */,
 				527215552B19F0BA00A5876A /* Main */,
 			);
 			path = Scenes;
@@ -218,6 +219,7 @@
 			children = (
 				527215622B1B6EFA00A5876A /* TransactionsListViewController.swift */,
 				527215632B1B6EFA00A5876A /* TransactionsListViewController.xib */,
+				52B146A42B1755A3007D9C4E /* TransactionTableViewCell */,
 			);
 			path = TransactionsListViewController;
 			sourceTree = "<group>";
@@ -228,6 +230,15 @@
 				5272156C2B1BAE0300A5876A /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		527215712B1C916B00A5876A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				527215722B1C919D00A5876A /* SettingsViewController.swift */,
+				527215732B1C919D00A5876A /* SettingsViewController.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		52B146022B0BCC77007D9C4E = {
@@ -329,7 +340,10 @@
 			children = (
 				52B1466C2B13D806007D9C4E /* HomeViewController.swift */,
 				52B1466D2B13D806007D9C4E /* HomeViewController.xib */,
-				52B146A42B1755A3007D9C4E /* TransactionTableViewCell */,
+				52B146882B14B277007D9C4E /* SendMoney */,
+				5272155D2B1A31B100A5876A /* AddMoney */,
+				527215682B1B78FA00A5876A /* TransactionsListViewController */,
+				527215712B1C916B00A5876A /* Settings */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -504,6 +518,7 @@
 				52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */,
 				52B146702B13D806007D9C4E /* HomeViewController.xib in Resources */,
 				52B146862B14B25D007D9C4E /* Pavizdys.xib in Resources */,
+				527215752B1C919D00A5876A /* SettingsViewController.xib in Resources */,
 				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
 				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
 				52B146A22B17554E007D9C4E /* TransactionTableViewCell.xib in Resources */,
@@ -570,6 +585,7 @@
 				52B146672B111372007D9C4E /* UserLoginData.swift in Sources */,
 				52B1467B2B148631007D9C4E /* TransactionRequest.swift in Sources */,
 				527215642B1B6EFA00A5876A /* TransactionsListViewController.swift in Sources */,
+				527215742B1C919D00A5876A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
