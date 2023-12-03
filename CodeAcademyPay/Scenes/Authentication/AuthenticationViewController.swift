@@ -23,6 +23,7 @@ class AuthenticationViewController: UIViewController {
     private let authenticationType: AuthenticationType
     private let viewModel = UserManagementViewModel()
     private var registeredUsers: [User] = []
+//    static var key = ""
     
     init(authenticationType: AuthenticationType) {
         self.authenticationType = authenticationType
@@ -116,7 +117,7 @@ class AuthenticationViewController: UIViewController {
             switch result {
             case .success(let loginResponse):
                 print("User logged in successfully: \(loginResponse)") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
-                KeychainHelper.saveTokenToKeychain(token: loginResponse.value, forKey: "access_token")
+                KeychainHelper.saveOrUpdateToken(token: loginResponse.value, forKey: "Bearer_token")
                 self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, errorHandler: { errorMessage in
                     DispatchQueue.main.async {
                         self?.showErrorAlert(message: errorMessage)

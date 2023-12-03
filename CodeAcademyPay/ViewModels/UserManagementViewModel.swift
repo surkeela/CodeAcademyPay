@@ -10,15 +10,15 @@ import Foundation
 class UserManagementViewModel {
     private let networkManager = NetworkManager()
     
-    func retrieveToken() -> String? {
-        if let token = KeychainHelper.getTokenFromKeychain(forKey: "access_token") {
-            print("Retrieved token:", token)
-            return token
-        } else {
-            print("Token not found in keychain")
-        }
-        return nil
-    }
+    //    func retrieveToken(tokenKey: String) -> String? {
+    //        if let token = KeychainHelper.getTokenFromKeychain(forKey: "Bearer_token") {
+    //            print("Retrieved token:", token)
+    //            return token
+    //        } else {
+    //            print("Token not found in keychain")
+    //        }
+    //        return nil
+    //    }
     
     func registerUser(userData: UserRegistrationData, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
         let urlString = Endpoints.register()
@@ -99,35 +99,35 @@ class UserManagementViewModel {
     }
     
     func fetchDataWithBearerToken(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
-        let retrievedToken = retrieveToken()
-        let urlString = Endpoints.getUser(withID: userID)
-        let headers = ["Authorization": "Bearer \(retrievedToken)"]
-        
-        do {
-            let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
+        if let retrievedToken = KeychainHelper.getTokenFromKeychain(forKey: "Bearer_token") {
+            print("Retrieved token:", retrievedToken)
+            let urlString = Endpoints.getUser(withID: userID)
+            let headers = ["Authorization": "Bearer \(retrievedToken)"]
             
-            networkManager.performRequest(with: request, completion: { (result: Result<AuthenticatedUser, NetworkError>) in
-                switch result {
-                case .success(let authenticatedUser):
-                    completion(.success(authenticatedUser))
-                case .failure(let error):
-                    switch error {
-                    case .apiError(let reason):
-                        errorHandler(reason)
-                    default:
-                        errorHandler("An error occurred")
+            do {
+                let request = try networkManager.createRequest(urlString: urlString, method: "GET", headers: headers, body: nil)
+                
+                networkManager.performRequest(with: request, completion: { (result: Result<AuthenticatedUser, NetworkError>) in
+                    switch result {
+                    case .success(let authenticatedUser):
+                        completion(.success(authenticatedUser))
+                    case .failure(let error):
+                        switch error {
+                        case .apiError(let reason):
+                            errorHandler(reason)
+                        default:
+                            errorHandler("An error occurred")
+                        }
+                        completion(.failure(error))
                     }
-                    completion(.failure(error))
-                }
-            }, errorHandler: errorHandler)
-            
-        } catch {
-            completion(.failure(error))
+                }, errorHandler: errorHandler)
+                
+            } catch {
+                completion(.failure(error))
+            }
+        } else {
+            print("Token not found in keychain")
         }
-    }
-    
-    func getTokenFromKeychain(forKey key: String) -> String? {
-        return KeychainHelper.getTokenFromKeychain(forKey: key)
     }
     
     func fetchUserBalance(userID: String, completion: @escaping (Result<Double, Error>) -> Void) {
