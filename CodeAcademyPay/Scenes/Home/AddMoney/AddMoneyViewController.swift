@@ -49,6 +49,7 @@ class AddMoneyViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                
             }
         })
     }

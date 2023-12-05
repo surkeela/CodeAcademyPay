@@ -50,7 +50,6 @@ class KeychainHelper {
         
         if SecItemCopyMatching(query as CFDictionary, nil) == noErr {
             if SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary) == noErr {
-                print("Value updated successfully in the keychain")
             } else {
                 print("Failed to update the value in the keychain")
             }

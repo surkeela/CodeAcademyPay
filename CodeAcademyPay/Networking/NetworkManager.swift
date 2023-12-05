@@ -83,17 +83,29 @@ class NetworkManager {
         return request
     }
     
-    func performRequestAddMoney(with request: URLRequest, errorHandler: @escaping ErrorHandler) {
+    func performRequestAddMoney(with request: URLRequest, errorHandler: @escaping ErrorHandler, completion: @escaping (Data) -> Void) {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 errorHandler(error.localizedDescription)
                 return
             }
 
-            guard let data = data else { return }
-                if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data), errorResponse.error {
-                    errorHandler(errorResponse.reason)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                errorHandler("Invalid response")
+                return
             }
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                errorHandler("HTTP Error: \(httpResponse.statusCode)")
+                return
+            }
+
+            guard let data = data else {
+                errorHandler("No data received")
+                return
+            }
+
+            completion(data)
         }.resume()
     }
 

@@ -41,7 +41,7 @@ class SettingsViewController: UIViewController {
             }
         }, completion: { [weak self] result in
             switch result {
-            case .success(let updatedUser):
+            case .success:
                 DispatchQueue.main.async {
                     self?.newPasswordTextField.text = nil
                 }

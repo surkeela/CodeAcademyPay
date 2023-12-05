@@ -71,7 +71,7 @@ class TransactionsListViewController: UIViewController {
         switch sortType {
         case .date:
             filteredTransactions.sort {
-                guard let firstDate = $0.createdAt, let secondDate = $1.createdAt else { return false }
+                guard let firstDate = $1.createdAt, let secondDate = $0.createdAt else { return false }
                 return firstDate < secondDate
             }
         case .amount:
@@ -137,7 +137,6 @@ extension TransactionsListViewController: UITableViewDataSource, UITableViewDele
             let sendMoneyViewController = SendMoneyViewController()
             sendMoneyViewController.selectedTransaction = selectedTransaction
             navigationController?.pushViewController(sendMoneyViewController, animated: true)
-        } else {
         }
     }
     
@@ -152,4 +151,5 @@ extension TransactionsListViewController: UISearchBarDelegate {
         
         transactionTableView.reloadData()
     }
+    
 }

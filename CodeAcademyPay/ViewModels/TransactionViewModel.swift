@@ -100,7 +100,6 @@ class TransactionViewModel {
         
         do {
             try context.save()
-            print("Successfully saved to Core Data")
         } catch {
             print("Error during save to Core Data")
         }
@@ -116,7 +115,9 @@ class TransactionViewModel {
                 let requestBody = try JSONEncoder().encode(jsonData)
                 let request = try networkManager.createRequest(urlString: urlString, method: "POST", headers: headers, body: requestBody)
                 
-                networkManager.performRequestAddMoney(with: request, errorHandler: errorHandler)
+                networkManager.performRequestAddMoney(with: request, errorHandler: errorHandler) { data in
+                    completion(.success(()))
+                }
             } catch {
                 completion(.failure(error))
             }
@@ -124,5 +125,4 @@ class TransactionViewModel {
             print("Token not found in keychain")
         }
     }
-    
 }
