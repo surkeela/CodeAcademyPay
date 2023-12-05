@@ -11,6 +11,7 @@ class SendMoneyViewController: UIViewController {
     private let transactionViewModel = TransactionViewModel()
     private let userViewModel = UserManagementViewModel()
     var currentUser: AuthenticatedUser?
+    var selectedTransaction: Transaction?
     var transactionCompletionHandler: ((Double) -> Void)?
     
     @IBOutlet weak private var balanceLabel: UILabel!
@@ -21,9 +22,10 @@ class SendMoneyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = UIColor.white
         configureUI()
         fetchCurrentUserBalance()
-        print("🟢Current User:\(currentUser.debugDescription)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
+        prefillTextFields()
     }
     
     private func configureUI() {
@@ -33,6 +35,13 @@ class SendMoneyViewController: UIViewController {
         phoneNumberTextField.delegate = self
         sumTextField.delegate = self
         noteTextField.delegate = self
+    }
+    
+    private func prefillTextFields() {
+        if let transaction = selectedTransaction {
+            phoneNumberTextField.text = transaction.receiver
+            sumTextField.text = transaction.amount
+        }
     }
     
     private func fetchCurrentUserBalance() {
@@ -95,7 +104,7 @@ class SendMoneyViewController: UIViewController {
     @IBAction func sendTapped(_ sender: Any) {
         guard let receiverPhoneNumber = phoneNumberTextField.text,
               let amount = sumTextField.text,
-              let currency = currentUser?.currency else {
+              let currency = currencyLabel.text else {
             showErrorAlert(message: "Fields cannot be empty")
             return
         }
@@ -107,6 +116,7 @@ class SendMoneyViewController: UIViewController {
         
         let description = noteTextField.text
         initiateTransaction(receiverPhoneNumber: receiverPhoneNumber, amount: amount, currency: currency, description: description)
+        navigationController?.popViewController(animated: true)
     }
     
 }

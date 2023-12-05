@@ -43,7 +43,6 @@ class SettingsViewController: UIViewController {
             switch result {
             case .success(let updatedUser):
                 DispatchQueue.main.async {
-                    print("User updated: \(updatedUser)")
                     self?.newPasswordTextField.text = nil
                 }
             case .failure(let error):
@@ -75,7 +74,6 @@ class SettingsViewController: UIViewController {
             switch result {
             case .success(let updatedUser):
                 DispatchQueue.main.async {
-                    print("User updated: \(updatedUser)")
                     self?.onCurrencyUpdate?(updatedUser.currency)
                     self?.newCurrencyTextField.text = nil
                 }

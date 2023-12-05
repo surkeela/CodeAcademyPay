@@ -4,12 +4,16 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsListViewController" customModule="CodeAcademyPay" customModuleProvider="target">
             <connections>
+                <outlet property="filterButton" destination="vco-CI-fVF" id="D5c-ha-Aqm"/>
                 <outlet property="transactionTableView" destination="tu4-Q2-hYg" id="eCG-cP-Zue"/>
+                <outlet property="transactionsSearchBar" destination="t8b-WA-cSx" id="xwm-CZ-cSf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,22 +33,42 @@
                     </connections>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tu4-Q2-hYg">
-                    <rect key="frame" x="0.0" y="125" width="393" height="693"/>
+                    <rect key="frame" x="0.0" y="169.33333333333331" width="393" height="648.66666666666674"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vco-CI-fVF">
+                    <rect key="frame" x="19.999999999999986" y="130" width="235.66666666666663" height="34.333333333333343"/>
+                    <color key="backgroundColor" systemColor="systemMintColor"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <menu key="menu" id="0fL-bo-z78">
+                        <children>
+                            <command title="by date" id="jb1-wl-ZkQ"/>
+                            <command title="Item 2" id="jiO-kF-Gf9"/>
+                        </children>
+                    </menu>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tu4-Q2-hYg" secondAttribute="bottom" id="Dbl-SP-wlU"/>
+                <constraint firstItem="tu4-Q2-hYg" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="S2g-Vr-3Dw"/>
                 <constraint firstItem="t8b-WA-cSx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="Twn-9y-Ze3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tu4-Q2-hYg" secondAttribute="trailing" id="YHj-zv-MwG"/>
                 <constraint firstItem="t8b-WA-cSx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ZrF-g1-Jay"/>
+                <constraint firstItem="vco-CI-fVF" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="aYg-DW-gO1"/>
+                <constraint firstItem="vco-CI-fVF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cDu-bq-w03"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t8b-WA-cSx" secondAttribute="trailing" constant="10" id="gdx-hy-Ls8"/>
+                <constraint firstItem="vco-CI-fVF" firstAttribute="top" secondItem="t8b-WA-cSx" secondAttribute="bottom" constant="5" id="hG2-ci-FdQ"/>
                 <constraint firstItem="tu4-Q2-hYg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mFI-bH-8xf"/>
-                <constraint firstItem="tu4-Q2-hYg" firstAttribute="top" secondItem="t8b-WA-cSx" secondAttribute="bottom" id="tV3-s8-yaX"/>
+                <constraint firstItem="tu4-Q2-hYg" firstAttribute="top" secondItem="vco-CI-fVF" secondAttribute="bottom" constant="5" id="tS0-0y-b6Z"/>
             </constraints>
             <point key="canvasLocation" x="220.61068702290075" y="-18.30985915492958"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

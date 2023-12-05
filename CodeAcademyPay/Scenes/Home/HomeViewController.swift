@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
     @IBAction func addMoneyTapped(_ sender: Any) {
         let adddMoneyViewController = AddMoneyViewController()
         adddMoneyViewController.currentUser = currentUser
-        adddMoneyViewController.supplementCompletionHandler = { [weak self] updatedBalance in
+        adddMoneyViewController.addMoneyCompletionHandler = { [weak self] updatedBalance in
             self?.balanceLabel.text = String(format: "%.2f", updatedBalance)
             self?.currentUser.balance = updatedBalance
             self?.fetchTransactions()
@@ -131,6 +131,7 @@ class HomeViewController: UIViewController {
         settingsViewController.onCurrencyUpdate = { [weak self] updatedCurrency in
             self?.currencyLabel.text = updatedCurrency
             self?.currentUser.currency = updatedCurrency
+            self?.setupUI()
         }
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
@@ -139,8 +140,11 @@ class HomeViewController: UIViewController {
         let transactionsListViewController = TransactionsListViewController()
         transactionsListViewController.currentUser = currentUser
         transactionsListViewController.allTransactions = allTransactions
-        present(transactionsListViewController, animated: true, completion: nil)
+        
+        let navigationController = UINavigationController(rootViewController: transactionsListViewController)
+        present(navigationController, animated: true, completion: nil)
     }
+    
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -171,7 +175,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             }
         } else {
             cell.amountLabel.text = allTransactions[indexPath.row].currency
-            // Handle other labels if necessary
         }
         
         return cell

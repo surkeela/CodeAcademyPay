@@ -17,7 +17,6 @@
 		527215652B1B6EFA00A5876A /* TransactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215622B1B6EFA00A5876A /* TransactionsListViewController.swift */; };
 		527215662B1B6EFA00A5876A /* TransactionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527215632B1B6EFA00A5876A /* TransactionsListViewController.xib */; };
 		527215672B1B6EFA00A5876A /* TransactionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527215632B1B6EFA00A5876A /* TransactionsListViewController.xib */; };
-		5272156A2B1B996600A5876A /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215692B1B996600A5876A /* UIApplication+TopViewController.swift */; };
 		5272156D2B1BAE0300A5876A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5272156C2B1BAE0300A5876A /* Security.framework */; };
 		5272156F2B1BAE6200A5876A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5272156E2B1BAE6200A5876A /* KeychainHelper.swift */; };
 		527215742B1C919D00A5876A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527215722B1C919D00A5876A /* SettingsViewController.swift */; };
@@ -62,10 +61,6 @@
 		52B1467C2B148631007D9C4E /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467A2B148631007D9C4E /* TransactionRequest.swift */; };
 		52B146802B14886D007D9C4E /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */; };
 		52B146812B14886D007D9C4E /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */; };
-		52B146862B14B25D007D9C4E /* Pavizdys.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146832B14B25D007D9C4E /* Pavizdys.xib */; };
-		52B146872B14B25D007D9C4E /* Pavizdys.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B146832B14B25D007D9C4E /* Pavizdys.xib */; };
-		52B1468A2B14E743007D9C4E /* pavizdys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146892B14E743007D9C4E /* pavizdys.swift */; };
-		52B1468B2B14E743007D9C4E /* pavizdys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B146892B14E743007D9C4E /* pavizdys.swift */; };
 		52B1468E2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */; };
 		52B1468F2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */; };
 		52B146902B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */; };
@@ -105,7 +100,6 @@
 		527215582B1A31A400A5876A /* AddMoneyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMoneyViewController.xib; sourceTree = "<group>"; };
 		527215622B1B6EFA00A5876A /* TransactionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewController.swift; sourceTree = "<group>"; };
 		527215632B1B6EFA00A5876A /* TransactionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsListViewController.xib; sourceTree = "<group>"; };
-		527215692B1B996600A5876A /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		5272156C2B1BAE0300A5876A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5272156E2B1BAE6200A5876A /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		527215722B1C919D00A5876A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -139,8 +133,6 @@
 		52B146772B14852A007D9C4E /* TransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionResponse.swift; sourceTree = "<group>"; };
 		52B1467A2B148631007D9C4E /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
 		52B1467F2B14886D007D9C4E /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
-		52B146832B14B25D007D9C4E /* Pavizdys.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Pavizdys.xib; sourceTree = "<group>"; };
-		52B146892B14E743007D9C4E /* pavizdys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pavizdys.swift; sourceTree = "<group>"; };
 		52B1468C2B14E87B007D9C4E /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
 		52B1468D2B14E87B007D9C4E /* SendMoneyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMoneyViewController.xib; sourceTree = "<group>"; };
 		52B146932B150545007D9C4E /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
@@ -276,8 +268,6 @@
 				52B1461C2B0BCC7A007D9C4E /* LaunchScreen.storyboard */,
 				52B1461F2B0BCC7A007D9C4E /* Info.plist */,
 				52B146172B0BCC77007D9C4E /* CodeAcademyPay.xcdatamodeld */,
-				52B146892B14E743007D9C4E /* pavizdys.swift */,
-				52B146832B14B25D007D9C4E /* Pavizdys.xib */,
 			);
 			path = CodeAcademyPay;
 			sourceTree = "<group>";
@@ -394,7 +384,6 @@
 				52B146932B150545007D9C4E /* UnderlinedTextField.swift */,
 				52B146962B152B34007D9C4E /* UIViewControllerHelper.swift */,
 				52B1469C2B160262007D9C4E /* ValidationHelper.swift */,
-				527215692B1B996600A5876A /* UIApplication+TopViewController.swift */,
 				5272156E2B1BAE6200A5876A /* KeychainHelper.swift */,
 			);
 			path = Helpers;
@@ -517,7 +506,6 @@
 				52B146462B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
 				52B1461E2B0BCC7A007D9C4E /* LaunchScreen.storyboard in Resources */,
 				52B146702B13D806007D9C4E /* HomeViewController.xib in Resources */,
-				52B146862B14B25D007D9C4E /* Pavizdys.xib in Resources */,
 				527215752B1C919D00A5876A /* SettingsViewController.xib in Resources */,
 				52B1461B2B0BCC7A007D9C4E /* Assets.xcassets in Resources */,
 				52B146162B0BCC77007D9C4E /* Main.storyboard in Resources */,
@@ -532,7 +520,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B146A32B17554E007D9C4E /* TransactionTableViewCell.xib in Resources */,
-				52B146872B14B25D007D9C4E /* Pavizdys.xib in Resources */,
 				52B146912B14E87B007D9C4E /* SendMoneyViewController.xib in Resources */,
 				5272155C2B1A31A400A5876A /* AddMoneyViewController.xib in Resources */,
 				52B146472B0BDCF1007D9C4E /* AuthenticationViewController.xib in Resources */,
@@ -570,9 +557,7 @@
 				52B146A02B17554E007D9C4E /* TransactionTableViewCell.swift in Sources */,
 				52B146782B14852A007D9C4E /* TransactionResponse.swift in Sources */,
 				52B146942B150545007D9C4E /* UnderlinedTextField.swift in Sources */,
-				5272156A2B1B996600A5876A /* UIApplication+TopViewController.swift in Sources */,
 				52B1465E2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
-				52B1468A2B14E743007D9C4E /* pavizdys.swift in Sources */,
 				5272156F2B1BAE6200A5876A /* KeychainHelper.swift in Sources */,
 				52B146802B14886D007D9C4E /* TransactionViewModel.swift in Sources */,
 				52B1468E2B14E87B007D9C4E /* SendMoneyViewController.swift in Sources */,
@@ -604,7 +589,6 @@
 				5272155A2B1A31A400A5876A /* AddMoneyViewController.swift in Sources */,
 				52B146652B0FE4B7007D9C4E /* AuthenticatedUser.swift in Sources */,
 				52B1465C2B0E803C007D9C4E /* User.swift in Sources */,
-				52B1468B2B14E743007D9C4E /* pavizdys.swift in Sources */,
 				52B1465F2B0E899B007D9C4E /* UserManagementViewModel.swift in Sources */,
 				52B1464F2B0BE7D8007D9C4E /* NetworkManager.swift in Sources */,
 				52B146952B150545007D9C4E /* UnderlinedTextField.swift in Sources */,

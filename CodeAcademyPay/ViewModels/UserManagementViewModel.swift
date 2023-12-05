@@ -90,7 +90,6 @@ class UserManagementViewModel {
     
     func fetchDataWithBearerToken(userID: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<AuthenticatedUser, Error>) -> Void) {
         if let retrievedToken = KeychainHelper.getStringFromKeychain(forKey: "Bearer_token") {
-            print("Retrieved token:", retrievedToken)
             let urlString = Endpoints.getUser(withID: userID)
             let headers = ["Authorization": "Bearer \(retrievedToken)"]
             
@@ -142,7 +141,6 @@ class UserManagementViewModel {
     
     func updateUserAuth(name: String, password: String, currency: String, errorHandler: @escaping (String) -> Void, completion: @escaping (Result<User, Error>) -> Void) {
         if let retrievedToken = KeychainHelper.getStringFromKeychain(forKey: "Bearer_token") {
-            print("Retrieved token:", retrievedToken)
             let urlString = Endpoints.updateAuth()
             let jsonData = UserRegistrationData(name: name, password: password, currency: currency, phoneNumber: nil)
             let headers = ["Authorization": "Bearer \(retrievedToken)", "Content-Type": "application/json"]

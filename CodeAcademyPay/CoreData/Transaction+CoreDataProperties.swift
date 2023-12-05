@@ -9,13 +9,12 @@
 import Foundation
 import CoreData
 
-
 extension Transaction {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Transaction> {
         return NSFetchRequest<Transaction>(entityName: "Transaction")
     }
-
+    
     @NSManaged public var amount: String?
     @NSManaged public var id: String?
     @NSManaged public var receiver: String?
@@ -24,7 +23,7 @@ extension Transaction {
     @NSManaged public var createdAt: String?
     @NSManaged public var transactionDescription: String?
     @NSManaged public var userResponseId: String?
-
+    
 }
 
 extension Transaction : Identifiable {
@@ -38,5 +37,22 @@ extension Transaction : Identifiable {
         self.transactionDescription = transactionResponse.description
         self.userResponseId = transactionResponse.user.id
     }
+    
+}
 
+extension Transaction {
+    func matchesSearchQuery(_ searchText: String) -> Bool {
+        guard let transactionDescription = self.transactionDescription?.lowercased(),
+              let phoneNumber = (self.receiver ?? self.sender)?.lowercased() else {
+            return false
+        }
+        
+        let text = searchText.lowercased()
+
+        if transactionDescription.localizedCaseInsensitiveContains(text) || phoneNumber.localizedCaseInsensitiveContains(text) {
+            return true
+        }
+        
+        return false
+    }
 }

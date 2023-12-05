@@ -13,7 +13,7 @@ class AddMoneyViewController: UIViewController {
     
     private let transactionViewModel = TransactionViewModel()
     var currentUser: AuthenticatedUser?
-    var supplementCompletionHandler: ((Double) -> Void)?
+    var addMoneyCompletionHandler: ((Double) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,26 +36,19 @@ class AddMoneyViewController: UIViewController {
         let updatedBalance = currentBalance + sendingAmount
         let uppercasedCurrency = currency.uppercased()
         
-        guard uppercasedCurrency == currentUser?.currency.uppercased() else {
-            showErrorAlert(message: "Transaction in invalid currency")
-            return
-        }
-        
         transactionViewModel.addMoneyTransaction(amount: amount, currency: uppercasedCurrency, errorHandler: { errorMessage in
             DispatchQueue.main.async {
                 self.showErrorAlert(message: errorMessage)
-                print(errorMessage)
             }
         }, completion: { result in
             switch result {
-            case .success(let response):
-                print(response.self)
-            case .failure(let error):
+            case .success(_):
                 DispatchQueue.main.async {
-                    self.supplementCompletionHandler?(updatedBalance)
+                    self.addMoneyCompletionHandler?(updatedBalance)
                     self.dismiss(animated: true, completion: nil)
                 }
-                print("Failed with error: \(error)")
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         })
     }

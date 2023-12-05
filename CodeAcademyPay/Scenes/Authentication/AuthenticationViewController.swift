@@ -98,7 +98,6 @@ class AuthenticationViewController: UIViewController {
         }) { [weak self] result in
             switch result {
             case .success(let registeredUser):
-                print("User created successfully: \(registeredUser)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 self?.performLoginAfterRegistration(phoneNumber: phoneNumber, password: password, id: registeredUser.id)
             case .failure(let error):
                 print("Failed to create user: \(error)")
@@ -114,7 +113,6 @@ class AuthenticationViewController: UIViewController {
         }) { [weak self] result in
             switch result {
             case .success(let loginResponse):
-                print("User logged in successfully: \(loginResponse)") //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                 KeychainHelper.saveOrUpdateString(value: loginResponse.value, forKey: "Bearer_token")
                 self?.viewModel.fetchDataWithBearerToken(userID: loginResponse.user.id, errorHandler: { errorMessage in
                     DispatchQueue.main.async {
@@ -123,7 +121,6 @@ class AuthenticationViewController: UIViewController {
                 }) { [weak self] result in
                     switch result {
                     case .success(let authenticatedUser):
-                        print("Fetched data: \(authenticatedUser)")  //⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️//
                         DispatchQueue.main.async {
                             let homeViewController = HomeViewController(currentUser: authenticatedUser)
                             self?.navigationController?.pushViewController(homeViewController, animated: true)

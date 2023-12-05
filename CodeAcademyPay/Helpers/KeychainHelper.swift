@@ -9,28 +9,6 @@ import Foundation
 import Security
 
 class KeychainHelper {
-    
-//    static func saveTokenToKeychain(token: String, forKey key: String) {
-//        guard let tokenData = token.data(using: .utf8) else {
-//            print("Error converting token to data")
-//            return
-//        }
-//        
-//        // Define the query to save the token securely
-//        let attributes: [String: Any] = [
-//            kSecClass as String: kSecClassGenericPassword,
-//            kSecAttrAccount as String: key,
-//            kSecValueData as String: tokenData
-//        ]
-//        
-//        // Attempt to add the token to the keychain
-//        if SecItemAdd(attributes as CFDictionary, nil) == noErr {
-//            print("User saved successfully in the keychain")
-//        } else {
-//            print("Something went wrong trying to save the user in the keychain")
-//        }
-//    }
-    
     static func getStringFromKeychain(forKey key: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -44,12 +22,9 @@ class KeychainHelper {
         
         if SecItemCopyMatching(query as CFDictionary, &item) == noErr {
             if let existingItem = item as? [String: Any],
-               let keyName = existingItem[kSecAttrAccount as String] as? String,
                let data = existingItem[kSecValueData as String] as? Data,
                let value = String(data: data, encoding: .utf8)
             {
-                print("Key: \(keyName)")
-                print("Value: \(value)")
                 return value
             }
         } else {
@@ -57,7 +32,7 @@ class KeychainHelper {
         }
         return nil
     }
-
+    
     static func saveOrUpdateString(value: String, forKey key: String) {
         guard let data = value.data(using: .utf8) else {
             print("Error converting value to data")
@@ -93,5 +68,5 @@ class KeychainHelper {
             }
         }
     }
-
+    
 }

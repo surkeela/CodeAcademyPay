@@ -66,10 +66,10 @@ class NetworkManager {
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-
+        
         // Add Basic Authentication Header
         let loginString = "\(phoneNumber):\(password)"
         guard let loginData = loginString.data(using: .utf8) else {
@@ -79,8 +79,23 @@ class NetworkManager {
         let base64LoginString = loginData.base64EncodedString()
         let authString = "Basic \(base64LoginString)"
         request.setValue(authString, forHTTPHeaderField: "Authorization")
-
+        
         return request
     }
+    
+    func performRequestAddMoney(with request: URLRequest, errorHandler: @escaping ErrorHandler) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                errorHandler(error.localizedDescription)
+                return
+            }
+
+            guard let data = data else { return }
+                if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data), errorResponse.error {
+                    errorHandler(errorResponse.reason)
+            }
+        }.resume()
+    }
+
     
 }
